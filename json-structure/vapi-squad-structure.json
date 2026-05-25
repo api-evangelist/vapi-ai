@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Squad",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array"
+    },
+    "membersOverrides": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  }
+}

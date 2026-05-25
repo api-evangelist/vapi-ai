@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "File",
+  "type": "object",
+  "properties": {
+    "object": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "originalName": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "number"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "mimetype": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "bucket": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "parsedTextUrl": {
+      "type": "string"
+    },
+    "parsedTextBytes": {
+      "type": "number"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  }
+}

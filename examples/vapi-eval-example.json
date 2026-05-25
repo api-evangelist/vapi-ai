@@ -1,0 +1,10 @@
+{
+  "messages": "[{ role: \"user\", content: \"Hello, how are you?\" }, { role: \"assistant\", judgePlan: { type: \"exact\", content: \"I am good, thank you!\" } }]",
+  "id": "example",
+  "orgId": "example",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "updatedAt": "2026-05-24T00:00:00.000Z",
+  "name": "Verified User Flow Eval",
+  "description": "This eval checks if the user flow is verified.",
+  "type": "chat.mockConversation"
+}

@@ -1,0 +1,192 @@
+executed: '2026-05-24T00:00:00.000Z'
+results:
+  - code: apis-json-specification-aid-info
+    message: There is an aid.
+    path:
+      - aid
+    severity: 2
+  - code: apis-json-url-info
+    message: There is a URL.
+    path:
+      - url
+    severity: 2
+  - code: apis-json-apis-info
+    message: Has APIs
+    path:
+      - apis
+    severity: 2
+  - code: apis-json-apis-count-info
+    message: 15 APIs profiled
+    path:
+      - apis
+    severity: 2
+  - code: apis-json-apis-aid-info
+    message: Every API has an aid property.
+    path:
+      - apis
+      - '*'
+      - aid
+    severity: 2
+  - code: apis-json-apis-name-info
+    message: Every API has a name.
+    path:
+      - apis
+      - '*'
+      - name
+    severity: 2
+  - code: apis-json-apis-tags-info
+    message: Every API has a Tags Object.
+    path:
+      - apis
+      - '*'
+      - tags
+    severity: 2
+  - code: apis-json-apis-humanURL-info
+    message: Every API has a Human URL.
+    path:
+      - apis
+      - '*'
+      - humanURL
+    severity: 2
+  - code: apis-json-apis-properties-openapi-info
+    message: Every API has an OpenAPI artifact.
+    path:
+      - apis
+      - '*'
+      - properties
+    severity: 2
+  - code: apis-json-apis-properties-naftiko-capability-info
+    message: Every API has at least one Naftiko Capability.
+    path:
+      - apis
+      - '*'
+      - properties
+    severity: 2
+  - code: apis-json-apis-description-info
+    message: Every API has a description.
+    path:
+      - apis
+      - '*'
+      - description
+    severity: 2
+  - code: apis-json-name-info
+    message: There is a top-level name.
+    path:
+      - name
+    severity: 2
+  - code: apis-json-tags-info
+    message: There is a Tags Object.
+    path:
+      - tags
+    severity: 2
+  - code: apis-json-tags-upper-case-info
+    message: Tags Upper Case.
+    path:
+      - tags
+    severity: 2
+  - code: apis-json-common-portal-info
+    message: Has Portal common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-documentation-info
+    message: Has Documentation common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-pricing-info
+    message: Has Pricing common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-statuspage-info
+    message: Has StatusPage common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-signup-info
+    message: Has SignUp common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-sdk-info
+    message: Has 10+ SDK common links covering server (TS, Python, C#, Ruby, PHP) and client (Web, Python, React Native, iOS, HTML).
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-github-org-info
+    message: Has GitHubOrganization common link.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-webhooks-info
+    message: Has Webhooks common links (server URL events).
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-features-info
+    message: Has Features common entry summarizing the platform surface.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-plans-info
+    message: Has linked API Commons Plans artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-rate-limits-info
+    message: Has linked API Commons Rate Limits artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-finops-info
+    message: Has linked FinOps artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-specification-type-info
+    message: kind is set to contract.
+    path:
+      - kind
+    severity: 2
+  - code: apis-json-created-info
+    message: There is a created date.
+    path:
+      - created
+    severity: 2
+  - code: apis-json-modified-info
+    message: There is a modified date.
+    path:
+      - modified
+    severity: 2
+  - code: apis-json-description-info
+    message: There is a top-level description.
+    path:
+      - description
+    severity: 2
+  - code: apis-json-maintainers-info
+    message: There is a maintainer object.
+    path:
+      - maintainers
+    severity: 2
+  - code: apis-json-specification-version-info
+    message: There is a specification version (0.16).
+    path:
+      - specificationVersion
+    severity: 2
+  - code: vapi-tier-info
+    message: Tier-1 profile — full artifact set generated from authoritative OpenAPI at api.vapi.ai/api-json.
+    path: []
+    severity: 2
+  - code: vapi-openapi-coverage-info
+    message: 43 paths / 884 schemas / 15 tags split into 15 per-resource OpenAPI specs in openapi/.
+    path: []
+    severity: 2
+  - code: vapi-capability-coverage-info
+    message: 15 Naftiko capability YAMLs generated, one per Vapi tag, covering all 43 operations.
+    path: []
+    severity: 2
+  - code: vapi-pricing-source-info
+    message: Pricing reconciled from vapi.ai/pricing (Build / Scale plans plus HIPAA and ZDR add-ons).
+    path: []
+    severity: 2

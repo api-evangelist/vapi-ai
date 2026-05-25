@@ -1,0 +1,14 @@
+{
+  "messages": [
+    null
+  ],
+  "type": "function",
+  "async": false,
+  "server": null,
+  "variableExtractionPlan": null,
+  "parameters": [
+    null
+  ],
+  "id": "example",
+  "orgId": "example"
+}

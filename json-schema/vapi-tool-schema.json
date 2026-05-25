@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-tool-schema.json",
+  "title": "Vapi FunctionTool",
+  "description": "JSON Schema for the Vapi FunctionTool resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "description": "These are the messages that will be spoken to the user as the tool is running.\n\nFor some tools, this is auto-filled based on special fields like `tool.destinations`. For others like the function tool, these can be custom configured.",
+      "items": {}
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of tool. \"function\" for Function tool.",
+      "enum": [
+        "function"
+      ]
+    },
+    "async": {
+      "type": "boolean",
+      "description": "This determines if the tool is async.\n\n  If async, the assistant will move forward without waiting for your server to respond. This is useful if you just want to trigger something on your server.\n\n  If sync, the assistant will wait for your server to respond. This is useful if want assistant to resp"
+    },
+    "server": {
+      "description": "\n  This is the server where a `tool-calls` webhook will be sent.\n\n  Notes:\n  - Webhook is sent to this server when a tool call is made.\n  - Webhook contains the call, assistant, and phone number objects.\n  - Webhook contains the variables set on the assistant.\n  - Webhook is sent to the first availa",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "timeoutSeconds": {
+              "type": "number",
+              "description": "This is the timeout in seconds for the request. Defaults to 20 seconds.\n\n@default 20"
+            },
+            "credentialId": {
+              "type": "string",
+              "description": "The credential ID for server authentication"
+            },
+            "staticIpAddressesEnabled": {
+              "type": "boolean",
+              "description": "If enabled, requests will originate from a static set of IPs owned and managed by Vapi.\n\n@default false"
+            },
+            "encryptedPaths": {
+              "type": "array",
+              "description": "This is the paths to encrypt in the request body if credentialId and encryptionPlan are defined.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "url": {
+              "type": "string",
+              "description": "This is where the request will be sent."
+            },
+            "headers": {
+              "type": "object",
+              "description": "These are the headers to include in the request.\n\nEach key-value pair represents a header name and its value.\n\nNote: Specifying an Authorization header here will override the authorization provided by the `credentialId` (if provided). This is an anti-pattern and should be avoided outside of edge cas"
+            },
+            "backoffPlan": {
+              "description": "This is the backoff plan if the request fails. Defaults to undefined (the request will not be retried).\n\n@default undefined (the request will not be retried)"
+            }
+          }
+        }
+      ]
+    },
+    "variableExtractionPlan": {
+      "description": "Plan to extract variables from the tool response",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "schema": {
+              "description": "This is the schema to extract.\n\nExamples:\n1. To extract object properties, you can use the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"age\": {\n      \"type\": \"number\"\n    }\n  }\n}\n```\n\nThese will be extracted as `{{ name }}` and `{"
+            },
+            "aliases": {
+              "type": "array",
+              "description": "These are additional variables to create.\n\nThese will be accessible during the call as `{{key}}` and stored in `call.artifact.variableValues` after the call.\n\nExample:\n```json\n{\n  \"aliases\": [\n    {\n      \"key\": \"customerName\",\n      \"value\": \"{{name}}\"\n    },\n    {\n      \"key\": \"fullName\",\n      \"v",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Static key-value pairs merged into the request body. Values support Liquid templates.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "This is the key of the parameter."
+          },
+          "value": {
+            "description": "The value of the parameter. Any JSON type. String values support Liquid templates."
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ]
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the tool."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the organization that this tool belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the tool was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the tool was last updated.",
+      "format": "date-time"
+    },
+    "rejectionPlan": {
+      "description": "This is the plan to reject a tool call based on the conversation state.\n\n// Example 1: Reject endCall if user didn't say goodbye\n```json\n{\n  conditions: [{\n    type: 'regex',\n    regex: '(?i)\\\\b(bye|goodbye|farewell|see you later|take care)\\\\b',\n    target: { position: -1, role: 'user' },\n    negate",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "description": "This is the list of conditions that must be evaluated.\n\nUsage:\n- If all conditions match (AND logic), the tool call is rejected.\n- For OR logic at the top level, use a single 'group' condition with operator: 'OR'.\n\n@default [] - Empty array means tool always executes",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "function": {
+      "description": "This is the function definition of the tool.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "strict": {
+              "type": "boolean",
+              "description": "This is a boolean that controls whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the parameters field. Only a subset of JSON Schema is supported when strict is true. Learn more about Structured Outputs in t"
+            },
+            "name": {
+              "type": "string",
+              "description": "This is the the name of the function to be called.\n\nMust be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64."
+            },
+            "description": {
+              "type": "string",
+              "description": "This is the description of what the function does, used by the AI to choose when and how to call the function."
+            },
+            "parameters": {
+              "description": "These are the parameters the functions accepts, described as a JSON Schema object.\n\nSee the [OpenAI guide](https://platform.openai.com/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema) for documentation about the format.\n\nO"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt"
+  ]
+}

@@ -1,0 +1,44 @@
+name: Vapi Voice AI Vocabulary
+provider: Vapi
+providerId: vapi-ai
+description: Tag-derived vocabulary for the Vapi voice AI platform API surface; sourced from openapi/ tags
+  plus core voice-AI concepts.
+terms:
+- term: Analytics
+  description: Aggregate queries across calls, grouped by assistant, time, status, end reason, cost, or duration.
+- term: Assistant
+  description: A reusable voice agent configuration bundling a transcriber, model, voice, tools, and prompts.
+- term: Call
+  description: A real-time voice session between Vapi and a customer over phone, web, or SIP.
+- term: Call Artifact
+  description: Per-call recording, packet capture, or log file (mono, stereo, isolated customer/assistant, video, PCAP).
+- term: Campaign
+  description: Outbound batched calling job that drives an assistant against a list of customers.
+- term: Chat
+  description: Text-based conversation surface that reuses the same assistant configuration as voice calls.
+- term: Eval
+  description: Test suite that simulates end-user behavior against an assistant for regression testing.
+- term: File
+  description: Uploaded artifact used as input to knowledge bases and other assistant resources.
+- term: Insight
+  description: Saved query that extracts structured signals from call data on demand or on a schedule.
+- term: Observability Scorecard
+  description: LLM-graded scorecard that automatically scores every call against defined criteria.
+- term: Phone Number
+  description: A Vapi-managed, BYO Twilio, Telnyx, Vonage, or SIP phone number routed to an assistant or squad.
+- term: Provider Resource
+  description: Generic CRUD over upstream provider resources (e.g. ElevenLabs voices, Cartesia voices).
+- term: Server URL
+  description: The webhook endpoint Vapi calls for tool invocation and server-side call events.
+- term: Session
+  description: A persistent conversation state object that survives across multiple calls or chats.
+- term: Squad
+  description: A multi-agent workflow where assistants can hand off a live call to one another.
+- term: Structured Output
+  description: A JSON-schema-driven extraction definition the assistant must populate from a call.
+- term: Tool
+  description: A function the assistant LLM can invoke during a call (function, transfer, end-call, DTMF, MCP, etc.).
+- term: Transcriber
+  description: Speech-to-text component (Deepgram, AssemblyAI, Gladia, Azure, Cartesia, Soniox, OpenAI, Google, etc.).
+- term: Voice
+  description: Text-to-speech component (ElevenLabs, Cartesia, PlayHT, OpenAI, Azure, Deepgram, Rime, etc.).

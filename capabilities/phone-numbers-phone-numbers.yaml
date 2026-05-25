@@ -1,0 +1,408 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Vapi Phone Numbers API — Phone Numbers
+  description: "Vapi Phone Numbers API — Phone Numbers. 6 operations. Self-contained Naftiko capability covering the Vapi Phone Numbers business surface."
+  tags:
+  - Vapi
+  - Phone Numbers
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    VAPI_API_KEY: VAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: phone-numbers-phone-numbers
+    baseUri: https://api.vapi.ai
+    description: Vapi Phone Numbers API business capability. Self-contained, no shared references.
+    resources:
+    - name: phone-number
+      path: /phone-number
+      operations:
+      - name: phonenumbercontrollercreate
+        method: POST
+        description: "Vapi Create Phone Number"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: phonenumbercontrollerfindall
+        method: GET
+        description: "Vapi List Phone Numbers"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+          description: "This is the maximum number of items to return. Defaults to 100."
+          required: false
+        - name: createdAtGt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than the specified value."
+          required: false
+        - name: createdAtLt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than the specified value."
+          required: false
+        - name: createdAtGe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than or equal to the specified value."
+          required: false
+        - name: createdAtLe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than or equal to the specified value."
+          required: false
+        - name: updatedAtGt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than the specified value."
+          required: false
+        - name: updatedAtLt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than the specified value."
+          required: false
+        - name: updatedAtGe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than or equal to the specified value."
+          required: false
+        - name: updatedAtLe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than or equal to the specified value."
+          required: false
+      - name: phonenumbercontrollerfindone
+        method: GET
+        description: "Vapi Get Phone Number"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+      - name: phonenumbercontrollerupdate
+        method: PATCH
+        description: "Vapi Update Phone Number"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: phonenumbercontrollerremove
+        method: DELETE
+        description: "Vapi Delete Phone Number"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+    - name: v2-phone-number
+      path: /v2/phone-number
+      operations:
+      - name: phonenumbercontrollerfindallpaginated
+        method: GET
+        description: "Vapi List Phone Numbers"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: "This will search phone numbers by name, number, or SIP URI (partial match, case-insensitive)."
+          required: false
+        - name: page
+          in: query
+          type: string
+          description: "This is the page number to return. Defaults to 1."
+          required: false
+        - name: sortOrder
+          in: query
+          type: string
+          description: "This is the sort order for pagination. Defaults to 'DESC'."
+          required: false
+        - name: sortBy
+          in: query
+          type: string
+          description: "This is the column to sort by. Defaults to 'createdAt'."
+          required: false
+        - name: limit
+          in: query
+          type: string
+          description: "This is the maximum number of items to return. Defaults to 100."
+          required: false
+        - name: createdAtGt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than the specified value."
+          required: false
+        - name: createdAtLt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than the specified value."
+          required: false
+        - name: createdAtGe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than or equal to the specified value."
+          required: false
+        - name: createdAtLe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than or equal to the specified value."
+          required: false
+        - name: updatedAtGt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than the specified value."
+          required: false
+        - name: updatedAtLt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than the specified value."
+          required: false
+        - name: updatedAtGe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than or equal to the specified value."
+          required: false
+        - name: updatedAtLe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than or equal to the specified value."
+          required: false
+    authentication:
+      type: bearer
+      key: Authorization
+      value: 'Bearer {{env.VAPI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: phone-numbers-phone-numbers-rest
+    port: 8080
+    description: REST adapter for Vapi Phone Numbers. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/phone-number
+      name: phone-number
+      description: REST surface for phone-number.
+      operations:
+      - method: POST
+        name: phonenumbercontrollercreate
+        description: "Vapi Create Phone Number"
+        call: phone-numbers-phone-numbers.phonenumbercontrollercreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: phonenumbercontrollerfindall
+        description: "Vapi List Phone Numbers"
+        call: phone-numbers-phone-numbers.phonenumbercontrollerfindall
+        with:
+          limit: rest.limit
+          createdAtGt: rest.createdAtGt
+          createdAtLt: rest.createdAtLt
+          createdAtGe: rest.createdAtGe
+          createdAtLe: rest.createdAtLe
+          updatedAtGt: rest.updatedAtGt
+          updatedAtLt: rest.updatedAtLt
+          updatedAtGe: rest.updatedAtGe
+          updatedAtLe: rest.updatedAtLe
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: phonenumbercontrollerfindone
+        description: "Vapi Get Phone Number"
+        call: phone-numbers-phone-numbers.phonenumbercontrollerfindone
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: phonenumbercontrollerupdate
+        description: "Vapi Update Phone Number"
+        call: phone-numbers-phone-numbers.phonenumbercontrollerupdate
+        with:
+          body: rest.body
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: phonenumbercontrollerremove
+        description: "Vapi Delete Phone Number"
+        call: phone-numbers-phone-numbers.phonenumbercontrollerremove
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/phone-number
+      name: v2-phone-number
+      description: REST surface for v2-phone-number.
+      operations:
+      - method: GET
+        name: phonenumbercontrollerfindallpaginated
+        description: "Vapi List Phone Numbers"
+        call: phone-numbers-phone-numbers.phonenumbercontrollerfindallpaginated
+        with:
+          search: rest.search
+          page: rest.page
+          sortOrder: rest.sortOrder
+          sortBy: rest.sortBy
+          limit: rest.limit
+          createdAtGt: rest.createdAtGt
+          createdAtLt: rest.createdAtLt
+          createdAtGe: rest.createdAtGe
+          createdAtLe: rest.createdAtLe
+          updatedAtGt: rest.updatedAtGt
+          updatedAtLt: rest.updatedAtLt
+          updatedAtGe: rest.updatedAtGe
+          updatedAtLe: rest.updatedAtLe
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: phone-numbers-phone-numbers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Vapi Phone Numbers. One tool per consumed operation.
+    tools:
+    - name: vapi-phonenumbercontrollercreate
+      description: "Vapi Create Phone Number"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: phone-numbers-phone-numbers.phonenumbercontrollercreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-phonenumbercontrollerfindall
+      description: "Vapi List Phone Numbers"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phone-numbers-phone-numbers.phonenumbercontrollerfindall
+      with:
+        limit: tools.limit
+        createdAtGt: tools.createdAtGt
+        createdAtLt: tools.createdAtLt
+        createdAtGe: tools.createdAtGe
+        createdAtLe: tools.createdAtLe
+        updatedAtGt: tools.updatedAtGt
+        updatedAtLt: tools.updatedAtLt
+        updatedAtGe: tools.updatedAtGe
+        updatedAtLe: tools.updatedAtLe
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-phonenumbercontrollerfindone
+      description: "Vapi Get Phone Number"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phone-numbers-phone-numbers.phonenumbercontrollerfindone
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-phonenumbercontrollerupdate
+      description: "Vapi Update Phone Number"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: phone-numbers-phone-numbers.phonenumbercontrollerupdate
+      with:
+        body: tools.body
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-phonenumbercontrollerremove
+      description: "Vapi Delete Phone Number"
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: phone-numbers-phone-numbers.phonenumbercontrollerremove
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-phonenumbercontrollerfindallpaginated
+      description: "Vapi List Phone Numbers"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phone-numbers-phone-numbers.phonenumbercontrollerfindallpaginated
+      with:
+        search: tools.search
+        page: tools.page
+        sortOrder: tools.sortOrder
+        sortBy: tools.sortBy
+        limit: tools.limit
+        createdAtGt: tools.createdAtGt
+        createdAtLt: tools.createdAtLt
+        createdAtGe: tools.createdAtGe
+        createdAtLe: tools.createdAtLe
+        updatedAtGt: tools.updatedAtGt
+        updatedAtLt: tools.updatedAtLt
+        updatedAtGe: tools.updatedAtGe
+        updatedAtLe: tools.updatedAtLe
+      outputParameters:
+      - type: object
+        mapping: $.

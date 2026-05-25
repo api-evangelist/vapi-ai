@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Call",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "costs": {
+      "type": "array"
+    },
+    "messages": {
+      "type": "array"
+    },
+    "phoneCallProvider": {
+      "type": "string"
+    },
+    "phoneCallTransport": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "endedReason": {
+      "type": "string"
+    },
+    "endedMessage": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string"
+    },
+    "endedAt": {
+      "type": "string"
+    },
+    "cost": {
+      "type": "number"
+    },
+    "costBreakdown": {
+      "type": "string"
+    },
+    "artifactPlan": {
+      "type": "string"
+    },
+    "analysis": {
+      "type": "string"
+    },
+    "monitor": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "string"
+    },
+    "compliance": {
+      "type": "string"
+    },
+    "phoneCallProviderId": {
+      "type": "string"
+    },
+    "campaignId": {
+      "type": "string"
+    },
+    "assistantId": {
+      "type": "string"
+    },
+    "assistant": {
+      "type": "string"
+    },
+    "assistantOverrides": {
+      "type": "string"
+    },
+    "squadId": {
+      "type": "string"
+    },
+    "squad": {
+      "type": "string"
+    },
+    "squadOverrides": {
+      "type": "string"
+    }
+  }
+}

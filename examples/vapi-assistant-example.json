@@ -1,0 +1,10 @@
+{
+  "transcriber": null,
+  "model": null,
+  "voice": null,
+  "firstMessage": "Hello! How can I help you today?",
+  "firstMessageInterruptionsEnabled": false,
+  "firstMessageMode": "assistant-speaks-first",
+  "voicemailDetection": null,
+  "clientMessages": "conversation-update"
+}

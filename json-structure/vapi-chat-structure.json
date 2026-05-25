@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Chat",
+  "type": "object",
+  "properties": {
+    "assistantId": {
+      "type": "string"
+    },
+    "assistant": {
+      "type": "string"
+    },
+    "assistantOverrides": {
+      "type": "string"
+    },
+    "squadId": {
+      "type": "string"
+    },
+    "squad": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "input": {
+      "type": "string"
+    },
+    "stream": {
+      "type": "boolean"
+    },
+    "previousChatId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array"
+    },
+    "output": {
+      "type": "array"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "costs": {
+      "type": "array"
+    },
+    "cost": {
+      "type": "number"
+    }
+  }
+}

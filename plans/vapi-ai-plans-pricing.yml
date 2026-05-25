@@ -1,0 +1,125 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Vapi
+providerId: vapi-ai
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: true
+tags:
+  - Voice AI
+  - Telephony
+  - Usage-Based
+description: Reconciled plans and per-minute pricing for the Vapi voice AI platform. Vapi charges $0.05/min
+  for its orchestration layer on the Build plan; model, transcriber, voice (TTS), and telephony provider
+  costs are passed through at cost (or zero if you bring your own provider keys).
+sources:
+  - https://vapi.ai/pricing
+  - https://docs.vapi.ai
+plans:
+  - id: vapi-build
+    name: Build
+    type: usage-based
+    description: Self-serve, pay-as-you-go plan for builders and small teams.
+    entries:
+      - label: Vapi orchestration per call-minute
+        name: call_minutes
+        type: metered
+        metric: minutes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.05'
+        userMultiplied: false
+      - label: Additional concurrent line (10 included)
+        name: call_concurrency_line
+        type: metered
+        metric: line
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '10.00'
+        userMultiplied: false
+      - label: SMS / chat message
+        name: sms_chat_messages
+        type: metered
+        metric: message
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.005'
+        userMultiplied: false
+    elements:
+      - name: 10 included concurrent call lines
+      - name: Model, transcriber, voice, and telephony provider costs passed at cost
+      - name: Free when you bring your own provider API keys
+      - name: 14-day call data retention
+      - name: 30-day chat data retention
+      - name: Community Discord and email support
+  - id: vapi-scale
+    name: Scale
+    type: enterprise
+    description: Annual contract for high-volume / regulated production deployments.
+    entries:
+      - label: Call minutes (volume-based)
+        name: call_minutes
+        type: metered
+        metric: minutes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Concurrent call capacity
+        name: call_concurrency
+        type: metered
+        metric: line
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Volume-discounted per-minute pricing
+      - name: Custom concurrency limits
+      - name: SOC 2 Type II
+      - name: PCI compliance
+      - name: SSO and RBAC
+      - name: Configurable data retention
+      - name: Dedicated account team with SLA
+      - name: Enterprise uptime SLA
+  - id: vapi-addon-hipaa
+    name: HIPAA Add-on
+    type: addon
+    description: HIPAA compliance and BAA add-on, available on both Build and Scale.
+    entries:
+      - label: HIPAA add-on
+        name: hipaa
+        type: flat
+        metric: subscription
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '2000.00'
+        userMultiplied: false
+  - id: vapi-addon-zdr
+    name: Zero Data Retention Add-on
+    type: addon
+    description: Zero Data Retention add-on, available on both Build and Scale.
+    entries:
+      - label: Zero Data Retention add-on
+        name: zdr
+        type: flat
+        metric: subscription
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '1000.00'
+        userMultiplied: false

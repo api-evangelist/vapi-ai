@@ -1,0 +1,2438 @@
+openapi: 3.0.0
+info:
+  title: Vapi Insight API
+  description: Vapi API — Insight resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Insight
+  description: Insight endpoints.
+paths:
+  /reporting/insight:
+    post:
+      operationId: InsightController_create
+      summary: Create Insight
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/CreateBarInsightFromCallTableDTO'
+                title: CreateBarInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreatePieInsightFromCallTableDTO'
+                title: CreatePieInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreateLineInsightFromCallTableDTO'
+                title: CreateLineInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreateTextInsightFromCallTableDTO'
+                title: CreateTextInsightFromCallTableDTO
+              discriminator:
+                propertyName: type
+                mapping:
+                  bar: '#/components/schemas/CreateBarInsightFromCallTableDTO'
+                  pie: '#/components/schemas/CreatePieInsightFromCallTableDTO'
+                  line: '#/components/schemas/CreateLineInsightFromCallTableDTO'
+                  text: '#/components/schemas/CreateTextInsightFromCallTableDTO'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BarInsight'
+                - $ref: '#/components/schemas/PieInsight'
+                - $ref: '#/components/schemas/LineInsight'
+                - $ref: '#/components/schemas/TextInsight'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    bar: '#/components/schemas/BarInsight'
+                    pie: '#/components/schemas/PieInsight'
+                    line: '#/components/schemas/LineInsight'
+                    text: '#/components/schemas/TextInsight'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+    get:
+      operationId: InsightController_findAll
+      summary: Get Insights
+      parameters:
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: This is the page number to return. Defaults to 1.
+        schema:
+          minimum: 1
+          type: number
+      - name: sortOrder
+        required: false
+        in: query
+        description: This is the sort order for pagination. Defaults to 'DESC'.
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+      - name: sortBy
+        required: false
+        in: query
+        description: This is the column to sort by. Defaults to 'createdAt'.
+        schema:
+          enum:
+          - createdAt
+          - duration
+          - cost
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: This is the maximum number of items to return. Defaults to 100.
+        schema:
+          minimum: 0
+          maximum: 1000
+          type: number
+      - name: createdAtGt
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLt
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtGe
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLe
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightPaginatedResponse'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+  /reporting/insight/{id}:
+    patch:
+      operationId: InsightController_update
+      summary: Update Insight
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UpdateBarInsightFromCallTableDTO'
+                title: UpdateBarInsightFromCallTableDTO
+              - $ref: '#/components/schemas/UpdatePieInsightFromCallTableDTO'
+                title: UpdatePieInsightFromCallTableDTO
+              - $ref: '#/components/schemas/UpdateLineInsightFromCallTableDTO'
+                title: UpdateLineInsightFromCallTableDTO
+              - $ref: '#/components/schemas/UpdateTextInsightFromCallTableDTO'
+                title: UpdateTextInsightFromCallTableDTO
+              discriminator:
+                propertyName: type
+                mapping:
+                  bar: '#/components/schemas/UpdateBarInsightFromCallTableDTO'
+                  pie: '#/components/schemas/UpdatePieInsightFromCallTableDTO'
+                  line: '#/components/schemas/UpdateLineInsightFromCallTableDTO'
+                  text: '#/components/schemas/UpdateTextInsightFromCallTableDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BarInsight'
+                - $ref: '#/components/schemas/PieInsight'
+                - $ref: '#/components/schemas/LineInsight'
+                - $ref: '#/components/schemas/TextInsight'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    bar: '#/components/schemas/BarInsight'
+                    pie: '#/components/schemas/PieInsight'
+                    line: '#/components/schemas/LineInsight'
+                    text: '#/components/schemas/TextInsight'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+    get:
+      operationId: InsightController_findOne
+      summary: Get Insight
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BarInsight'
+                - $ref: '#/components/schemas/PieInsight'
+                - $ref: '#/components/schemas/LineInsight'
+                - $ref: '#/components/schemas/TextInsight'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    bar: '#/components/schemas/BarInsight'
+                    pie: '#/components/schemas/PieInsight'
+                    line: '#/components/schemas/LineInsight'
+                    text: '#/components/schemas/TextInsight'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+    delete:
+      operationId: InsightController_remove
+      summary: Delete Insight
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BarInsight'
+                - $ref: '#/components/schemas/PieInsight'
+                - $ref: '#/components/schemas/LineInsight'
+                - $ref: '#/components/schemas/TextInsight'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    bar: '#/components/schemas/BarInsight'
+                    pie: '#/components/schemas/PieInsight'
+                    line: '#/components/schemas/LineInsight'
+                    text: '#/components/schemas/TextInsight'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+  /reporting/insight/{id}/run:
+    post:
+      operationId: InsightController_run
+      summary: Run Insight
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightRunDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightRunResponse'
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightRunResponse'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+  /reporting/insight/preview:
+    post:
+      operationId: InsightController_preview
+      summary: Preview Insight
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/CreateBarInsightFromCallTableDTO'
+                title: CreateBarInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreatePieInsightFromCallTableDTO'
+                title: CreatePieInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreateLineInsightFromCallTableDTO'
+                title: CreateLineInsightFromCallTableDTO
+              - $ref: '#/components/schemas/CreateTextInsightFromCallTableDTO'
+                title: CreateTextInsightFromCallTableDTO
+              discriminator:
+                propertyName: type
+                mapping:
+                  bar: '#/components/schemas/CreateBarInsightFromCallTableDTO'
+                  pie: '#/components/schemas/CreatePieInsightFromCallTableDTO'
+                  line: '#/components/schemas/CreateLineInsightFromCallTableDTO'
+                  text: '#/components/schemas/CreateTextInsightFromCallTableDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightRunResponse'
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightRunResponse'
+      tags:
+      - Insight
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    BarInsight:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `bar` to create a bar insight.'
+          enum:
+          - bar
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/BarInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+            - $ref: '#/components/schemas/JSONQueryOnEventsTable'
+              title: JSONQueryOnEventsTable
+        id:
+          type: string
+          description: This is the unique identifier for the Insight.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this Insight belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was last updated.
+        systemKey:
+          type: string
+          description: Stable server-owned identifier for system-created insights.
+      required:
+      - type
+      - queries
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    BarInsightMetadata:
+      type: object
+      properties:
+        xAxisLabel:
+          type: string
+          minLength: 1
+          maxLength: 40
+        yAxisLabel:
+          type: string
+          minLength: 1
+          maxLength: 40
+        yAxisMin:
+          type: number
+        yAxisMax:
+          type: number
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+    CreateBarInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `bar` to create a bar insight.'
+          enum:
+          - bar
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/BarInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+            - $ref: '#/components/schemas/JSONQueryOnEventsTable'
+              title: JSONQueryOnEventsTable
+      required:
+      - type
+      - queries
+    CreateLineInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `line` to create a line insight.'
+          enum:
+          - line
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/LineInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+      required:
+      - type
+      - queries
+    CreatePieInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `pie` to create a pie insight.'
+          enum:
+          - pie
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+      required:
+      - type
+      - queries
+    CreateTextInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `text` to create a text insight.'
+          enum:
+          - text
+        formula:
+          type: object
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        queries:
+          type: array
+          description: 'These are the queries to run to generate the insight.
+
+            For Text Insights, we only allow a single query, or require a formula if multiple queries are provided'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+      required:
+      - type
+      - queries
+    EventsTableBooleanCondition:
+      type: object
+      properties:
+        column:
+          type: string
+          description: The boolean field name from the event data
+          example: success
+        operator:
+          type: string
+          description: Boolean comparison operator
+          example: '='
+          enum:
+          - '='
+        value:
+          type: boolean
+          description: The boolean value to compare
+          example: true
+      required:
+      - column
+      - operator
+      - value
+    EventsTableNumberCondition:
+      type: object
+      properties:
+        column:
+          type: string
+          description: The number field name from the event data
+          example: latency
+        operator:
+          type: string
+          description: Number comparison operator
+          example: '>='
+          enum:
+          - '='
+          - '!='
+          - '>'
+          - '>='
+          - <
+          - <=
+        value:
+          type: number
+          description: The number value to compare
+          example: 1000
+      required:
+      - column
+      - operator
+      - value
+    EventsTableStringCondition:
+      type: object
+      properties:
+        column:
+          type: string
+          description: The string field name from the event data
+          example: provider
+        operator:
+          type: string
+          description: String comparison operator
+          example: '='
+          enum:
+          - '='
+          - '!='
+          - contains
+          - notContains
+        value:
+          type: string
+          description: The string value to compare
+          example: openai
+      required:
+      - column
+      - operator
+      - value
+    FilterDateTypeColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            Date Type columns are columns where the rows store data as a date.
+
+            Must be a valid column for the selected table.'
+          example: created_at
+          enum:
+          - startedAt
+          - endedAt
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            For date type columns, the operator must be "=", ">", "<", ">=", "<="'
+          example: '"=" or ">" or "<" or ">=" or "<="'
+          enum:
+          - '='
+          - '!='
+          - '>'
+          - <
+          - '>='
+          - <=
+        value:
+          type: string
+          description: 'This is the value to filter on.
+
+            Must be a valid ISO 8601 date-time string.'
+          example: '2025-01-01T00:00:00Z'
+      required:
+      - column
+      - operator
+      - value
+    FilterNumberArrayTypeColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            Number Array Type columns are the same as Number Type columns, but provides the ability to filter on multiple
+            values provided as an array.
+
+            Must be a valid column for the selected table.'
+          example: duration
+          enum:
+          - duration
+          - cost
+          - averageModelLatency
+          - averageVoiceLatency
+          - averageTranscriberLatency
+          - averageTurnLatency
+          - averageEndpointingLatency
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            The operator must be `in` or `not_in`.'
+          example: '"in" or "not_in"'
+          enum:
+          - in
+          - not_in
+          - is_empty
+          - is_not_empty
+        value:
+          description: This is the value to filter on.
+          type: array
+          items:
+            type: number
+      required:
+      - column
+      - operator
+      - value
+    FilterNumberTypeColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            Number Type columns are columns where the rows store data as a number.
+
+            Must be a valid column for the selected table.'
+          example: duration
+          enum:
+          - duration
+          - cost
+          - averageModelLatency
+          - averageVoiceLatency
+          - averageTranscriberLatency
+          - averageTurnLatency
+          - averageEndpointingLatency
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            For number type columns, the operator must be "=", ">", "<", ">=", "<="'
+          example: '"=" or ">" or "<" or ">=" or "<="'
+          enum:
+          - '='
+          - '!='
+          - '>'
+          - <
+          - '>='
+          - <=
+        value:
+          type: number
+          description: This is the value to filter on.
+      required:
+      - column
+      - operator
+      - value
+    FilterStringArrayTypeColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            String Array Type columns are the same as String Type columns, but provides the ability to filter on multiple
+            values provided as an array.
+
+            Must be a valid column for the selected table.'
+          example: assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - customerNumber
+          - status
+          - endedReason
+          - forwardedPhoneNumber
+          - campaignId
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            The operator must be `in` or `not_in`.'
+          example: '"in" or "not_in"'
+          enum:
+          - in
+          - not_in
+          - is_empty
+          - is_not_empty
+        value:
+          description: These are the values to filter on.
+          type: array
+          items:
+            type: string
+      required:
+      - column
+      - operator
+      - value
+    FilterStringTypeColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            String Type columns are columns where the rows store data as a string.
+
+            Must be a valid column for the selected table.'
+          example: assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - customerNumber
+          - status
+          - endedReason
+          - forwardedPhoneNumber
+          - campaignId
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            For string type columns, the operator must be "=", "!=", "contains", "not contains"'
+          example: '"=" or "!="'
+          enum:
+          - '='
+          - '!='
+          - contains
+          - not_contains
+        value:
+          type: string
+          description: This is the value to filter on.
+      required:
+      - column
+      - operator
+      - value
+    FilterStructuredOutputColumnOnCallTable:
+      type: object
+      properties:
+        column:
+          type: string
+          description: 'This is the column in the call table that will be filtered on.
+
+            Structured Output Type columns are only to filter on artifact.structuredOutputs[OutputID] column.'
+          example: artifact.structuredOutputs[OutputID]
+          enum:
+          - artifact.structuredOutputs[OutputID]
+        operator:
+          type: string
+          description: 'This is the operator to use for the filter.
+
+            The operator depends on the value type of the structured output.
+
+            If the structured output is a string or boolean, the operator must be "=", "!="
+
+            If the structured output is a number, the operator must be "=", ">", "<", ">=", "<="
+
+            If the structured output is an array, the operator must be "in" or "not_in"'
+          example: '"=" or ">" or "<" or "in" or "not_in"'
+          enum:
+          - '='
+          - '!='
+          - '>'
+          - <
+          - '>='
+          - <=
+          - in
+          - not_in
+          - contains
+          - not_contains
+          - is_empty
+          - is_not_empty
+        value:
+          type: object
+          description: 'This is the value to filter on.
+
+            The value type depends on the structured output type being filtered.'
+      required:
+      - column
+      - operator
+      - value
+    Insight:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: This is the type of the Insight.
+          enum:
+          - bar
+          - line
+          - pie
+          - text
+        id:
+          type: string
+          description: This is the unique identifier for the Insight.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this Insight belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was last updated.
+        systemKey:
+          type: string
+          description: Stable server-owned identifier for system-created insights.
+      required:
+      - type
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    InsightFormula:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'This is the name of the formula.
+
+            It will be used to label the formula in the insight board on the UI.'
+          example: Booking Rate
+          minLength: 1
+          maxLength: 255
+        formula:
+          type: string
+          description: 'This is the formula to calculate the insight from the queries.
+
+            The formula needs to be a valid mathematical expression.
+
+            The formula must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            Any MathJS formula is allowed - https://mathjs.org/docs/expressions/syntax.html
+
+
+            Common valid math operations are +, -, *, /, %'
+          minLength: 1
+          maxLength: 1000
+      required:
+      - formula
+    InsightPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Insight'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata
+    InsightRunDTO:
+      type: object
+      properties:
+        formatPlan:
+          $ref: '#/components/schemas/InsightRunFormatPlan'
+        timeRangeOverride:
+          description: 'This is the optional time range override for the insight.
+
+            If provided, overrides every field in the insight''s timeRange.
+
+            If this is provided with missing fields, defaults will be used, not the insight''s timeRange.
+
+            start default - "-7d"
+
+            end default - "now"
+
+            step default - "day"
+
+            For Pie and Text Insights, step will be ignored even if provided.'
+          example: '{ start: "2025-01-01", end: "2025-01-07", step: "day" }'
+          allOf:
+          - $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        assistantId:
+          type: string
+          description: 'Optional runtime assistant scope for dashboards.
+
+            This is applied to call-table queries without mutating the saved insight.'
+    InsightRunFormatPlan:
+      type: object
+      properties:
+        format:
+          type: string
+          description: 'This is the format of the data to return.
+
+            If not provided, defaults to "raw".
+
+            Raw provides the data as fetched from the database, with formulas evaluated.
+
+            Recharts provides the data in a format that can is ready to be used by recharts.js to render charts.'
+          example: raw
+          enum:
+          - raw
+          - recharts
+    InsightRunResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        insightId:
+          type: string
+        orgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - insightId
+      - orgId
+      - createdAt
+      - updatedAt
+    InsightTimeRange:
+      type: object
+      properties:
+        start:
+          type: object
+          description: 'This is the start date for the time range.
+
+
+            Should be a valid ISO 8601 date-time string or relative time string.
+
+            If not provided, defaults to the 7 days ago.
+
+
+            Relative time strings of the format "-{number}{unit}" are allowed.
+
+
+            Valid units are:
+
+            - d: days
+
+            - h: hours
+
+            - w: weeks
+
+            - m: months
+
+            - y: years'
+          example: '"2025-01-01" or "-7d" or "now"'
+        end:
+          type: object
+          description: 'This is the end date for the time range.
+
+
+            Should be a valid ISO 8601 date-time string or relative time string.
+
+            If not provided, defaults to now.
+
+
+            Relative time strings of the format "-{number}{unit}" are allowed.
+
+
+            Valid units are:
+
+            - d: days
+
+            - h: hours
+
+            - w: weeks
+
+            - m: months
+
+            - y: years'
+          example: '"2025-01-01" or "now"'
+        timezone:
+          type: string
+          description: 'This is the timezone you want to set for the query.
+
+
+            If not provided, defaults to UTC.'
+    InsightTimeRangeWithStep:
+      type: object
+      properties:
+        step:
+          type: string
+          description: 'This is the group by step for aggregation.
+
+
+            If not provided, defaults to group by day.'
+          enum:
+          - minute
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        start:
+          type: object
+          description: 'This is the start date for the time range.
+
+
+            Should be a valid ISO 8601 date-time string or relative time string.
+
+            If not provided, defaults to the 7 days ago.
+
+
+            Relative time strings of the format "-{number}{unit}" are allowed.
+
+
+            Valid units are:
+
+            - d: days
+
+            - h: hours
+
+            - w: weeks
+
+            - m: months
+
+            - y: years'
+          example: '"2025-01-01" or "-7d" or "now"'
+        end:
+          type: object
+          description: 'This is the end date for the time range.
+
+
+            Should be a valid ISO 8601 date-time string or relative time string.
+
+            If not provided, defaults to now.
+
+
+            Relative time strings of the format "-{number}{unit}" are allowed.
+
+
+            Valid units are:
+
+            - d: days
+
+            - h: hours
+
+            - w: weeks
+
+            - m: months
+
+            - y: years'
+          example: '"2025-01-01" or "now"'
+        timezone:
+          type: string
+          description: 'This is the timezone you want to set for the query.
+
+
+            If not provided, defaults to UTC.'
+    JSONQueryOnCallTableWithNumberTypeColumn:
+      type: object
+      properties:
+        type:
+          type: string
+          description: This is the type of query. Only allowed type is "vapiql-json".
+          example: vapiql-json
+          enum:
+          - vapiql-json
+        table:
+          type: string
+          description: This is the table that will be queried.
+          enum:
+          - call
+        filters:
+          type: array
+          description: 'This is the filters to apply to the insight.
+
+            The discriminator automatically selects the correct filter type based on column and operator.'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/FilterStringTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStringArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterDateTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStructuredOutputColumnOnCallTable'
+        column:
+          type: string
+          enum:
+          - cost
+          - duration
+          - averageModelLatency
+          - averageVoiceLatency
+          - averageTranscriberLatency
+          - averageTurnLatency
+          - averageEndpointingLatency
+          - artifact.structuredOutputs[OutputID]
+          description: 'This is the column that will be queried in the selected table.
+
+            Available columns depend on the selected table.
+
+            Number Type columns are columns where the rows store Number data'
+          example: duration
+        operation:
+          type: string
+          enum:
+          - average
+          - sum
+          - min
+          - max
+          description: 'This is the aggregation operation to perform on the column.
+
+            When the column is a number type, the operation must be one of the following:
+
+            - average
+
+            - sum
+
+            - min
+
+            - max'
+          example: sum
+        name:
+          type: string
+          description: 'This is the name of the query.
+
+            It will be used to label the query in the insight board on the UI.'
+          example: Total Calls
+      required:
+      - type
+      - table
+      - column
+      - operation
+    JSONQueryOnCallTableWithStringTypeColumn:
+      type: object
+      properties:
+        type:
+          type: string
+          description: This is the type of query. Only allowed type is "vapiql-json".
+          example: vapiql-json
+          enum:
+          - vapiql-json
+        table:
+          type: string
+          description: This is the table that will be queried.
+          enum:
+          - call
+        filters:
+          type: array
+          description: 'This is the filters to apply to the insight.
+
+            The discriminator automatically selects the correct filter type based on column and operator.'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/FilterStringTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStringArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterDateTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStructuredOutputColumnOnCallTable'
+        column:
+          type: string
+          enum:
+          - id
+          - artifact.structuredOutputs[OutputID]
+          description: 'This is the column that will be queried in the selected table.
+
+            Available columns depend on the selected table.
+
+            String Type columns are columns where the rows store String data'
+          example: id
+        operation:
+          type: string
+          enum:
+          - count
+          description: 'This is the aggregation operation to perform on the column.
+
+            When the column is a string type, the operation must be "count".'
+          example: count
+        name:
+          type: string
+          description: 'This is the name of the query.
+
+            It will be used to label the query in the insight board on the UI.'
+          example: Total Calls
+      required:
+      - type
+      - table
+      - column
+      - operation
+    JSONQueryOnCallTableWithStructuredOutputColumn:
+      type: object
+      properties:
+        type:
+          type: string
+          description: This is the type of query. Only allowed type is "vapiql-json".
+          example: vapiql-json
+          enum:
+          - vapiql-json
+        table:
+          type: string
+          description: This is the table that will be queried.
+          enum:
+          - call
+        filters:
+          type: array
+          description: 'This is the filters to apply to the insight.
+
+            The discriminator automatically selects the correct filter type based on column and operator.'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/FilterStringTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStringArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterNumberArrayTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterDateTypeColumnOnCallTable'
+            - $ref: '#/components/schemas/FilterStructuredOutputColumnOnCallTable'
+        column:
+          type: string
+          enum:
+          - artifact.structuredOutputs[OutputID]
+          description: 'This is the column that will be queried in the call table.
+
+            Structured Output Type columns are only to query on artifact.structuredOutputs[OutputID] column.'
+          example: artifact.structuredOutputs[OutputID]
+        operation:
+          type: string
+          enum:
+          - average
+          - count
+          - sum
+          - min
+          - max
+          description: 'This is the aggregation operation to perform on the column.
+
+            When the column is a structured output type, the operation depends on the value of the structured output.
+
+            If the structured output is a string or boolean, the operation must be "count".
+
+            If the structured output is a number, the operation can be "average", "sum", "min", or "max".'
+          example: count
+        name:
+          type: string
+          description: 'This is the name of the query.
+
+            It will be used to label the query in the insight board on the UI.'
+          example: Total Calls
+      required:
+      - type
+      - table
+      - column
+      - operation
+    JSONQueryOnEventsTable:
+      type: object
+      properties:
+        type:
+          type: string
+          description: This is the type of query. Only allowed type is "vapiql-json".
+          example: vapiql-json
+          enum:
+          - vapiql-json
+        table:
+          type: string
+          description: 'This is the table that will be queried.
+
+            Must be "events" for event-based insights.'
+          enum:
+          - events
+        'on':
+          type: string
+          description: The event type to query
+          example: assistant.model.requestFailed
+          enum:
+          - call.started
+          - call.ended
+          - call.inProgress
+          - call.queued
+          - call.transportConnected
+          - call.transportDisconnected
+          - call.transportReconnected
+          - call.transferInitiated
+          - call.transferCompleted
+          - call.transferFailed
+          - call.transferCancelled
+          - call.handoffInitiated
+          - call.handoffCompleted
+          - call.handoffFailed
+          - call.assistantSwapped
+          - call.assistantStarted
+          - call.customerJoined
+          - call.customerLeft
+          - call.controlReceived
+          - call.listenStarted
+          - call.recordingStarted
+          - call.recordingPaused
+          - call.recordingResumed
+          - call.voicemailDetected
+          - call.voicemailNotDetected
+          - call.dtmfReceived
+          - call.dtmfSent
+          - call.amdDetected
+          - call.hookTriggered
+          - call.hookSucceeded
+          - call.hookFailed
+          - call.statusReceived
+          - call.silenceTimeout
+          - call.microphoneTimeout
+          - call.maxDurationReached
+          - assistant.voice.requestStarted
+          - assistant.voice.requestSucceeded
+          - assistant.voice.requestFailed
+          - assistant.voice.connectionOpened
+          - assistant.voice.connectionClosed
+          - assistant.voice.firstAudioReceived
+          - assistant.voice.audioChunkReceived
+          - assistant.voice.generationSucceeded
+          - assistant.voice.generationFailed
+          - assistant.voice.textPushed
+          - assistant.voice.reconnecting
+          - assistant.voice.cleanup
+          - assistant.voice.clearing
+          - assistant.voice.voiceSwitched
+          - assistant.model.requestStarted
+          - assistant.model.requestSucceeded
+          - assistant.model.requestFailed
+          - assistant.model.requestAttemptStarted
+          - assistant.model.requestAttemptSucceeded
+          - assistant.model.requestAttemptFailed
+          - assistant.model.connectionOpened
+          - assistant.model.connectionClosed
+          - assistant.model.firstTokenReceived
+          - assistant.model.tokenReceived
+          - assistant.model.responseSucceeded
+          - assistant.model.responseFailed
+          - assistant.model.toolCallsReceived
+          - assistant.model.reconnecting
+          - assistant.model.cleanup
+          - assistant.model.clearing
+          - assistant.tool.started
+          - assistant.tool.completed
+          - assistant.tool.failed
+          - assistant.tool.delayedMessageSent
+          - assistant.tool.timeout
+          - assistant.tool.asyncCallbackReceived
+          - assistant.transcriber.requestStarted
+          - assistant.transcriber.requestSucceeded
+          - assistant.transcriber.requestFailed
+          - assistant.transcriber.connectionOpened
+          - assistant.transcriber.connectionClosed
+          - assistant.transcriber.partialTranscript
+          - assistant.transcriber.finalTranscript
+          - assistant.transcriber.keepAlive
+          - assistant.transcriber.reconnecting
+          - assistant.transcriber.cleanup
+          - assistant.transcriber.clearing
+          - assistant.transcriber.transcriptIgnored
+          - assistant.transcriber.languageSwitched
+          - assistant.analysis.structuredOutputGenerated
+          - pipeline.turnStarted
+          - pipeline.cleared
+          - pipeline.botSpeechStarted
+          - pipeline.botSpeechStopped
+          - pipeline.userSpeechStarted
+          - pipeline.userSpeechStopped
+          - pipeline.endpointingTriggered
+          - pipeline.firstMessageStarted
+          - pipeline.firstMessageCompleted
+        operation:
+          type: string
+          description: 'This is the operation to perform on matching events.
+
+            - "count": Returns the raw count of matching events
+
+            - "percentage": Returns (count of matching events / total calls) * 100'
+          example: count
+          enum:
+          - count
+          - percentage
+        filters:
+          type: array
+          description: 'These are the filters to apply to the events query.
+
+            Each filter filters on a field specific to the event type.'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/EventsTableStringCondition'
+            - $ref: '#/components/schemas/EventsTableNumberCondition'
+            - $ref: '#/components/schemas/EventsTableBooleanCondition'
+        name:
+          type: string
+          description: 'This is the name of the query.
+
+            It will be used to label the query in the insight board on the UI.'
+          example: Model Failures
+      required:
+      - type
+      - table
+      - 'on'
+      - operation
+    LineInsight:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `line` to create a line insight.'
+          enum:
+          - line
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/LineInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+        id:
+          type: string
+          description: This is the unique identifier for the Insight.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this Insight belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was last updated.
+        systemKey:
+          type: string
+          description: Stable server-owned identifier for system-created insights.
+      required:
+      - type
+      - queries
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    LineInsightMetadata:
+      type: object
+      properties:
+        xAxisLabel:
+          type: string
+          minLength: 1
+          maxLength: 40
+        yAxisLabel:
+          type: string
+          minLength: 1
+          maxLength: 40
+        yAxisMin:
+          type: number
+        yAxisMax:
+          type: number
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+    PieInsight:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `pie` to create a pie insight.'
+          enum:
+          - pie
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+        id:
+          type: string
+          description: This is the unique identifier for the Insight.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this Insight belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was last updated.
+        systemKey:
+          type: string
+          description: Stable server-owned identifier for system-created insights.
+      required:
+      - type
+      - queries
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    TextInsight:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `text` to create a text insight.'
+          enum:
+          - text
+        formula:
+          type: object
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        queries:
+          type: array
+          description: 'These are the queries to run to generate the insight.
+
+            For Text Insights, we only allow a single query, or require a formula if multiple queries are provided'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+        id:
+          type: string
+          description: This is the unique identifier for the Insight.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this Insight belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the Insight was last updated.
+        systemKey:
+          type: string
+          description: Stable server-owned identifier for system-created insights.
+      required:
+      - type
+      - queries
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    UpdateBarInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `bar` to create a bar insight.'
+          enum:
+          - bar
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/BarInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+            - $ref: '#/components/schemas/JSONQueryOnEventsTable'
+              title: JSONQueryOnEventsTable
+    UpdateLineInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `line` to create a line insight.'
+          enum:
+          - line
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        metadata:
+          description: This is the metadata for the insight.
+          allOf:
+          - $ref: '#/components/schemas/LineInsightMetadata'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRangeWithStep'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+    UpdatePieInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `pie` to create a pie insight.'
+          enum:
+          - pie
+        formulas:
+          type: array
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        groupBy:
+          type: string
+          description: 'This is the group by column for the insight when table is `call`.
+
+            These are the columns to group the results by.
+
+            All results are grouped by the time range step by default.'
+          example:
+          - assistant_id
+          enum:
+          - assistantId
+          - workflowId
+          - squadId
+          - phoneNumberId
+          - type
+          - endedReason
+          - customerNumber
+          - campaignId
+          - artifact.structuredOutputs[OutputID]
+        queries:
+          type: array
+          description: These are the queries to run to generate the insight.
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn
+    UpdateTextInsightFromCallTableDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the Insight.
+          minLength: 1
+          maxLength: 255
+        type:
+          type: string
+          description: 'This is the type of the Insight.
+
+            It is required to be `text` to create a text insight.'
+          enum:
+          - text
+        formula:
+          type: object
+          description: 'Formulas are mathematical expressions applied on the data returned by the queries to transform them
+            before being used to create the insight.
+
+            The formulas needs to be a valid mathematical expression, supported by MathJS - https://mathjs.org/docs/expressions/syntax.html
+
+            A formula is created by using the query names as the variable.
+
+            The formulas must contain at least one query name in the LiquidJS format {{query_name}} or {{[''query name'']}}
+            which will be substituted with the query result.
+
+            For example, if you have 2 queries, ''Was Booking Made'' and ''Average Call Duration'', you can create a formula
+            like this:
+
+            ```
+
+            {{[''Query 1'']}} / {{[''Query 2'']}} * 100
+
+            ```
+
+
+            ```
+
+            ({{[Query 1]}} * 10) + {{[Query 2]}}
+
+            ```
+
+            This will take the
+
+
+            You can also use the query names as the variable in the formula.'
+          items:
+            $ref: '#/components/schemas/InsightFormula'
+        timeRange:
+          $ref: '#/components/schemas/InsightTimeRange'
+        queries:
+          type: array
+          description: 'These are the queries to run to generate the insight.
+
+            For Text Insights, we only allow a single query, or require a formula if multiple queries are provided'
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStringTypeColumn'
+              title: JSONQueryOnCallTableWithStringTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithNumberTypeColumn'
+              title: JSONQueryOnCallTableWithNumberTypeColumn
+            - $ref: '#/components/schemas/JSONQueryOnCallTableWithStructuredOutputColumn'
+              title: JSONQueryOnCallTableWithStructuredOutputColumn

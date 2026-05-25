@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ByoPhoneNumber",
+  "type": "object",
+  "properties": {
+    "fallbackDestination": {
+      "type": "string"
+    },
+    "hooks": {
+      "type": "array"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "numberE164CheckEnabled": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "assistantId": {
+      "type": "string"
+    },
+    "workflowId": {
+      "type": "string"
+    },
+    "squadId": {
+      "type": "string"
+    },
+    "server": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "credentialId": {
+      "type": "string"
+    }
+  }
+}

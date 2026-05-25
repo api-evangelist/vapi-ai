@@ -1,0 +1,46 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Vapi
+providerId: vapi-ai
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: true
+tags:
+  - Voice AI
+  - Rate Limiting
+  - Concurrency
+description: Reconciled rate-limit and concurrency policies for the Vapi voice AI platform. Vapi's primary
+  scarce resource is call concurrency (lines), not per-second API request rate.
+sources:
+  - https://vapi.ai/pricing
+  - https://docs.vapi.ai
+  - https://api.vapi.ai/api
+algorithm: token-bucket
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+concurrencyModel:
+  primary: call_concurrency
+  unit: line
+  description: A line is one concurrent voice call. Each plan ships with a baseline concurrency cap and
+    additional lines can be purchased.
+limits:
+  - tier: Build
+    resource: Concurrent call lines
+    included: 10
+    additionalUnitPrice: $10 / line / month
+  - tier: Build
+    resource: REST API requests
+    rpm: shared per-org soft cap; contact support for exceptions
+  - tier: Scale
+    resource: Concurrent call lines
+    included: custom
+    additionalUnitPrice: custom
+  - tier: Scale
+    resource: REST API requests
+    rpm: custom; enterprise SLA
+notes:
+  - Pass-through provider rate limits (Deepgram, ElevenLabs, OpenAI, Twilio, etc.) still apply.
+  - Bring-your-own provider keys typically grant higher upstream rate limits.
+  - Webhook (server URL) timeouts and retry policies are configurable per assistant/tool.

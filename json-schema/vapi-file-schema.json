@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-file-schema.json",
+  "title": "Vapi File",
+  "description": "JSON Schema for the Vapi File resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "object": {
+      "type": "string",
+      "enum": [
+        "file"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "processing",
+        "done",
+        "failed"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "This is the name of the file. This is just for your own reference."
+    },
+    "originalName": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "number"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "mimetype": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "bucket": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "parsedTextUrl": {
+      "type": "string"
+    },
+    "parsedTextBytes": {
+      "type": "number"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the file."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the org that this file belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the file was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the file was last updated.",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt"
+  ]
+}

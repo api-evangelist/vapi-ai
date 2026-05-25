@@ -1,0 +1,114 @@
+rules:
+  info-title-required:
+    description: Info title must be present
+    severity: error
+    given: $.info
+    then: {field: title, function: truthy}
+  info-description-required:
+    description: Info description must be present
+    severity: error
+    given: $.info
+    then: {field: description, function: truthy}
+  info-contact-required:
+    description: Info contact block should be present
+    severity: warn
+    given: $.info
+    then: {field: contact, function: truthy}
+  servers-required:
+    description: At least one server URL must be declared
+    severity: error
+    given: $
+    then: {field: servers, function: truthy}
+  servers-vapi-base-url:
+    description: Vapi APIs must use the api.vapi.ai base URL
+    severity: error
+    given: $.servers[*].url
+    then: {function: pattern, functionOptions: {match: '^https://api\.vapi\.ai'}}
+  security-bearer-required:
+    description: All operations must require bearer auth
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then: {field: security, function: truthy}
+  operation-operationid-required:
+    description: Every operation must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then: {field: operationId, function: truthy}
+  operation-operationid-pascal-controller:
+    description: Vapi operationIds follow the Controller_method NestJS pattern
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then: {function: pattern, functionOptions: {match: '^[A-Z][A-Za-z0-9]+Controller_[a-zA-Z]+$'}}
+  operation-summary-required:
+    description: Every operation must have a summary
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then: {field: summary, function: truthy}
+  operation-summary-title-case:
+    description: Summaries must be in Title Case
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then: {function: pattern, functionOptions: {match: '^([A-Z][a-zA-Z0-9]*)( [A-Za-z0-9/-]+)*$'}}
+  operation-tags-required:
+    description: Every operation must have at least one tag
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then: {field: tags, function: truthy}
+  operation-tags-known:
+    description: Tags should be one of the known Vapi tag set
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Analytics
+          - Assistants
+          - Calls
+          - Campaigns
+          - Chats
+          - Eval
+          - Files
+          - Insight
+          - Observability/Scorecard
+          - Phone Numbers
+          - Provider Resources
+          - Sessions
+          - Squads
+          - Structured Outputs
+          - Tools
+  response-2xx-required:
+    description: Every operation must define at least one 2xx response
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(200|201|202|204)$'
+  response-description-required:
+    description: Every response must have a description
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
+    then: {field: description, function: truthy}
+  request-body-json:
+    description: POST/PATCH request bodies must be application/json
+    severity: error
+    given: $.paths[*][post,patch].requestBody.content
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - application/json
+  paths-kebab-case:
+    description: Path segments should be kebab-case
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z0-9-]+|/\{[a-zA-Z0-9_]+\})+$'
+  no-empty-descriptions:
+    description: Descriptions must not be empty
+    severity: error
+    given: $..description
+    then: {function: truthy}

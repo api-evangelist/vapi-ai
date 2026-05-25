@@ -1,0 +1,87 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "vapi": "https://api.vapi.ai/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "Assistant": {
+      "@id": "vapi:Assistant",
+      "@context": {
+        "id": { "@id": "vapi:Assistant/id", "@type": "xsd:string" },
+        "orgId": { "@id": "vapi:Assistant/orgId", "@type": "xsd:string" },
+        "name": { "@id": "vapi:Assistant/name", "@type": "xsd:string" },
+        "firstMessage": { "@id": "vapi:Assistant/firstMessage", "@type": "xsd:string" },
+        "transcriber": { "@id": "vapi:Assistant/transcriber", "@type": "vapi:Transcriber" },
+        "model": { "@id": "vapi:Assistant/model", "@type": "vapi:Model" },
+        "voice": { "@id": "vapi:Assistant/voice", "@type": "vapi:Voice" },
+        "serverUrl": { "@id": "vapi:Assistant/serverUrl", "@type": "xsd:string" },
+        "createdAt": { "@id": "vapi:Assistant/createdAt", "@type": "xsd:dateTime" },
+        "updatedAt": { "@id": "vapi:Assistant/updatedAt", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Call": {
+      "@id": "vapi:Call",
+      "@context": {
+        "id": { "@id": "vapi:Call/id", "@type": "xsd:string" },
+        "orgId": { "@id": "vapi:Call/orgId", "@type": "xsd:string" },
+        "type": { "@id": "vapi:Call/type", "@type": "xsd:string" },
+        "status": { "@id": "vapi:Call/status", "@type": "xsd:string" },
+        "endedReason": { "@id": "vapi:Call/endedReason", "@type": "xsd:string" },
+        "assistantId": { "@id": "vapi:Call/assistantId", "@type": "xsd:string" },
+        "phoneNumberId": { "@id": "vapi:Call/phoneNumberId", "@type": "xsd:string" },
+        "customer": { "@id": "vapi:Call/customer", "@type": "vapi:Customer" },
+        "startedAt": { "@id": "vapi:Call/startedAt", "@type": "xsd:dateTime" },
+        "endedAt": { "@id": "vapi:Call/endedAt", "@type": "xsd:dateTime" },
+        "cost": { "@id": "vapi:Call/cost", "@type": "xsd:decimal" },
+        "transcript": { "@id": "vapi:Call/transcript", "@type": "xsd:string" },
+        "recordingUrl": { "@id": "vapi:Call/recordingUrl", "@type": "xsd:string" },
+        "stereoRecordingUrl": { "@id": "vapi:Call/stereoRecordingUrl", "@type": "xsd:string" },
+        "analysis": { "@id": "vapi:Call/analysis", "@type": "vapi:Analysis" }
+      }
+    },
+
+    "PhoneNumber": {
+      "@id": "vapi:PhoneNumber",
+      "@context": {
+        "id": { "@id": "vapi:PhoneNumber/id", "@type": "xsd:string" },
+        "provider": { "@id": "vapi:PhoneNumber/provider", "@type": "xsd:string" },
+        "number": { "@id": "vapi:PhoneNumber/number", "@type": "xsd:string" },
+        "assistantId": { "@id": "vapi:PhoneNumber/assistantId", "@type": "xsd:string" },
+        "squadId": { "@id": "vapi:PhoneNumber/squadId", "@type": "xsd:string" },
+        "name": { "@id": "vapi:PhoneNumber/name", "@type": "xsd:string" }
+      }
+    },
+
+    "Squad": {
+      "@id": "vapi:Squad",
+      "@context": {
+        "id": { "@id": "vapi:Squad/id", "@type": "xsd:string" },
+        "name": { "@id": "vapi:Squad/name", "@type": "xsd:string" },
+        "members": { "@id": "vapi:Squad/members", "@container": "@list" }
+      }
+    },
+
+    "Tool": {
+      "@id": "vapi:Tool",
+      "@context": {
+        "id": { "@id": "vapi:Tool/id", "@type": "xsd:string" },
+        "type": { "@id": "vapi:Tool/type", "@type": "xsd:string" },
+        "function": { "@id": "vapi:Tool/function", "@type": "vapi:Function" },
+        "server": { "@id": "vapi:Tool/server", "@type": "vapi:Server" }
+      }
+    },
+
+    "Transcriber": { "@id": "vapi:Transcriber" },
+    "Model": { "@id": "vapi:Model" },
+    "Voice": { "@id": "vapi:Voice" },
+    "Customer": { "@id": "vapi:Customer" },
+    "Analysis": { "@id": "vapi:Analysis" },
+    "Function": { "@id": "vapi:Function" },
+    "Server": { "@id": "vapi:Server" }
+  }
+}

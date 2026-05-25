@@ -1,0 +1,14 @@
+{
+  "type": "inboundPhoneCall",
+  "costs": [
+    null
+  ],
+  "messages": [
+    null
+  ],
+  "phoneCallProvider": "twilio",
+  "phoneCallTransport": "sip",
+  "status": "scheduled",
+  "endedReason": "call-start-error-neither-assistant-nor-server-set",
+  "endedMessage": "example"
+}

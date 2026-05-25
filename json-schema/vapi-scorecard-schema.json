@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-scorecard-schema.json",
+  "title": "Vapi Scorecard",
+  "description": "JSON Schema for the Vapi Scorecard resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the scorecard."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the org that this scorecard belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the scorecard was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the scorecard was last updated.",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string",
+      "description": "This is the name of the scorecard. It is only for user reference and will not be used for any evaluation."
+    },
+    "description": {
+      "type": "string",
+      "description": "This is the description of the scorecard. It is only for user reference and will not be used for any evaluation."
+    },
+    "metrics": {
+      "type": "array",
+      "description": "These are the metrics that will be used to evaluate the scorecard.\nEach metric will have a set of conditions and points that will be used to generate the score.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "structuredOutputId": {
+            "type": "string",
+            "description": "This is the unique identifier for the structured output that will be used to evaluate the scorecard.\nThe structured output must be of type number or boolean only for now."
+          },
+          "conditions": {
+            "type": "array",
+            "description": "These are the conditions that will be used to evaluate the scorecard.\nEach condition will have a comparator, value, and points that will be used to calculate the final score.\nThe points will be added to the overall score if the condition is met.\nThe overall score will be normalized to a 100 point sc",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "structuredOutputId",
+          "conditions"
+        ]
+      }
+    },
+    "assistantIds": {
+      "type": "array",
+      "description": "These are the assistant IDs that this scorecard is linked to.\nWhen linked to assistants, this scorecard will be available for evaluation during those assistants' calls.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt",
+    "metrics"
+  ]
+}

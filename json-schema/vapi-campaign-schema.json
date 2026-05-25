@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-campaign-schema.json",
+  "title": "Vapi Campaign",
+  "description": "JSON Schema for the Vapi Campaign resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "This is the status of the campaign.",
+      "enum": [
+        "scheduled",
+        "in-progress",
+        "ended"
+      ]
+    },
+    "endedReason": {
+      "type": "string",
+      "description": "This is the explanation for how the campaign ended.",
+      "enum": [
+        "campaign.scheduled.ended-by-user",
+        "campaign.in-progress.ended-by-user",
+        "campaign.ended.success"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "This is the name of the campaign. This is just for your own reference."
+    },
+    "assistantId": {
+      "type": "string",
+      "description": "This is the assistant ID that will be used for the campaign calls. Note: Only one of assistantId, workflowId, or squadId can be used."
+    },
+    "workflowId": {
+      "type": "string",
+      "description": "This is the workflow ID that will be used for the campaign calls. Note: Only one of assistantId, workflowId, or squadId can be used."
+    },
+    "squadId": {
+      "type": "string",
+      "description": "This is the squad ID that will be used for the campaign calls. Note: Only one of assistantId, workflowId, or squadId can be used."
+    },
+    "phoneNumberId": {
+      "type": "string",
+      "description": "This is the phone number ID that will be used for the campaign calls. Required if dialPlan is not provided. Note: phoneNumberId and dialPlan are mutually exclusive."
+    },
+    "dialPlan": {
+      "type": "array",
+      "description": "This is a list of dial entries, each specifying a phone number and the customers to call using that number. Use this when you want different phone numbers to call different sets of customers. Note: phoneNumberId and dialPlan are mutually exclusive.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phoneNumberId": {
+            "type": "string",
+            "description": "The phone number ID to use for calling the customers in this entry."
+          },
+          "customers": {
+            "type": "array",
+            "description": "The list of customers to call using this phone number.",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "phoneNumberId",
+          "customers"
+        ]
+      }
+    },
+    "schedulePlan": {
+      "description": "This is the schedule plan for the campaign. Calls will start at startedAt and continue until your organization\u2019s concurrency limit is reached. Any remaining calls will be retried for up to one hour as capacity becomes available. After that hour or after latestAt, whichever comes first, any calls tha",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "earliestAt": {
+              "type": "string",
+              "description": "This is the ISO 8601 date-time string of the earliest time the call can be scheduled.",
+              "format": "date-time"
+            },
+            "latestAt": {
+              "type": "string",
+              "description": "This is the ISO 8601 date-time string of the latest time the call can be scheduled.",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "earliestAt"
+          ]
+        }
+      ]
+    },
+    "customers": {
+      "type": "array",
+      "description": "These are the customers that will be called in the campaign. Required if dialPlan is not provided.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "numberE164CheckEnabled": {
+            "type": "boolean",
+            "description": "This is the flag to toggle the E164 check for the `number` field. This is an advanced property which should be used if you know your use case requires it.\n\nUse cases:\n- `false`: To allow non-E164 numbers like `+001234567890`, `1234`, or `abc`. This is useful for dialing out to non-E164 numbers on yo"
+          },
+          "extension": {
+            "type": "string",
+            "description": "This is the extension that will be dialed after the call is answered."
+          },
+          "assistantOverrides": {
+            "description": "These are the overrides for the assistant's settings and template variables specific to this customer.\nThis allows customization of the assistant's behavior for individual customers in batch calls."
+          },
+          "number": {
+            "type": "string",
+            "description": "This is the number of the customer."
+          },
+          "sipUri": {
+            "type": "string",
+            "description": "This is the SIP URI of the customer."
+          },
+          "name": {
+            "type": "string",
+            "description": "This is the name of the customer. This is just for your own reference.\n\nFor SIP inbound calls, this is extracted from the `From` SIP header with format `\"Display Name\" <sip:username@domain>`."
+          },
+          "email": {
+            "type": "string",
+            "description": "This is the email of the customer."
+          },
+          "externalId": {
+            "type": "string",
+            "description": "This is the external ID of the customer."
+          }
+        }
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the campaign."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the org that this campaign belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the campaign was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the campaign was last updated.",
+      "format": "date-time"
+    },
+    "calls": {
+      "type": "object",
+      "description": "This is a map of call IDs to campaign call details."
+    },
+    "callsCounterScheduled": {
+      "type": "number",
+      "description": "This is the number of calls that have been scheduled."
+    },
+    "callsCounterQueued": {
+      "type": "number",
+      "description": "This is the number of calls that have been queued."
+    },
+    "callsCounterInProgress": {
+      "type": "number",
+      "description": "This is the number of calls that have been in progress."
+    },
+    "callsCounterEndedVoicemail": {
+      "type": "number",
+      "description": "This is the number of calls whose ended reason is 'voicemail'."
+    },
+    "callsCounterEnded": {
+      "type": "number",
+      "description": "This is the number of calls that have ended."
+    }
+  },
+  "required": [
+    "status",
+    "name",
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt",
+    "calls",
+    "callsCounterScheduled",
+    "callsCounterQueued",
+    "callsCounterInProgress",
+    "callsCounterEndedVoicemail",
+    "callsCounterEnded"
+  ]
+}

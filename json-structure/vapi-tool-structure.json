@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "FunctionTool",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array"
+    },
+    "type": {
+      "type": "string"
+    },
+    "async": {
+      "type": "boolean"
+    },
+    "server": {
+      "type": "string"
+    },
+    "variableExtractionPlan": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "array"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "rejectionPlan": {
+      "type": "string"
+    },
+    "function": {
+      "type": "string"
+    }
+  }
+}

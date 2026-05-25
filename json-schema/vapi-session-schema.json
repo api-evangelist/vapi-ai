@@ -1,0 +1,640 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-session-schema.json",
+  "title": "Vapi Session",
+  "description": "JSON Schema for the Vapi Session resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the session."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the organization that owns this session."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 timestamp indicating when the session was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 timestamp indicating when the session was last updated.",
+      "format": "date-time"
+    },
+    "cost": {
+      "type": "number",
+      "description": "This is the cost of the session in USD."
+    },
+    "costs": {
+      "type": "array",
+      "description": "These are the costs of individual components of the session in USD.",
+      "items": {}
+    },
+    "name": {
+      "type": "string",
+      "description": "This is a user-defined name for the session. Maximum length is 40 characters."
+    },
+    "status": {
+      "type": "string",
+      "description": "This is the current status of the session. Can be either 'active' or 'completed'.",
+      "enum": [
+        "active",
+        "completed"
+      ]
+    },
+    "expirationSeconds": {
+      "type": "number",
+      "description": "Session expiration time in seconds. Defaults to 24 hours (86400 seconds) if not set."
+    },
+    "assistantId": {
+      "type": "string",
+      "description": "This is the ID of the assistant associated with this session. Use this when referencing an existing assistant."
+    },
+    "assistant": {
+      "description": "This is the assistant configuration for this session. Use this when creating a new assistant configuration.\nIf assistantId is provided, this will be ignored.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "transcriber": {
+              "description": "These are the options for the assistant's transcriber."
+            },
+            "model": {
+              "description": "These are the options for the assistant's LLM."
+            },
+            "voice": {
+              "description": "These are the options for the assistant's voice."
+            },
+            "firstMessage": {
+              "type": "string",
+              "description": "This is the first message that the assistant will say. This can also be a URL to a containerized audio file (mp3, wav, etc.).\n\nIf unspecified, assistant will wait for user to speak and use the model to respond once they speak."
+            },
+            "firstMessageInterruptionsEnabled": {
+              "type": "boolean"
+            },
+            "firstMessageMode": {
+              "type": "string",
+              "description": "This is the mode for the first message. Default is 'assistant-speaks-first'.\n\nUse:\n- 'assistant-speaks-first' to have the assistant speak first.\n- 'assistant-waits-for-user' to have the assistant wait for the user to speak first.\n- 'assistant-speaks-first-with-model-generated-message' to have the as",
+              "enum": [
+                "assistant-speaks-first",
+                "assistant-speaks-first-with-model-generated-message",
+                "assistant-waits-for-user"
+              ]
+            },
+            "voicemailDetection": {
+              "description": "These are the settings to configure or disable voicemail detection. Alternatively, voicemail detection can be configured using the model.tools=[VoicemailTool].\nBy default, voicemail detection is disabled."
+            },
+            "clientMessages": {
+              "type": "array",
+              "description": "These are the messages that will be sent to your Client SDKs. Default is conversation-update,function-call,hang,model-output,speech-update,status-update,transfer-update,transcript,tool-calls,user-interrupted,voice-input,workflow.node.started,assistant.started. You can check the shape of the messages",
+              "enum": [
+                "conversation-update",
+                "assistant.speechStarted",
+                "function-call",
+                "function-call-result",
+                "hang",
+                "language-changed",
+                "metadata",
+                "model-output",
+                "speech-update",
+                "status-update"
+              ],
+              "items": {
+                "type": "object"
+              }
+            },
+            "serverMessages": {
+              "type": "array",
+              "description": "These are the messages that will be sent to your Server URL. Default is conversation-update,end-of-call-report,function-call,hang,speech-update,status-update,tool-calls,transfer-destination-request,handoff-destination-request,user-interrupted,assistant.started. You can check the shape of the message",
+              "enum": [
+                "assistant.started",
+                "assistant.speechStarted",
+                "conversation-update",
+                "end-of-call-report",
+                "function-call",
+                "hang",
+                "language-changed",
+                "language-change-detected",
+                "model-output",
+                "phone-call-control"
+              ],
+              "items": {
+                "type": "object"
+              }
+            },
+            "maxDurationSeconds": {
+              "type": "number",
+              "description": "This is the maximum number of seconds that the call will last. When the call reaches this duration, it will be ended.\n\n@default 600 (10 minutes)"
+            },
+            "backgroundSound": {
+              "description": "This is the background sound in the call. Default for phone calls is 'office' and default for web calls is 'off'.\nYou can also provide a custom sound by providing a URL to an audio file."
+            },
+            "modelOutputInMessagesEnabled": {
+              "type": "boolean",
+              "description": "This determines whether the model's output is used in conversation history rather than the transcription of assistant's speech.\n\n@default false"
+            },
+            "transportConfigurations": {
+              "type": "array",
+              "description": "These are the configurations to be passed to the transport providers of assistant's calls, like Twilio. You can store multiple configurations for different transport providers. For a call, only the configuration matching the call transport provider is used.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "observabilityPlan": {
+              "description": "This is the plan for observability of assistant's calls.\n\nCurrently, only Langfuse is supported."
+            },
+            "credentials": {
+              "type": "array",
+              "description": "These are dynamic credentials that will be used for the assistant calls. By default, all the credentials are available for use in the call but you can supplement an additional credentials using this. Dynamic credentials override existing credentials.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "hooks": {
+              "type": "array",
+              "description": "This is a set of actions that will be performed on certain events.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "name": {
+              "type": "string",
+              "description": "This is the name of the assistant.\n\nThis is required when you want to transfer between assistants in a call."
+            },
+            "voicemailMessage": {
+              "type": "string",
+              "description": "This is the message that the assistant will say if the call is forwarded to voicemail.\n\nIf unspecified, it will hang up."
+            },
+            "endCallMessage": {
+              "type": "string",
+              "description": "This is the message that the assistant will say if it ends the call.\n\nIf unspecified, it will hang up without saying anything."
+            },
+            "endCallPhrases": {
+              "type": "array",
+              "description": "This list contains phrases that, if spoken by the assistant, will trigger the call to be hung up. Case insensitive.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "compliancePlan": {
+              "type": "object"
+            },
+            "metadata": {
+              "type": "object",
+              "description": "This is for metadata you want to store on the assistant."
+            },
+            "backgroundSpeechDenoisingPlan": {
+              "description": "This enables filtering of noise and background speech while the user is talking.\n\nFeatures:\n- Smart denoising using Krisp\n- Fourier denoising\n\nSmart denoising can be combined with or used independently of Fourier denoising.\n\nOrder of precedence:\n- Smart denoising\n- Fourier denoising"
+            },
+            "analysisPlan": {
+              "description": "This is the plan for analysis of assistant's calls. Stored in `call.analysis`."
+            },
+            "artifactPlan": {
+              "description": "This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`."
+            },
+            "startSpeakingPlan": {
+              "description": "This is the plan for when the assistant should start talking.\n\nYou should configure this if you're running into these issues:\n- The assistant is too slow to start talking after the customer is done speaking.\n- The assistant is too fast to start talking after the customer is done speaking.\n- The assi"
+            },
+            "stopSpeakingPlan": {
+              "description": "This is the plan for when assistant should stop talking on customer interruption.\n\nYou should configure this if you're running into these issues:\n- The assistant is too slow to recognize customer's interruption.\n- The assistant is too fast to recognize customer's interruption.\n- The assistant is get"
+            },
+            "monitorPlan": {
+              "description": "This is the plan for real-time monitoring of the assistant's calls.\n\nUsage:\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\n- To attach monitors to the assis"
+            },
+            "credentialIds": {
+              "type": "array",
+              "description": "These are the credentials that will be used for the assistant calls. By default, all the credentials are available for use in the call but you can provide a subset using this.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "server": {
+              "description": "This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\n\nThe order of precedence is:\n\n1. assistant.server.url\n2. phoneNumber.serverUrl\n3. org.serverUrl"
+            }
+          }
+        }
+      ]
+    },
+    "assistantOverrides": {
+      "description": "These are the overrides for the assistant configuration.\nUse this to provide variable values and other overrides when using assistantId.\nVariable substitution will be applied to the assistant's messages and other text-based fields.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "transcriber": {
+              "description": "These are the options for the assistant's transcriber."
+            },
+            "model": {
+              "description": "These are the options for the assistant's LLM."
+            },
+            "voice": {
+              "description": "These are the options for the assistant's voice."
+            },
+            "firstMessage": {
+              "type": "string",
+              "description": "This is the first message that the assistant will say. This can also be a URL to a containerized audio file (mp3, wav, etc.).\n\nIf unspecified, assistant will wait for user to speak and use the model to respond once they speak."
+            },
+            "firstMessageInterruptionsEnabled": {
+              "type": "boolean"
+            },
+            "firstMessageMode": {
+              "type": "string",
+              "description": "This is the mode for the first message. Default is 'assistant-speaks-first'.\n\nUse:\n- 'assistant-speaks-first' to have the assistant speak first.\n- 'assistant-waits-for-user' to have the assistant wait for the user to speak first.\n- 'assistant-speaks-first-with-model-generated-message' to have the as",
+              "enum": [
+                "assistant-speaks-first",
+                "assistant-speaks-first-with-model-generated-message",
+                "assistant-waits-for-user"
+              ]
+            },
+            "voicemailDetection": {
+              "description": "These are the settings to configure or disable voicemail detection. Alternatively, voicemail detection can be configured using the model.tools=[VoicemailTool].\nBy default, voicemail detection is disabled."
+            },
+            "clientMessages": {
+              "type": "array",
+              "description": "These are the messages that will be sent to your Client SDKs. Default is conversation-update,function-call,hang,model-output,speech-update,status-update,transfer-update,transcript,tool-calls,user-interrupted,voice-input,workflow.node.started,assistant.started. You can check the shape of the messages",
+              "enum": [
+                "conversation-update",
+                "assistant.speechStarted",
+                "function-call",
+                "function-call-result",
+                "hang",
+                "language-changed",
+                "metadata",
+                "model-output",
+                "speech-update",
+                "status-update"
+              ],
+              "items": {
+                "type": "object"
+              }
+            },
+            "serverMessages": {
+              "type": "array",
+              "description": "These are the messages that will be sent to your Server URL. Default is conversation-update,end-of-call-report,function-call,hang,speech-update,status-update,tool-calls,transfer-destination-request,handoff-destination-request,user-interrupted,assistant.started. You can check the shape of the message",
+              "enum": [
+                "assistant.started",
+                "assistant.speechStarted",
+                "conversation-update",
+                "end-of-call-report",
+                "function-call",
+                "hang",
+                "language-changed",
+                "language-change-detected",
+                "model-output",
+                "phone-call-control"
+              ],
+              "items": {
+                "type": "object"
+              }
+            },
+            "maxDurationSeconds": {
+              "type": "number",
+              "description": "This is the maximum number of seconds that the call will last. When the call reaches this duration, it will be ended.\n\n@default 600 (10 minutes)"
+            },
+            "backgroundSound": {
+              "description": "This is the background sound in the call. Default for phone calls is 'office' and default for web calls is 'off'.\nYou can also provide a custom sound by providing a URL to an audio file."
+            },
+            "modelOutputInMessagesEnabled": {
+              "type": "boolean",
+              "description": "This determines whether the model's output is used in conversation history rather than the transcription of assistant's speech.\n\n@default false"
+            },
+            "transportConfigurations": {
+              "type": "array",
+              "description": "These are the configurations to be passed to the transport providers of assistant's calls, like Twilio. You can store multiple configurations for different transport providers. For a call, only the configuration matching the call transport provider is used.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "observabilityPlan": {
+              "description": "This is the plan for observability of assistant's calls.\n\nCurrently, only Langfuse is supported."
+            },
+            "credentials": {
+              "type": "array",
+              "description": "These are dynamic credentials that will be used for the assistant calls. By default, all the credentials are available for use in the call but you can supplement an additional credentials using this. Dynamic credentials override existing credentials.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "hooks": {
+              "type": "array",
+              "description": "This is a set of actions that will be performed on certain events.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "tools:append": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "variableValues": {
+              "type": "object",
+              "description": "These are values that will be used to replace the template variables in the assistant messages and other text-based fields.\nThis uses LiquidJS syntax. https://liquidjs.com/tutorials/intro-to-liquid.html\n\nSo for example, `{{ name }}` will be replaced with the value of `name` in `variableValues`.\n`{{\""
+            },
+            "name": {
+              "type": "string",
+              "description": "This is the name of the assistant.\n\nThis is required when you want to transfer between assistants in a call."
+            },
+            "voicemailMessage": {
+              "type": "string",
+              "description": "This is the message that the assistant will say if the call is forwarded to voicemail.\n\nIf unspecified, it will hang up."
+            },
+            "endCallMessage": {
+              "type": "string",
+              "description": "This is the message that the assistant will say if it ends the call.\n\nIf unspecified, it will hang up without saying anything."
+            },
+            "endCallPhrases": {
+              "type": "array",
+              "description": "This list contains phrases that, if spoken by the assistant, will trigger the call to be hung up. Case insensitive.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "compliancePlan": {
+              "type": "object"
+            },
+            "metadata": {
+              "type": "object",
+              "description": "This is for metadata you want to store on the assistant."
+            },
+            "backgroundSpeechDenoisingPlan": {
+              "description": "This enables filtering of noise and background speech while the user is talking.\n\nFeatures:\n- Smart denoising using Krisp\n- Fourier denoising\n\nSmart denoising can be combined with or used independently of Fourier denoising.\n\nOrder of precedence:\n- Smart denoising\n- Fourier denoising"
+            },
+            "analysisPlan": {
+              "description": "This is the plan for analysis of assistant's calls. Stored in `call.analysis`."
+            },
+            "artifactPlan": {
+              "description": "This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`."
+            },
+            "startSpeakingPlan": {
+              "description": "This is the plan for when the assistant should start talking.\n\nYou should configure this if you're running into these issues:\n- The assistant is too slow to start talking after the customer is done speaking.\n- The assistant is too fast to start talking after the customer is done speaking.\n- The assi"
+            },
+            "stopSpeakingPlan": {
+              "description": "This is the plan for when assistant should stop talking on customer interruption.\n\nYou should configure this if you're running into these issues:\n- The assistant is too slow to recognize customer's interruption.\n- The assistant is too fast to recognize customer's interruption.\n- The assistant is get"
+            },
+            "monitorPlan": {
+              "description": "This is the plan for real-time monitoring of the assistant's calls.\n\nUsage:\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\n- To attach monitors to the assis"
+            }
+          }
+        }
+      ]
+    },
+    "squadId": {
+      "type": "string",
+      "description": "This is the squad ID associated with this session. Use this when referencing an existing squad."
+    },
+    "squad": {
+      "description": "This is the squad configuration for this session. Use this when creating a new squad configuration.\nIf squadId is provided, this will be ignored.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "This is the name of the squad."
+            },
+            "members": {
+              "type": "array",
+              "description": "This is the list of assistants that make up the squad.\n\nThe call will start with the first assistant in the list.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "membersOverrides": {
+              "description": "This can be used to override all the assistants' settings and provide values for their template variables.\n\nBoth `membersOverrides` and `members[n].assistantOverrides` can be used together. First, `members[n].assistantOverrides` is applied. Then, `membersOverrides` is applied as a global override."
+            }
+          },
+          "required": [
+            "members"
+          ]
+        }
+      ]
+    },
+    "messages": {
+      "type": "array",
+      "description": "This is an array of chat messages in the session.",
+      "items": {}
+    },
+    "customer": {
+      "description": "This is the customer information associated with this session.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "numberE164CheckEnabled": {
+              "type": "boolean",
+              "description": "This is the flag to toggle the E164 check for the `number` field. This is an advanced property which should be used if you know your use case requires it.\n\nUse cases:\n- `false`: To allow non-E164 numbers like `+001234567890`, `1234`, or `abc`. This is useful for dialing out to non-E164 numbers on yo"
+            },
+            "extension": {
+              "type": "string",
+              "description": "This is the extension that will be dialed after the call is answered."
+            },
+            "assistantOverrides": {
+              "description": "These are the overrides for the assistant's settings and template variables specific to this customer.\nThis allows customization of the assistant's behavior for individual customers in batch calls."
+            },
+            "number": {
+              "type": "string",
+              "description": "This is the number of the customer."
+            },
+            "sipUri": {
+              "type": "string",
+              "description": "This is the SIP URI of the customer."
+            },
+            "name": {
+              "type": "string",
+              "description": "This is the name of the customer. This is just for your own reference.\n\nFor SIP inbound calls, this is extracted from the `From` SIP header with format `\"Display Name\" <sip:username@domain>`."
+            },
+            "email": {
+              "type": "string",
+              "description": "This is the email of the customer."
+            },
+            "externalId": {
+              "type": "string",
+              "description": "This is the external ID of the customer."
+            }
+          }
+        }
+      ]
+    },
+    "customerId": {
+      "type": "string",
+      "description": "This is the customerId of the customer associated with this session."
+    },
+    "phoneNumberId": {
+      "type": "string",
+      "description": "This is the ID of the phone number associated with this session."
+    },
+    "phoneNumber": {
+      "description": "This is the phone number configuration for this session.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "fallbackDestination": {
+              "description": "This is the fallback destination an inbound call will be transferred to if:\n1. `assistantId` is not set\n2. `squadId` is not set\n3. and, `assistant-request` message to the `serverUrl` fails\n\nIf this is not set and above conditions are met, the inbound call is hung up with an error message."
+            },
+            "hooks": {
+              "type": "array",
+              "description": "This is the hooks that will be used for incoming calls to this phone number.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "smsEnabled": {
+              "type": "boolean",
+              "description": "Controls whether Vapi sets the messaging webhook URL on the Twilio number during import.\n\nIf set to `false`, Vapi will not update the Twilio messaging URL, leaving it as is.\nIf `true` or omitted (default), Vapi will configure both the voice and messaging URLs.\n\n@default true"
+            },
+            "twilioPhoneNumber": {
+              "type": "string",
+              "description": "These are the digits of the phone number you own on your Twilio."
+            },
+            "twilioAccountSid": {
+              "type": "string",
+              "description": "This is your Twilio Account SID that will be used to handle this phone number."
+            },
+            "twilioAuthToken": {
+              "type": "string",
+              "description": "This is the Twilio Auth Token that will be used to handle this phone number."
+            },
+            "twilioApiKey": {
+              "type": "string",
+              "description": "This is the Twilio API Key that will be used to handle this phone number. If AuthToken is provided, this will be ignored."
+            },
+            "twilioApiSecret": {
+              "type": "string",
+              "description": "This is the Twilio API Secret that will be used to handle this phone number. If AuthToken is provided, this will be ignored."
+            },
+            "name": {
+              "type": "string",
+              "description": "This is the name of the phone number. This is just for your own reference."
+            },
+            "assistantId": {
+              "type": "string",
+              "description": "This is the assistant that will be used for incoming calls to this phone number.\n\nIf neither `assistantId`, `squadId` nor `workflowId` is set, `assistant-request` will be sent to your Server URL. Check `ServerMessage` and `ServerMessageResponse` for the shape of the message and response that is expe"
+            },
+            "workflowId": {
+              "type": "string",
+              "description": "This is the workflow that will be used for incoming calls to this phone number.\n\nIf neither `assistantId`, `squadId`, nor `workflowId` is set, `assistant-request` will be sent to your Server URL. Check `ServerMessage` and `ServerMessageResponse` for the shape of the message and response that is expe"
+            },
+            "squadId": {
+              "type": "string",
+              "description": "This is the squad that will be used for incoming calls to this phone number.\n\nIf neither `assistantId`, `squadId`, nor `workflowId` is set, `assistant-request` will be sent to your Server URL. Check `ServerMessage` and `ServerMessageResponse` for the shape of the message and response that is expecte"
+            },
+            "server": {
+              "description": "This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\n\nThe order of precedence is:\n\n1. assistant.server\n2. phoneNumber.server\n3. org.server"
+            }
+          },
+          "required": [
+            "twilioPhoneNumber",
+            "twilioAccountSid"
+          ]
+        }
+      ]
+    },
+    "artifact": {
+      "description": "These are the artifacts that were extracted from the session messages.\nThey are only available after the session has completed.\nThe artifact plan from the assistant or active assistant of squad is used to generate the artifact.\nCurrently the only supported fields of assistant artifact plan are:\n- st",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "messages": {
+              "type": "array",
+              "description": "These are the messages that were spoken during the call.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "messagesOpenAIFormatted": {
+              "type": "array",
+              "description": "These are the messages that were spoken during the call, formatted for OpenAI.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "recordingUrl": {
+              "type": "string",
+              "description": "This is the recording url for the call. To enable, set `assistant.artifactPlan.recordingEnabled`."
+            },
+            "stereoRecordingUrl": {
+              "type": "string",
+              "description": "This is the stereo recording url for the call. To enable, set `assistant.artifactPlan.recordingEnabled`."
+            },
+            "videoRecordingUrl": {
+              "type": "string",
+              "description": "This is video recording url for the call. To enable, set `assistant.artifactPlan.videoRecordingEnabled`."
+            },
+            "videoRecordingStartDelaySeconds": {
+              "type": "number",
+              "description": "This is video recording start delay in ms. To enable, set `assistant.artifactPlan.videoRecordingEnabled`. This can be used to align the playback of the recording with artifact.messages timestamps."
+            },
+            "recording": {
+              "description": "This is the recording url for the call. To enable, set `assistant.artifactPlan.recordingEnabled`."
+            },
+            "transcript": {
+              "type": "string",
+              "description": "This is the transcript of the call. This is derived from `artifact.messages` but provided for convenience."
+            },
+            "pcapUrl": {
+              "type": "string",
+              "description": "This is the packet capture url for the call. This is only available for `phone` type calls where phone number's provider is `vapi` or `byo-phone-number`."
+            },
+            "logUrl": {
+              "type": "string",
+              "description": "This is the url for the call logs. This includes all logging output during the call for debugging purposes."
+            },
+            "nodes": {
+              "type": "array",
+              "description": "This is the history of workflow nodes that were executed during the call.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "assistantActivations": {
+              "type": "array",
+              "description": "Ordered list of assistants that were active during the call, including after transfers and handoffs.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "variableValues": {
+              "type": "object",
+              "description": "These are the variable values at the end of the workflow execution."
+            },
+            "performanceMetrics": {
+              "description": "This is the performance metrics for the call. It contains the turn latency, broken down by component."
+            },
+            "structuredOutputs": {
+              "type": "object",
+              "description": "These are the structured outputs that will be extracted from the call.\nTo enable, set `assistant.artifactPlan.structuredOutputIds` with the IDs of the structured outputs you want to extract."
+            },
+            "scorecards": {
+              "type": "object",
+              "description": "These are the scorecards that have been evaluated based on the structured outputs extracted during the call.\nTo enable, set `assistant.artifactPlan.scorecardIds` or `assistant.artifactPlan.scorecards` with the IDs or objects of the scorecards you want to evaluate."
+            },
+            "transfers": {
+              "type": "array",
+              "description": "These are the transfer records from warm transfers, including destinations, transcripts, and status.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "structuredOutputsLastUpdatedAt": {
+              "type": "string",
+              "description": "This is when the structured outputs were last updated",
+              "format": "date-time"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt"
+  ]
+}

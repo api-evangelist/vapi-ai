@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Assistant",
+  "type": "object",
+  "properties": {
+    "transcriber": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "voice": {
+      "type": "string"
+    },
+    "firstMessage": {
+      "type": "string"
+    },
+    "firstMessageInterruptionsEnabled": {
+      "type": "boolean"
+    },
+    "firstMessageMode": {
+      "type": "string"
+    },
+    "voicemailDetection": {
+      "type": "string"
+    },
+    "clientMessages": {
+      "type": "array"
+    },
+    "serverMessages": {
+      "type": "array"
+    },
+    "maxDurationSeconds": {
+      "type": "number"
+    },
+    "backgroundSound": {
+      "type": "string"
+    },
+    "modelOutputInMessagesEnabled": {
+      "type": "boolean"
+    },
+    "transportConfigurations": {
+      "type": "array"
+    },
+    "observabilityPlan": {
+      "type": "string"
+    },
+    "credentials": {
+      "type": "array"
+    },
+    "hooks": {
+      "type": "array"
+    },
+    "name": {
+      "type": "string"
+    },
+    "voicemailMessage": {
+      "type": "string"
+    },
+    "endCallMessage": {
+      "type": "string"
+    },
+    "endCallPhrases": {
+      "type": "array"
+    },
+    "compliancePlan": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "backgroundSpeechDenoisingPlan": {
+      "type": "string"
+    },
+    "analysisPlan": {
+      "type": "string"
+    },
+    "artifactPlan": {
+      "type": "string"
+    },
+    "startSpeakingPlan": {
+      "type": "string"
+    },
+    "stopSpeakingPlan": {
+      "type": "string"
+    },
+    "monitorPlan": {
+      "type": "string"
+    },
+    "credentialIds": {
+      "type": "array"
+    },
+    "server": {
+      "type": "string"
+    }
+  }
+}

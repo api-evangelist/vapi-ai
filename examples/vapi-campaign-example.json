@@ -1,0 +1,12 @@
+{
+  "status": "scheduled",
+  "endedReason": "campaign.scheduled.ended-by-user",
+  "name": "Q2 Sales Campaign",
+  "assistantId": "example",
+  "workflowId": "example",
+  "squadId": "example",
+  "phoneNumberId": "example",
+  "dialPlan": [
+    null
+  ]
+}

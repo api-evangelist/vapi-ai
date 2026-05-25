@@ -1,0 +1,12 @@
+{
+  "id": "example",
+  "orgId": "example",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "updatedAt": "2026-05-24T00:00:00.000Z",
+  "cost": 0.0,
+  "costs": [
+    null
+  ],
+  "name": "example",
+  "status": "active"
+}

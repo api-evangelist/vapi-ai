@@ -1,0 +1,317 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Vapi Campaigns API — Campaigns
+  description: "Vapi Campaigns API — Campaigns. 5 operations. Self-contained Naftiko capability covering the Vapi Campaigns business surface."
+  tags:
+  - Vapi
+  - Campaigns
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    VAPI_API_KEY: VAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: campaigns-campaigns
+    baseUri: https://api.vapi.ai
+    description: Vapi Campaigns API business capability. Self-contained, no shared references.
+    resources:
+    - name: campaign
+      path: /campaign
+      operations:
+      - name: campaigncontrollercreate
+        method: POST
+        description: "Vapi Create Campaign"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: campaigncontrollerfindall
+        method: GET
+        description: "Vapi List Campaigns"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          description: "Query parameter id"
+          required: false
+        - name: status
+          in: query
+          type: string
+          description: "Query parameter status"
+          required: false
+        - name: page
+          in: query
+          type: string
+          description: "This is the page number to return. Defaults to 1."
+          required: false
+        - name: sortOrder
+          in: query
+          type: string
+          description: "This is the sort order for pagination. Defaults to 'DESC'."
+          required: false
+        - name: sortBy
+          in: query
+          type: string
+          description: "This is the column to sort by. Defaults to 'createdAt'."
+          required: false
+        - name: limit
+          in: query
+          type: string
+          description: "This is the maximum number of items to return. Defaults to 100."
+          required: false
+        - name: createdAtGt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than the specified value."
+          required: false
+        - name: createdAtLt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than the specified value."
+          required: false
+        - name: createdAtGe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than or equal to the specified value."
+          required: false
+        - name: createdAtLe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than or equal to the specified value."
+          required: false
+        - name: updatedAtGt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than the specified value."
+          required: false
+        - name: updatedAtLt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than the specified value."
+          required: false
+        - name: updatedAtGe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than or equal to the specified value."
+          required: false
+        - name: updatedAtLe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than or equal to the specified value."
+          required: false
+      - name: campaigncontrollerfindone
+        method: GET
+        description: "Vapi Get Campaign"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+      - name: campaigncontrollerupdate
+        method: PATCH
+        description: "Vapi Update Campaign"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: campaigncontrollerremove
+        method: DELETE
+        description: "Vapi Delete Campaign"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+    authentication:
+      type: bearer
+      key: Authorization
+      value: 'Bearer {{env.VAPI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: campaigns-campaigns-rest
+    port: 8080
+    description: REST adapter for Vapi Campaigns. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/campaign
+      name: campaign
+      description: REST surface for campaign.
+      operations:
+      - method: POST
+        name: campaigncontrollercreate
+        description: "Vapi Create Campaign"
+        call: campaigns-campaigns.campaigncontrollercreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: campaigncontrollerfindall
+        description: "Vapi List Campaigns"
+        call: campaigns-campaigns.campaigncontrollerfindall
+        with:
+          id: rest.id
+          status: rest.status
+          page: rest.page
+          sortOrder: rest.sortOrder
+          sortBy: rest.sortBy
+          limit: rest.limit
+          createdAtGt: rest.createdAtGt
+          createdAtLt: rest.createdAtLt
+          createdAtGe: rest.createdAtGe
+          createdAtLe: rest.createdAtLe
+          updatedAtGt: rest.updatedAtGt
+          updatedAtLt: rest.updatedAtLt
+          updatedAtGe: rest.updatedAtGe
+          updatedAtLe: rest.updatedAtLe
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: campaigncontrollerfindone
+        description: "Vapi Get Campaign"
+        call: campaigns-campaigns.campaigncontrollerfindone
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: campaigncontrollerupdate
+        description: "Vapi Update Campaign"
+        call: campaigns-campaigns.campaigncontrollerupdate
+        with:
+          body: rest.body
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: campaigncontrollerremove
+        description: "Vapi Delete Campaign"
+        call: campaigns-campaigns.campaigncontrollerremove
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: campaigns-campaigns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Vapi Campaigns. One tool per consumed operation.
+    tools:
+    - name: vapi-campaigncontrollercreate
+      description: "Vapi Create Campaign"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: campaigns-campaigns.campaigncontrollercreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-campaigncontrollerfindall
+      description: "Vapi List Campaigns"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: campaigns-campaigns.campaigncontrollerfindall
+      with:
+        id: tools.id
+        status: tools.status
+        page: tools.page
+        sortOrder: tools.sortOrder
+        sortBy: tools.sortBy
+        limit: tools.limit
+        createdAtGt: tools.createdAtGt
+        createdAtLt: tools.createdAtLt
+        createdAtGe: tools.createdAtGe
+        createdAtLe: tools.createdAtLe
+        updatedAtGt: tools.updatedAtGt
+        updatedAtLt: tools.updatedAtLt
+        updatedAtGe: tools.updatedAtGe
+        updatedAtLe: tools.updatedAtLe
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-campaigncontrollerfindone
+      description: "Vapi Get Campaign"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: campaigns-campaigns.campaigncontrollerfindone
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-campaigncontrollerupdate
+      description: "Vapi Update Campaign"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: campaigns-campaigns.campaigncontrollerupdate
+      with:
+        body: tools.body
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-campaigncontrollerremove
+      description: "Vapi Delete Campaign"
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: campaigns-campaigns.campaigncontrollerremove
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

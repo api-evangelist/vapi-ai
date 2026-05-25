@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Session",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "cost": {
+      "type": "number"
+    },
+    "costs": {
+      "type": "array"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "expirationSeconds": {
+      "type": "number"
+    },
+    "assistantId": {
+      "type": "string"
+    },
+    "assistant": {
+      "type": "string"
+    },
+    "assistantOverrides": {
+      "type": "string"
+    },
+    "squadId": {
+      "type": "string"
+    },
+    "squad": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array"
+    },
+    "customer": {
+      "type": "string"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "phoneNumberId": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "string"
+    }
+  }
+}

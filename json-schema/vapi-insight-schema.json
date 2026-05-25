@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/vapi/vapi-insight-schema.json",
+  "title": "Vapi Insight",
+  "description": "JSON Schema for the Vapi Insight resource as returned by the Vapi API.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "This is the name of the Insight."
+    },
+    "type": {
+      "type": "string",
+      "description": "This is the type of the Insight.",
+      "enum": [
+        "bar",
+        "line",
+        "pie",
+        "text"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "description": "This is the unique identifier for the Insight."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "This is the unique identifier for the org that this Insight belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the Insight was created.",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "This is the ISO 8601 date-time string of when the Insight was last updated.",
+      "format": "date-time"
+    },
+    "systemKey": {
+      "type": "string",
+      "description": "Stable server-owned identifier for system-created insights."
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "orgId",
+    "createdAt",
+    "updatedAt"
+  ]
+}

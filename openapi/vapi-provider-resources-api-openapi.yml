@@ -1,0 +1,400 @@
+openapi: 3.0.0
+info:
+  title: Vapi Provider Resources API
+  description: Vapi API — Provider Resources resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Provider Resources
+  description: Provider Resources endpoints.
+paths:
+  /provider/{provider}/{resourceName}:
+    post:
+      operationId: ProviderResourceController_createProviderResource
+      summary: Create Provider Resource
+      parameters:
+      - name: content-type
+        required: true
+        in: header
+        schema:
+          type: string
+      - name: provider
+        required: true
+        in: path
+        description: The provider (e.g., 11labs)
+        schema:
+          enum:
+          - cartesia
+          - 11labs
+          type: string
+      - name: resourceName
+        required: true
+        in: path
+        description: The resource name (e.g., pronunciation-dictionary)
+        schema:
+          enum:
+          - pronunciation-dictionary
+          type: string
+      responses:
+        '201':
+          description: Successfully created provider resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+      tags:
+      - Provider Resources
+      security:
+      - bearer: []
+    get:
+      operationId: ProviderResourceController_getProviderResourcesPaginated
+      summary: List Provider Resources
+      parameters:
+      - name: provider
+        required: true
+        in: path
+        description: The provider (e.g., 11labs)
+        schema:
+          enum:
+          - cartesia
+          - 11labs
+          type: string
+      - name: resourceName
+        required: true
+        in: path
+        description: The resource name (e.g., pronunciation-dictionary)
+        schema:
+          enum:
+          - pronunciation-dictionary
+          type: string
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: resourceId
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: This is the page number to return. Defaults to 1.
+        schema:
+          minimum: 1
+          type: number
+      - name: sortOrder
+        required: false
+        in: query
+        description: This is the sort order for pagination. Defaults to 'DESC'.
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+      - name: sortBy
+        required: false
+        in: query
+        description: This is the column to sort by. Defaults to 'createdAt'.
+        schema:
+          enum:
+          - createdAt
+          - duration
+          - cost
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: This is the maximum number of items to return. Defaults to 100.
+        schema:
+          minimum: 0
+          maximum: 1000
+          type: number
+      - name: createdAtGt
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLt
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtGe
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLe
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: List of provider resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResourcePaginatedResponse'
+      tags:
+      - Provider Resources
+      security:
+      - bearer: []
+  /provider/{provider}/{resourceName}/{id}:
+    get:
+      operationId: ProviderResourceController_getProviderResource
+      summary: Get Provider Resource
+      parameters:
+      - name: provider
+        required: true
+        in: path
+        description: The provider (e.g., 11labs)
+        schema:
+          enum:
+          - cartesia
+          - 11labs
+          type: string
+      - name: resourceName
+        required: true
+        in: path
+        description: The resource name (e.g., pronunciation-dictionary)
+        schema:
+          enum:
+          - pronunciation-dictionary
+          type: string
+      - name: id
+        required: true
+        in: path
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved provider resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+        '404':
+          description: Provider resource not found
+      tags:
+      - Provider Resources
+      security:
+      - bearer: []
+    delete:
+      operationId: ProviderResourceController_deleteProviderResource
+      summary: Delete Provider Resource
+      parameters:
+      - name: provider
+        required: true
+        in: path
+        description: The provider (e.g., 11labs)
+        schema:
+          enum:
+          - cartesia
+          - 11labs
+          type: string
+      - name: resourceName
+        required: true
+        in: path
+        description: The resource name (e.g., pronunciation-dictionary)
+        schema:
+          enum:
+          - pronunciation-dictionary
+          type: string
+      - name: id
+        required: true
+        in: path
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+        '404':
+          description: Provider resource not found
+      tags:
+      - Provider Resources
+      security:
+      - bearer: []
+    patch:
+      operationId: ProviderResourceController_updateProviderResource
+      summary: Update Provider Resource
+      parameters:
+      - name: provider
+        required: true
+        in: path
+        description: The provider (e.g., 11labs)
+        schema:
+          enum:
+          - cartesia
+          - 11labs
+          type: string
+      - name: resourceName
+        required: true
+        in: path
+        description: The resource name (e.g., pronunciation-dictionary)
+        schema:
+          enum:
+          - pronunciation-dictionary
+          type: string
+      - name: id
+        required: true
+        in: path
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+        '404':
+          description: Provider resource not found
+      tags:
+      - Provider Resources
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+    ProviderResource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: This is the unique identifier for the provider resource.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this provider resource belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the provider resource was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the provider resource was last updated.
+        provider:
+          type: string
+          description: This is the provider that manages this resource.
+          enum:
+          - cartesia
+          - 11labs
+        resourceName:
+          type: string
+          description: This is the name/type of the resource.
+          enum:
+          - pronunciation-dictionary
+        resourceId:
+          type: string
+          description: This is the provider-specific identifier for the resource.
+        resource:
+          type: object
+          description: This is the full resource data from the provider's API.
+      required:
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+      - provider
+      - resourceName
+      - resourceId
+      - resource
+    ProviderResourcePaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderResource'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata

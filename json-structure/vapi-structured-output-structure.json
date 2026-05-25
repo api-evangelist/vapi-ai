@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "StructuredOutput",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "regex": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "compliancePlan": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "assistantIds": {
+      "type": "array"
+    },
+    "workflowIds": {
+      "type": "array"
+    },
+    "schema": {
+      "type": "string"
+    }
+  }
+}

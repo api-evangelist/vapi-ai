@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "endedReason": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "assistantId": {
+      "type": "string"
+    },
+    "workflowId": {
+      "type": "string"
+    },
+    "squadId": {
+      "type": "string"
+    },
+    "phoneNumberId": {
+      "type": "string"
+    },
+    "dialPlan": {
+      "type": "array"
+    },
+    "schedulePlan": {
+      "type": "string"
+    },
+    "customers": {
+      "type": "array"
+    },
+    "id": {
+      "type": "string"
+    },
+    "orgId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "calls": {
+      "type": "object"
+    },
+    "callsCounterScheduled": {
+      "type": "number"
+    },
+    "callsCounterQueued": {
+      "type": "number"
+    },
+    "callsCounterInProgress": {
+      "type": "number"
+    },
+    "callsCounterEndedVoicemail": {
+      "type": "number"
+    },
+    "callsCounterEnded": {
+      "type": "number"
+    }
+  }
+}

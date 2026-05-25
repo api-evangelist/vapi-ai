@@ -1,0 +1,14 @@
+{
+  "id": "example",
+  "orgId": "example",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "updatedAt": "2026-05-24T00:00:00.000Z",
+  "name": "example",
+  "description": "example",
+  "metrics": [
+    null
+  ],
+  "assistantIds": [
+    "example"
+  ]
+}

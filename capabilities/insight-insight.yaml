@@ -1,0 +1,387 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Vapi Insight API — Insight
+  description: "Vapi Insight API — Insight. 7 operations. Self-contained Naftiko capability covering the Vapi Insight business surface."
+  tags:
+  - Vapi
+  - Insight
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    VAPI_API_KEY: VAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insight-insight
+    baseUri: https://api.vapi.ai
+    description: Vapi Insight API business capability. Self-contained, no shared references.
+    resources:
+    - name: reporting-insight
+      path: /reporting/insight
+      operations:
+      - name: insightcontrollercreate
+        method: POST
+        description: "Vapi Create Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: insightcontrollerfindall
+        method: GET
+        description: "Vapi Get Insights"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          description: "Query parameter id"
+          required: false
+        - name: page
+          in: query
+          type: string
+          description: "This is the page number to return. Defaults to 1."
+          required: false
+        - name: sortOrder
+          in: query
+          type: string
+          description: "This is the sort order for pagination. Defaults to 'DESC'."
+          required: false
+        - name: sortBy
+          in: query
+          type: string
+          description: "This is the column to sort by. Defaults to 'createdAt'."
+          required: false
+        - name: limit
+          in: query
+          type: string
+          description: "This is the maximum number of items to return. Defaults to 100."
+          required: false
+        - name: createdAtGt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than the specified value."
+          required: false
+        - name: createdAtLt
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than the specified value."
+          required: false
+        - name: createdAtGe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is greater than or equal to the specified value."
+          required: false
+        - name: createdAtLe
+          in: query
+          type: string
+          description: "This will return items where the createdAt is less than or equal to the specified value."
+          required: false
+        - name: updatedAtGt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than the specified value."
+          required: false
+        - name: updatedAtLt
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than the specified value."
+          required: false
+        - name: updatedAtGe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is greater than or equal to the specified value."
+          required: false
+        - name: updatedAtLe
+          in: query
+          type: string
+          description: "This will return items where the updatedAt is less than or equal to the specified value."
+          required: false
+      - name: insightcontrollerupdate
+        method: PATCH
+        description: "Vapi Update Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: insightcontrollerfindone
+        method: GET
+        description: "Vapi Get Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+      - name: insightcontrollerremove
+        method: DELETE
+        description: "Vapi Delete Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+      - name: insightcontrollerrun
+        method: POST
+        description: "Vapi Run Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: "The unique identifier for the resource."
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: insightcontrollerpreview
+        method: POST
+        description: "Vapi Preview Insight"
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      key: Authorization
+      value: 'Bearer {{env.VAPI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: insight-insight-rest
+    port: 8080
+    description: REST adapter for Vapi Insight. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/reporting/insight
+      name: reporting-insight
+      description: REST surface for reporting-insight.
+      operations:
+      - method: POST
+        name: insightcontrollercreate
+        description: "Vapi Create Insight"
+        call: insight-insight.insightcontrollercreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: insightcontrollerfindall
+        description: "Vapi Get Insights"
+        call: insight-insight.insightcontrollerfindall
+        with:
+          id: rest.id
+          page: rest.page
+          sortOrder: rest.sortOrder
+          sortBy: rest.sortBy
+          limit: rest.limit
+          createdAtGt: rest.createdAtGt
+          createdAtLt: rest.createdAtLt
+          createdAtGe: rest.createdAtGe
+          createdAtLe: rest.createdAtLe
+          updatedAtGt: rest.updatedAtGt
+          updatedAtLt: rest.updatedAtLt
+          updatedAtGe: rest.updatedAtGe
+          updatedAtLe: rest.updatedAtLe
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: insightcontrollerupdate
+        description: "Vapi Update Insight"
+        call: insight-insight.insightcontrollerupdate
+        with:
+          body: rest.body
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: insightcontrollerfindone
+        description: "Vapi Get Insight"
+        call: insight-insight.insightcontrollerfindone
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: insightcontrollerremove
+        description: "Vapi Delete Insight"
+        call: insight-insight.insightcontrollerremove
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insightcontrollerrun
+        description: "Vapi Run Insight"
+        call: insight-insight.insightcontrollerrun
+        with:
+          body: rest.body
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insightcontrollerpreview
+        description: "Vapi Preview Insight"
+        call: insight-insight.insightcontrollerpreview
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insight-insight-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Vapi Insight. One tool per consumed operation.
+    tools:
+    - name: vapi-insightcontrollercreate
+      description: "Vapi Create Insight"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insight-insight.insightcontrollercreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerfindall
+      description: "Vapi Get Insights"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insight-insight.insightcontrollerfindall
+      with:
+        id: tools.id
+        page: tools.page
+        sortOrder: tools.sortOrder
+        sortBy: tools.sortBy
+        limit: tools.limit
+        createdAtGt: tools.createdAtGt
+        createdAtLt: tools.createdAtLt
+        createdAtGe: tools.createdAtGe
+        createdAtLe: tools.createdAtLe
+        updatedAtGt: tools.updatedAtGt
+        updatedAtLt: tools.updatedAtLt
+        updatedAtGe: tools.updatedAtGe
+        updatedAtLe: tools.updatedAtLe
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerupdate
+      description: "Vapi Update Insight"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insight-insight.insightcontrollerupdate
+      with:
+        body: tools.body
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerfindone
+      description: "Vapi Get Insight"
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insight-insight.insightcontrollerfindone
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerremove
+      description: "Vapi Delete Insight"
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: insight-insight.insightcontrollerremove
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerrun
+      description: "Vapi Run Insight"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insight-insight.insightcontrollerrun
+      with:
+        body: tools.body
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vapi-insightcontrollerpreview
+      description: "Vapi Preview Insight"
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insight-insight.insightcontrollerpreview
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
