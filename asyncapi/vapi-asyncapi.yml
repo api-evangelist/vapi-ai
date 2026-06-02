@@ -1,0 +1,1199 @@
+asyncapi: 2.6.0
+info:
+  title: Vapi Realtime API (WebSocket Transport + Server URL Events)
+  version: '1.0.0'
+  description: |
+    AsyncAPI description of Vapi's realtime surfaces:
+
+    1. The WebSocket Transport (`wss://api.vapi.ai/{callId}/transport`) used to
+       stream binary audio and JSON control messages to and from an active call.
+    2. The Server URL webhook surface — the JSON events Vapi POSTs to a
+       customer-controlled HTTPS endpoint over the lifetime of a call, plus
+       request/response webhooks (assistant-request, tool-calls,
+       transfer-destination-request, knowledge-base-request, voice-request,
+       call.endpointing.request).
+
+    All event types, payload fields, and wrapper shapes are drawn from the
+    official Vapi documentation:
+
+      - https://docs.vapi.ai/calls/websocket-transport
+      - https://docs.vapi.ai/server-url
+      - https://docs.vapi.ai/server-url/events
+
+    The Server URL events are conceptually webhooks (HTTPS POST), not WebSocket
+    frames, but they are modelled here as messages on logical channels so they
+    can sit alongside the WebSocket transport in a single AsyncAPI document.
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+  license:
+    name: Proprietary
+    url: https://vapi.ai/terms-of-service
+
+defaultContentType: application/json
+
+servers:
+  websocket:
+    url: api.vapi.ai
+    protocol: wss
+    description: |
+      Per-call WebSocket transport. The full URL is returned by
+      `POST /call` when the call is created with a WebSocket transport
+      configuration, in the form `wss://api.vapi.ai/{callId}/transport`.
+      Authentication for the call-creation REST request is via Bearer API key.
+  server-url:
+    url: '{serverUrl}'
+    protocol: https
+    description: |
+      Customer-controlled HTTPS endpoint that Vapi POSTs server messages to
+      (the "Server URL"). Configured per-assistant, per-phone-number, or
+      org-wide. Request/response webhooks (assistant-request, tool-calls,
+      transfer-destination-request, knowledge-base-request) require a JSON
+      reply within Vapi's documented timeout (7.5 seconds end-to-end for
+      assistant-request).
+    variables:
+      serverUrl:
+        default: https://example.com/vapi
+        description: The HTTPS URL configured as the Vapi Server URL.
+
+channels:
+
+  # ----------------------------------------------------------------------
+  # WebSocket transport channel — wss://api.vapi.ai/{callId}/transport
+  # ----------------------------------------------------------------------
+
+  '/{callId}/transport':
+    description: |
+      Per-call WebSocket transport. Carries:
+        - Binary audio frames in both directions (PCM s16le or G.711 mu-law,
+          format set when the call is created).
+        - JSON text frames for client-to-server control messages (`hangup`,
+          `end-call`).
+    parameters:
+      callId:
+        description: UUID of the Vapi call this transport belongs to.
+        schema:
+          type: string
+          format: uuid
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      summary: Frames the client sends to Vapi over the WebSocket transport.
+      description: |
+        The client publishes two kinds of frames:
+          - Binary audio frames containing raw microphone audio in the
+            format chosen at call creation (16-bit signed little-endian PCM
+            at 16000 Hz, or 8-bit G.711 mu-law at 8000 Hz).
+          - JSON text control messages — currently `hangup` and `end-call`.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ClientAudioFrame'
+          - $ref: '#/components/messages/ClientHangup'
+          - $ref: '#/components/messages/ClientEndCall'
+    subscribe:
+      summary: Frames Vapi sends to the client over the WebSocket transport.
+      description: |
+        Vapi publishes assistant audio as binary frames in the same audio
+        format configured for the call. JSON text frames carrying server
+        events on the WebSocket transport are not enumerated by the
+        WebSocket Transport docs; see the `server-url/*` channels for the
+        documented JSON server events delivered over the Server URL.
+      message:
+        $ref: '#/components/messages/ServerAudioFrame'
+
+  # ----------------------------------------------------------------------
+  # Server URL webhook channels — one per documented server message type
+  # ----------------------------------------------------------------------
+
+  server-url/assistant-request:
+    description: |
+      Vapi requests dynamic assistant configuration for an inbound call.
+      Customer endpoint must respond within 7.5 seconds end-to-end with
+      `{ assistantId }`, `{ assistant }`, `{ destination }`, or `{ error }`.
+    subscribe:
+      message:
+        $ref: '#/components/messages/AssistantRequest'
+    publish:
+      message:
+        $ref: '#/components/messages/AssistantRequestResponse'
+
+  server-url/tool-calls:
+    description: |
+      Function/tool invocation triggered by the assistant. Customer endpoint
+      replies with a `results` array correlating each `toolCallId` to a
+      result string.
+    subscribe:
+      message:
+        $ref: '#/components/messages/ToolCalls'
+    publish:
+      message:
+        $ref: '#/components/messages/ToolCallsResponse'
+
+  server-url/transfer-destination-request:
+    description: |
+      Vapi asks for a transfer destination when the assistant did not
+      pre-specify one. Customer endpoint replies with a `destination` and
+      optional spoken `message`.
+    subscribe:
+      message:
+        $ref: '#/components/messages/TransferDestinationRequest'
+    publish:
+      message:
+        $ref: '#/components/messages/TransferDestinationRequestResponse'
+
+  server-url/knowledge-base-request:
+    description: |
+      Vapi asks a custom knowledge base provider for relevant documents.
+      Customer endpoint replies with a `documents` array.
+    subscribe:
+      message:
+        $ref: '#/components/messages/KnowledgeBaseRequest'
+    publish:
+      message:
+        $ref: '#/components/messages/KnowledgeBaseRequestResponse'
+
+  server-url/status-update:
+    description: Call state changes — scheduled, queued, ringing, in-progress, forwarding, ended.
+    subscribe:
+      message:
+        $ref: '#/components/messages/StatusUpdate'
+
+  server-url/end-of-call-report:
+    description: Final summary delivered after the call ends, with recording, transcript, and messages.
+    subscribe:
+      message:
+        $ref: '#/components/messages/EndOfCallReport'
+
+  server-url/hang:
+    description: The assistant has failed to reply within the hang threshold.
+    subscribe:
+      message:
+        $ref: '#/components/messages/Hang'
+
+  server-url/conversation-update:
+    description: Emitted when the conversation history is committed.
+    subscribe:
+      message:
+        $ref: '#/components/messages/ConversationUpdate'
+
+  server-url/transcript:
+    description: |
+      Streaming partial and final transcripts from the configured
+      transcriber. Filtered by `transcriptType` (`partial` or `final`).
+    subscribe:
+      message:
+        $ref: '#/components/messages/Transcript'
+
+  server-url/speech-update:
+    description: Speech-status change (started/stopped) for assistant or user.
+    subscribe:
+      message:
+        $ref: '#/components/messages/SpeechUpdate'
+
+  server-url/assistant-speech-started:
+    description: |
+      Real-time word-level timing for assistant speech, opt-in via
+      `serverMessages`. Variants: ElevenLabs word-alignment, Minimax
+      word-progress, or text-only (other providers).
+    subscribe:
+      message:
+        $ref: '#/components/messages/AssistantSpeechStarted'
+
+  server-url/model-output:
+    description: Streamed LLM tokens or tool-call outputs, correlated by `turnId`.
+    subscribe:
+      message:
+        $ref: '#/components/messages/ModelOutput'
+
+  server-url/user-interrupted:
+    description: User interrupted the assistant — use `turnId` to discard the interrupted turn's tokens.
+    subscribe:
+      message:
+        $ref: '#/components/messages/UserInterrupted'
+
+  server-url/transfer-update:
+    description: Confirmation that a transfer executed, with the final destination.
+    subscribe:
+      message:
+        $ref: '#/components/messages/TransferUpdate'
+
+  server-url/language-change-detected:
+    description: Transcriber switched its detected language.
+    subscribe:
+      message:
+        $ref: '#/components/messages/LanguageChangeDetected'
+
+  server-url/phone-call-control:
+    description: |
+      Delegate hangup or forwarding to the customer server. Opt-in via
+      `serverMessages`. `request` is either `forward` (with `destination`)
+      or `hang-up`.
+    subscribe:
+      message:
+        $ref: '#/components/messages/PhoneCallControl'
+
+  server-url/voice-input:
+    description: Custom voice provider receives the user's transcribed input.
+    subscribe:
+      message:
+        $ref: '#/components/messages/VoiceInput'
+
+  server-url/voice-request:
+    description: |
+      TTS audio request sent to a custom voice server configured via
+      `assistant.voice.server.url`. The customer endpoint must respond with
+      raw 1-channel 16-bit PCM audio at the requested `sampleRate` (binary,
+      not JSON).
+    subscribe:
+      message:
+        $ref: '#/components/messages/VoiceRequest'
+
+  server-url/call-endpointing-request:
+    description: |
+      Smart endpointing decision delegated to a customer server configured
+      via `assistant.startSpeakingPlan.smartEndpointingPlan.server.url`.
+      Customer endpoint responds with `{ timeoutSeconds }`.
+    subscribe:
+      message:
+        $ref: '#/components/messages/CallEndpointingRequest'
+    publish:
+      message:
+        $ref: '#/components/messages/CallEndpointingRequestResponse'
+
+  server-url/chat-created:
+    description: A new chat was created.
+    subscribe:
+      message:
+        $ref: '#/components/messages/ChatCreated'
+
+  server-url/chat-deleted:
+    description: A chat was deleted.
+    subscribe:
+      message:
+        $ref: '#/components/messages/ChatDeleted'
+
+  server-url/session-created:
+    description: A new session was created.
+    subscribe:
+      message:
+        $ref: '#/components/messages/SessionCreated'
+
+  server-url/session-updated:
+    description: A session was updated.
+    subscribe:
+      message:
+        $ref: '#/components/messages/SessionUpdated'
+
+  server-url/session-deleted:
+    description: A session was deleted.
+    subscribe:
+      message:
+        $ref: '#/components/messages/SessionDeleted'
+
+components:
+
+  messages:
+
+    # --- WebSocket transport messages ---
+
+    ClientAudioFrame:
+      name: ClientAudioFrame
+      title: Client Audio Frame (Binary)
+      summary: Raw microphone audio chunk in the call's configured format.
+      contentType: application/octet-stream
+      payload:
+        type: string
+        format: binary
+        description: |
+          Raw audio bytes. Format is set when the call is created: either
+          16-bit signed little-endian PCM at 16000 Hz (`pcm_s16le`), or
+          8-bit G.711 mu-law at 8000 Hz (`mulaw`).
+
+    ServerAudioFrame:
+      name: ServerAudioFrame
+      title: Server Audio Frame (Binary)
+      summary: Raw assistant audio chunk in the call's configured format.
+      contentType: application/octet-stream
+      payload:
+        type: string
+        format: binary
+        description: |
+          Raw audio bytes from the assistant, in the same format configured
+          for the call (`pcm_s16le` or `mulaw`).
+
+    ClientHangup:
+      name: ClientHangup
+      title: Hangup Control Message
+      summary: Terminate the call.
+      payload:
+        $ref: '#/components/schemas/HangupControlMessage'
+
+    ClientEndCall:
+      name: ClientEndCall
+      title: End-Call Control Message
+      summary: End the WebSocket call.
+      payload:
+        $ref: '#/components/schemas/EndCallControlMessage'
+
+    # --- Server URL request/response webhook messages ---
+
+    AssistantRequest:
+      name: AssistantRequest
+      title: assistant-request
+      payload:
+        $ref: '#/components/schemas/AssistantRequestPayload'
+
+    AssistantRequestResponse:
+      name: AssistantRequestResponse
+      title: assistant-request response
+      payload:
+        $ref: '#/components/schemas/AssistantRequestResponsePayload'
+
+    ToolCalls:
+      name: ToolCalls
+      title: tool-calls
+      payload:
+        $ref: '#/components/schemas/ToolCallsPayload'
+
+    ToolCallsResponse:
+      name: ToolCallsResponse
+      title: tool-calls response
+      payload:
+        $ref: '#/components/schemas/ToolCallsResponsePayload'
+
+    TransferDestinationRequest:
+      name: TransferDestinationRequest
+      title: transfer-destination-request
+      payload:
+        $ref: '#/components/schemas/TransferDestinationRequestPayload'
+
+    TransferDestinationRequestResponse:
+      name: TransferDestinationRequestResponse
+      title: transfer-destination-request response
+      payload:
+        $ref: '#/components/schemas/TransferDestinationRequestResponsePayload'
+
+    KnowledgeBaseRequest:
+      name: KnowledgeBaseRequest
+      title: knowledge-base-request
+      payload:
+        $ref: '#/components/schemas/KnowledgeBaseRequestPayload'
+
+    KnowledgeBaseRequestResponse:
+      name: KnowledgeBaseRequestResponse
+      title: knowledge-base-request response
+      payload:
+        $ref: '#/components/schemas/KnowledgeBaseRequestResponsePayload'
+
+    # --- Server URL informational webhook messages ---
+
+    StatusUpdate:
+      name: StatusUpdate
+      title: status-update
+      payload:
+        $ref: '#/components/schemas/StatusUpdatePayload'
+
+    EndOfCallReport:
+      name: EndOfCallReport
+      title: end-of-call-report
+      payload:
+        $ref: '#/components/schemas/EndOfCallReportPayload'
+
+    Hang:
+      name: Hang
+      title: hang
+      payload:
+        $ref: '#/components/schemas/HangPayload'
+
+    ConversationUpdate:
+      name: ConversationUpdate
+      title: conversation-update
+      payload:
+        $ref: '#/components/schemas/ConversationUpdatePayload'
+
+    Transcript:
+      name: Transcript
+      title: transcript
+      payload:
+        $ref: '#/components/schemas/TranscriptPayload'
+
+    SpeechUpdate:
+      name: SpeechUpdate
+      title: speech-update
+      payload:
+        $ref: '#/components/schemas/SpeechUpdatePayload'
+
+    AssistantSpeechStarted:
+      name: AssistantSpeechStarted
+      title: assistant.speechStarted
+      payload:
+        $ref: '#/components/schemas/AssistantSpeechStartedPayload'
+
+    ModelOutput:
+      name: ModelOutput
+      title: model-output
+      payload:
+        $ref: '#/components/schemas/ModelOutputPayload'
+
+    UserInterrupted:
+      name: UserInterrupted
+      title: user-interrupted
+      payload:
+        $ref: '#/components/schemas/UserInterruptedPayload'
+
+    TransferUpdate:
+      name: TransferUpdate
+      title: transfer-update
+      payload:
+        $ref: '#/components/schemas/TransferUpdatePayload'
+
+    LanguageChangeDetected:
+      name: LanguageChangeDetected
+      title: language-change-detected
+      payload:
+        $ref: '#/components/schemas/LanguageChangeDetectedPayload'
+
+    PhoneCallControl:
+      name: PhoneCallControl
+      title: phone-call-control
+      payload:
+        $ref: '#/components/schemas/PhoneCallControlPayload'
+
+    VoiceInput:
+      name: VoiceInput
+      title: voice-input
+      payload:
+        $ref: '#/components/schemas/VoiceInputPayload'
+
+    VoiceRequest:
+      name: VoiceRequest
+      title: voice-request
+      payload:
+        $ref: '#/components/schemas/VoiceRequestPayload'
+
+    CallEndpointingRequest:
+      name: CallEndpointingRequest
+      title: call.endpointing.request
+      payload:
+        $ref: '#/components/schemas/CallEndpointingRequestPayload'
+
+    CallEndpointingRequestResponse:
+      name: CallEndpointingRequestResponse
+      title: call.endpointing.request response
+      payload:
+        $ref: '#/components/schemas/CallEndpointingRequestResponsePayload'
+
+    ChatCreated:
+      name: ChatCreated
+      title: chat.created
+      payload:
+        $ref: '#/components/schemas/ChatCreatedPayload'
+
+    ChatDeleted:
+      name: ChatDeleted
+      title: chat.deleted
+      payload:
+        $ref: '#/components/schemas/ChatDeletedPayload'
+
+    SessionCreated:
+      name: SessionCreated
+      title: session.created
+      payload:
+        $ref: '#/components/schemas/SessionCreatedPayload'
+
+    SessionUpdated:
+      name: SessionUpdated
+      title: session.updated
+      payload:
+        $ref: '#/components/schemas/SessionUpdatedPayload'
+
+    SessionDeleted:
+      name: SessionDeleted
+      title: session.deleted
+      payload:
+        $ref: '#/components/schemas/SessionDeletedPayload'
+
+  schemas:
+
+    # --- Shared ---
+
+    CallObject:
+      type: object
+      description: |
+        The Vapi Call object. See the Vapi Calls API OpenAPI for the full
+        schema; included here as an open object so this AsyncAPI document
+        stays self-contained.
+      additionalProperties: true
+
+    ServerMessageEnvelope:
+      type: object
+      description: |
+        Wrapper shape used by every Vapi Server URL event — the actual
+        event payload lives inside the `message` property.
+      required: [message]
+      properties:
+        message:
+          type: object
+
+    # --- WebSocket control messages ---
+
+    HangupControlMessage:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [hangup]
+      example:
+        type: hangup
+
+    EndCallControlMessage:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [end-call]
+      example:
+        type: end-call
+
+    # --- assistant-request ---
+
+    AssistantRequestPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call]
+              properties:
+                type:
+                  type: string
+                  enum: [assistant-request]
+                call:
+                  $ref: '#/components/schemas/CallObject'
+
+    AssistantRequestResponsePayload:
+      description: |
+        One of four response shapes. Customer endpoint must respond within
+        7.5 seconds end-to-end.
+      oneOf:
+        - type: object
+          required: [assistantId]
+          properties:
+            assistantId:
+              type: string
+              description: ID of an existing assistant.
+        - type: object
+          required: [assistant]
+          properties:
+            assistant:
+              type: object
+              description: Transient assistant configuration.
+              additionalProperties: true
+        - type: object
+          required: [destination]
+          properties:
+            destination:
+              type: object
+              description: Direct transfer destination (bypasses the AI).
+              additionalProperties: true
+        - type: object
+          required: [error]
+          properties:
+            error:
+              type: string
+              description: Error message to speak to the caller.
+
+    # --- tool-calls ---
+
+    ToolCallsPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call]
+              properties:
+                type:
+                  type: string
+                  enum: [tool-calls]
+                call:
+                  $ref: '#/components/schemas/CallObject'
+                toolWithToolCallList:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                toolCallList:
+                  type: array
+                  items:
+                    type: object
+                    required: [name, id]
+                    properties:
+                      name:
+                        type: string
+                      id:
+                        type: string
+                      parameters:
+                        type: object
+                        additionalProperties: true
+
+    ToolCallsResponsePayload:
+      type: object
+      required: [results]
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            required: [name, toolCallId, result]
+            properties:
+              name:
+                type: string
+              toolCallId:
+                type: string
+              result:
+                type: string
+
+    # --- transfer-destination-request ---
+
+    TransferDestinationRequestPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call]
+              properties:
+                type:
+                  type: string
+                  enum: [transfer-destination-request]
+                call:
+                  $ref: '#/components/schemas/CallObject'
+
+    TransferDestinationRequestResponsePayload:
+      type: object
+      required: [destination]
+      properties:
+        destination:
+          type: object
+          required: [type]
+          properties:
+            type:
+              type: string
+              enum: [number, assistant, sip]
+            number:
+              type: string
+          additionalProperties: true
+        message:
+          type: object
+          additionalProperties: true
+
+    # --- knowledge-base-request ---
+
+    KnowledgeBaseRequestPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  enum: [knowledge-base-request]
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                messagesOpenAIFormatted:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+
+    KnowledgeBaseRequestResponsePayload:
+      type: object
+      required: [documents]
+      properties:
+        documents:
+          type: array
+          items:
+            type: object
+            required: [content]
+            properties:
+              content:
+                type: string
+              similarity:
+                type: number
+              uuid:
+                type: string
+
+    # --- status-update ---
+
+    StatusUpdatePayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call, status]
+              properties:
+                type:
+                  type: string
+                  enum: [status-update]
+                call:
+                  $ref: '#/components/schemas/CallObject'
+                status:
+                  type: string
+                  enum:
+                    - scheduled
+                    - queued
+                    - ringing
+                    - in-progress
+                    - forwarding
+                    - ended
+
+    # --- end-of-call-report ---
+
+    EndOfCallReportPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call, endedReason, artifact]
+              properties:
+                type:
+                  type: string
+                  enum: [end-of-call-report]
+                endedReason:
+                  type: string
+                call:
+                  $ref: '#/components/schemas/CallObject'
+                artifact:
+                  type: object
+                  properties:
+                    recording:
+                      type: object
+                      additionalProperties: true
+                    transcript:
+                      type: string
+                    messages:
+                      type: array
+                      items:
+                        type: object
+                        additionalProperties: true
+
+    # --- hang ---
+
+    HangPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, call]
+              properties:
+                type:
+                  type: string
+                  enum: [hang]
+                call:
+                  $ref: '#/components/schemas/CallObject'
+
+    # --- conversation-update ---
+
+    ConversationUpdatePayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  enum: [conversation-update]
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                messagesOpenAIFormatted:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+
+    # --- transcript ---
+
+    TranscriptPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, role, transcriptType, transcript]
+              properties:
+                type:
+                  type: string
+                  enum: [transcript]
+                role:
+                  type: string
+                  enum: [user, assistant]
+                transcriptType:
+                  type: string
+                  enum: [partial, final]
+                transcript:
+                  type: string
+                isFiltered:
+                  type: boolean
+                detectedThreats:
+                  type: array
+                  items:
+                    type: string
+                originalTranscript:
+                  type: string
+
+    # --- speech-update ---
+
+    SpeechUpdatePayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, status, role]
+              properties:
+                type:
+                  type: string
+                  enum: [speech-update]
+                status:
+                  type: string
+                  enum: [started, stopped]
+                role:
+                  type: string
+                  enum: [assistant, user]
+                turn:
+                  type: integer
+
+    # --- assistant.speechStarted ---
+
+    AssistantSpeechStartedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, text]
+              properties:
+                type:
+                  type: string
+                  enum: [assistant.speechStarted]
+                text:
+                  type: string
+                turn:
+                  type: integer
+                source:
+                  type: string
+                  enum: [model, force-say, custom-voice]
+                timing:
+                  description: |
+                    Provider-dependent timing payload — `word-alignment`
+                    (ElevenLabs), `word-progress` (Minimax), or omitted for
+                    text-only providers.
+                  oneOf:
+                    - type: object
+                      required: [type, words]
+                      properties:
+                        type:
+                          type: string
+                          enum: [word-alignment]
+                        words:
+                          type: array
+                          items:
+                            type: string
+                        wordsStartTimesMs:
+                          type: array
+                          items:
+                            type: number
+                        wordsEndTimesMs:
+                          type: array
+                          items:
+                            type: number
+                    - type: object
+                      required: [type]
+                      properties:
+                        type:
+                          type: string
+                          enum: [word-progress]
+                        wordsSpoken:
+                          type: integer
+                        totalWords:
+                          type: integer
+                        segment:
+                          type: string
+                        words:
+                          type: array
+                          items:
+                            type: string
+
+    # --- model-output ---
+
+    ModelOutputPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, output]
+              properties:
+                type:
+                  type: string
+                  enum: [model-output]
+                output:
+                  description: A streamed token or a tool-call output.
+                  oneOf:
+                    - type: string
+                    - type: object
+                      additionalProperties: true
+                turnId:
+                  type: string
+
+    # --- user-interrupted ---
+
+    UserInterruptedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  enum: [user-interrupted]
+                turnId:
+                  type: string
+
+    # --- transfer-update ---
+
+    TransferUpdatePayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, destination]
+              properties:
+                type:
+                  type: string
+                  enum: [transfer-update]
+                destination:
+                  type: object
+                  required: [type]
+                  properties:
+                    type:
+                      type: string
+                      enum: [assistant, number, sip]
+                  additionalProperties: true
+
+    # --- language-change-detected ---
+
+    LanguageChangeDetectedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, language]
+              properties:
+                type:
+                  type: string
+                  enum: [language-change-detected]
+                language:
+                  type: string
+
+    # --- phone-call-control ---
+
+    PhoneCallControlPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, request]
+              properties:
+                type:
+                  type: string
+                  enum: [phone-call-control]
+                request:
+                  type: string
+                  enum: [forward, hang-up]
+                destination:
+                  type: object
+                  additionalProperties: true
+
+    # --- voice-input ---
+
+    VoiceInputPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, input]
+              properties:
+                type:
+                  type: string
+                  enum: [voice-input]
+                input:
+                  type: string
+
+    # --- voice-request ---
+
+    VoiceRequestPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, text]
+              properties:
+                type:
+                  type: string
+                  enum: [voice-request]
+                text:
+                  type: string
+                sampleRate:
+                  type: integer
+
+    # --- call.endpointing.request ---
+
+    CallEndpointingRequestPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  enum: [call.endpointing.request]
+                messagesOpenAIFormatted:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+
+    CallEndpointingRequestResponsePayload:
+      type: object
+      required: [timeoutSeconds]
+      properties:
+        timeoutSeconds:
+          type: number
+
+    # --- chat & session lifecycle ---
+
+    ChatCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, chat]
+              properties:
+                type:
+                  type: string
+                  enum: [chat.created]
+                chat:
+                  type: object
+                  additionalProperties: true
+
+    ChatDeletedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, chat]
+              properties:
+                type:
+                  type: string
+                  enum: [chat.deleted]
+                chat:
+                  type: object
+                  additionalProperties: true
+
+    SessionCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, session]
+              properties:
+                type:
+                  type: string
+                  enum: [session.created]
+                session:
+                  type: object
+                  additionalProperties: true
+
+    SessionUpdatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, session]
+              properties:
+                type:
+                  type: string
+                  enum: [session.updated]
+                session:
+                  type: object
+                  additionalProperties: true
+
+    SessionDeletedPayload:
+      allOf:
+        - $ref: '#/components/schemas/ServerMessageEnvelope'
+        - type: object
+          properties:
+            message:
+              type: object
+              required: [type, session]
+              properties:
+                type:
+                  type: string
+                  enum: [session.deleted]
+                session:
+                  type: object
+                  additionalProperties: true
