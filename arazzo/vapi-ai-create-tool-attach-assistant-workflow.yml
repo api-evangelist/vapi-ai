@@ -1,0 +1,136 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Create Function Tool and Attach to Assistant
+  summary: Create a custom function tool and attach it to a freshly created assistant.
+  description: >-
+    The custom-capability flow. It creates a custom function tool the assistant
+    can invoke, creates a bare assistant, and then patches the assistant's model
+    to attach the tool by id so the assistant can call it during a conversation.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: toolsApi
+  url: ../openapi/vapi-tools-api-openapi.yml
+  type: openapi
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-tool-attach-assistant
+  summary: Create a function tool and bind it to an assistant via a model update.
+  description: >-
+    Creates a custom function tool, creates an assistant, then updates the
+    assistant so its model references the tool id.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - functionName
+    - functionDescription
+    - name
+    - firstMessage
+    - systemPrompt
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      functionName:
+        type: string
+        description: The name of the function the assistant can invoke.
+      functionDescription:
+        type: string
+        description: A description telling the model when to call the function.
+      name:
+        type: string
+        description: A human-readable name for the assistant.
+      firstMessage:
+        type: string
+        description: The opening message the assistant speaks.
+      systemPrompt:
+        type: string
+        description: The system prompt that shapes the assistant's behavior.
+  steps:
+  - stepId: createTool
+    description: >-
+      Create a custom function tool with a name, description, and a simple
+      object parameter schema the assistant can fill in.
+    operationId: ToolController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        type: function
+        function:
+          name: $inputs.functionName
+          description: $inputs.functionDescription
+          parameters:
+            type: object
+            properties:
+              query:
+                type: string
+                description: The user request to pass to the function.
+            required:
+            - query
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      toolId: $response.body#/id
+  - stepId: createAssistant
+    description: Create the assistant that will later be given access to the tool.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        firstMessage: $inputs.firstMessage
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assistantId: $response.body#/id
+  - stepId: attachTool
+    description: >-
+      Update the assistant so its model references the function tool by id,
+      attaching the capability to the existing assistant.
+    operationId: AssistantController_update
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    - name: id
+      in: path
+      value: $steps.createAssistant.outputs.assistantId
+    requestBody:
+      contentType: application/json
+      payload:
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+          toolIds:
+          - $steps.createTool.outputs.toolId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assistantId: $response.body#/id
+  outputs:
+    toolId: $steps.createTool.outputs.toolId
+    assistantId: $steps.attachTool.outputs.assistantId

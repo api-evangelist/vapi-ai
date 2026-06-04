@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Import Twilio Number and Bind Assistant
+  summary: Create an assistant and import an existing Twilio number that routes inbound calls to it.
+  description: >-
+    The bring-your-own-carrier inbound flow. It creates a voice AI assistant and
+    then imports an existing Twilio phone number into Vapi, binding that number
+    to the assistant so inbound calls are answered by it. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+- name: phoneNumbersApi
+  url: ../openapi/vapi-phone-numbers-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: import-twilio-number
+  summary: Create an assistant and import a Twilio number bound to it.
+  description: >-
+    Provisions an assistant, then imports an existing Twilio phone number into
+    Vapi and routes its inbound calls to that assistant.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - name
+    - firstMessage
+    - systemPrompt
+    - twilioNumber
+    - twilioAccountSid
+    - twilioAuthToken
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      name:
+        type: string
+        description: A human-readable name for the assistant and number.
+      firstMessage:
+        type: string
+        description: The opening message the assistant speaks on inbound calls.
+      systemPrompt:
+        type: string
+        description: The system prompt that shapes the assistant's behavior.
+      twilioNumber:
+        type: string
+        description: The Twilio phone number to import in E.164 format.
+      twilioAccountSid:
+        type: string
+        description: The Twilio account SID that owns the number.
+      twilioAuthToken:
+        type: string
+        description: The Twilio auth token used to verify number ownership.
+  steps:
+  - stepId: createAssistant
+    description: Create the assistant that will answer inbound calls on the imported number.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        firstMessage: $inputs.firstMessage
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assistantId: $response.body#/id
+  - stepId: importTwilioNumber
+    description: >-
+      Import the existing Twilio number into Vapi and bind it to the assistant
+      so inbound calls are routed to it.
+    operationId: PhoneNumberController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        provider: twilio
+        number: $inputs.twilioNumber
+        twilioAccountSid: $inputs.twilioAccountSid
+        twilioAuthToken: $inputs.twilioAuthToken
+        assistantId: $steps.createAssistant.outputs.assistantId
+        name: $inputs.name
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      phoneNumberId: $response.body#/id
+  outputs:
+    assistantId: $steps.createAssistant.outputs.assistantId
+    phoneNumberId: $steps.importTwilioNumber.outputs.phoneNumberId

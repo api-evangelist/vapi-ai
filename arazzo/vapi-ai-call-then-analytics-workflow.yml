@@ -1,0 +1,138 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Outbound Call Then Cost Analytics
+  summary: Place an outbound call, poll it to completion, then query call analytics for cost and duration.
+  description: >-
+    The measure-what-you-ran flow. It places an outbound call using an existing
+    assistant and phone number, polls the call until it ends, and then runs an
+    analytics query over the call table to aggregate cost and duration for the
+    reporting window. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: callsApi
+  url: ../openapi/vapi-calls-api-openapi.yml
+  type: openapi
+- name: analyticsApi
+  url: ../openapi/vapi-analytics-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: call-then-analytics
+  summary: Run an outbound call and then aggregate its cost and duration via analytics.
+  description: >-
+    Creates an outbound call from an existing assistant and number, polls it to
+    a terminal state, then queries the analytics endpoint for summed cost and
+    duration over the supplied time range.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - assistantId
+    - phoneNumberId
+    - customerNumber
+    - rangeStart
+    - rangeEnd
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      assistantId:
+        type: string
+        description: The id of an existing assistant to run the call.
+      phoneNumberId:
+        type: string
+        description: The id of an existing phone number to place the call from.
+      customerNumber:
+        type: string
+        description: The destination phone number in E.164 format to dial.
+      rangeStart:
+        type: string
+        description: ISO 8601 start of the analytics reporting window.
+      rangeEnd:
+        type: string
+        description: ISO 8601 end of the analytics reporting window.
+  steps:
+  - stepId: createCall
+    description: Place the outbound call from the existing assistant and number.
+    operationId: CallController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Analytics Demo Call
+        assistantId: $inputs.assistantId
+        phoneNumberId: $inputs.phoneNumberId
+        customer:
+          number: $inputs.customerNumber
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      callId: $response.body#/id
+  - stepId: pollCall
+    description: >-
+      Read the call status and branch: loop while still active, continue to
+      analytics once the call has ended.
+    operationId: CallController_findOne
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    - name: id
+      in: path
+      value: $steps.createCall.outputs.callId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      callStatus: $response.body#/status
+    onSuccess:
+    - name: callEnded
+      type: goto
+      stepId: queryAnalytics
+      criteria:
+      - context: $response.body
+        condition: $.status == 'ended'
+        type: jsonpath
+    - name: stillActive
+      type: goto
+      stepId: pollCall
+      criteria:
+      - context: $response.body
+        condition: $.status != 'ended'
+        type: jsonpath
+  - stepId: queryAnalytics
+    description: >-
+      Query the analytics endpoint to aggregate total cost and call duration
+      over the reporting window.
+    operationId: AnalyticsController_query
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        queries:
+        - name: callCostAndDuration
+          table: call
+          timeRange:
+            start: $inputs.rangeStart
+            end: $inputs.rangeEnd
+            step: day
+          operations:
+          - operation: sum
+            column: cost
+            alias: totalCost
+          - operation: sum
+            column: duration
+            alias: totalDuration
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      analytics: $response.body#/0/result
+  outputs:
+    callId: $steps.createCall.outputs.callId
+    callStatus: $steps.pollCall.outputs.callStatus
+    analytics: $steps.queryAnalytics.outputs.analytics

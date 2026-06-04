@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Build a Multi-Assistant Squad
+  summary: Create two specialized assistants and assemble them into a squad that can hand calls between them.
+  description: >-
+    The multi-agent orchestration flow. Vapi has no standalone "workflow"
+    endpoint, so this flow adapts that theme onto squads, which are Vapi's
+    mechanism for routing a single call across multiple assistants. It creates a
+    front-line greeter assistant and a specialist assistant, then assembles both
+    into a squad. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+- name: squadsApi
+  url: ../openapi/vapi-squads-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: build-squad
+  summary: Create two assistants and group them into a routing squad.
+  description: >-
+    Creates a greeter assistant and a specialist assistant, then creates a squad
+    whose members reference both assistant ids.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - greeterPrompt
+    - specialistPrompt
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      squadName:
+        type: string
+        description: A human-readable name for the squad.
+        default: Support Squad
+      greeterPrompt:
+        type: string
+        description: The system prompt for the front-line greeter assistant.
+      specialistPrompt:
+        type: string
+        description: The system prompt for the specialist assistant.
+  steps:
+  - stepId: createGreeter
+    description: Create the front-line greeter assistant that answers first.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Greeter
+        firstMessage: Hello, how can I help you today?
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.greeterPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      greeterId: $response.body#/id
+  - stepId: createSpecialist
+    description: Create the specialist assistant the greeter can hand the call to.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Specialist
+        firstMessage: I can take it from here, let me dig into the details.
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.specialistPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      specialistId: $response.body#/id
+  - stepId: createSquad
+    description: >-
+      Assemble both assistants into a squad whose first member is the greeter
+      and second member is the specialist.
+    operationId: SquadController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.squadName
+        members:
+        - assistantId: $steps.createGreeter.outputs.greeterId
+        - assistantId: $steps.createSpecialist.outputs.specialistId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      squadId: $response.body#/id
+  outputs:
+    greeterId: $steps.createGreeter.outputs.greeterId
+    specialistId: $steps.createSpecialist.outputs.specialistId
+    squadId: $steps.createSquad.outputs.squadId

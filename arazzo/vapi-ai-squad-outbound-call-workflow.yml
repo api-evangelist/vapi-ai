@@ -1,0 +1,198 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Squad Outbound Call
+  summary: Build a two-assistant squad, place an outbound call to it, and poll until the call ends.
+  description: >-
+    The orchestrated outbound flow. It creates two assistants, assembles them
+    into a squad, provisions a Vapi phone number, places an outbound call routed
+    through the squad, and polls the call until it reaches a terminal status.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+- name: squadsApi
+  url: ../openapi/vapi-squads-api-openapi.yml
+  type: openapi
+- name: phoneNumbersApi
+  url: ../openapi/vapi-phone-numbers-api-openapi.yml
+  type: openapi
+- name: callsApi
+  url: ../openapi/vapi-calls-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: squad-outbound-call
+  summary: Stand up a squad, get a number, dial a customer through the squad, and watch it.
+  description: >-
+    Creates two assistants and a squad, provisions a Vapi number, places an
+    outbound call to a customer through the squad, then polls the call to a
+    terminal state.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - greeterPrompt
+    - specialistPrompt
+    - customerNumber
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      greeterPrompt:
+        type: string
+        description: The system prompt for the greeter assistant.
+      specialistPrompt:
+        type: string
+        description: The system prompt for the specialist assistant.
+      customerNumber:
+        type: string
+        description: The destination phone number in E.164 format to dial.
+      areaCode:
+        type: string
+        description: Desired North American area code for the new Vapi number.
+        default: "415"
+  steps:
+  - stepId: createGreeter
+    description: Create the greeter assistant that answers the call first.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Greeter
+        firstMessage: Hello, thanks for taking our call.
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.greeterPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      greeterId: $response.body#/id
+  - stepId: createSpecialist
+    description: Create the specialist assistant the greeter can hand the call to.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Specialist
+        firstMessage: Let me help you with the specifics.
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.specialistPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      specialistId: $response.body#/id
+  - stepId: createSquad
+    description: Assemble both assistants into a squad to handle the call.
+    operationId: SquadController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Outbound Squad
+        members:
+        - assistantId: $steps.createGreeter.outputs.greeterId
+        - assistantId: $steps.createSpecialist.outputs.specialistId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      squadId: $response.body#/id
+  - stepId: provisionNumber
+    description: Provision a free Vapi-managed phone number to place the call from.
+    operationId: PhoneNumberController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        provider: vapi
+        numberDesiredAreaCode: $inputs.areaCode
+        name: Outbound Squad Number
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      phoneNumberId: $response.body#/id
+  - stepId: createCall
+    description: Place an outbound call to the customer routed through the squad.
+    operationId: CallController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: Squad Outbound Call
+        squadId: $steps.createSquad.outputs.squadId
+        phoneNumberId: $steps.provisionNumber.outputs.phoneNumberId
+        customer:
+          number: $inputs.customerNumber
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      callId: $response.body#/id
+      callStatus: $response.body#/status
+  - stepId: pollCall
+    description: >-
+      Read the call status and branch: loop while still active, finish once it
+      reaches the ended terminal state.
+    operationId: CallController_findOne
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    - name: id
+      in: path
+      value: $steps.createCall.outputs.callId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      callStatus: $response.body#/status
+      endedReason: $response.body#/endedReason
+    onSuccess:
+    - name: callEnded
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.status == 'ended'
+        type: jsonpath
+    - name: stillActive
+      type: goto
+      stepId: pollCall
+      criteria:
+      - context: $response.body
+        condition: $.status != 'ended'
+        type: jsonpath
+  outputs:
+    squadId: $steps.createSquad.outputs.squadId
+    phoneNumberId: $steps.provisionNumber.outputs.phoneNumberId
+    callId: $steps.createCall.outputs.callId
+    callStatus: $steps.pollCall.outputs.callStatus
+    endedReason: $steps.pollCall.outputs.endedReason

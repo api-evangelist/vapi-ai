@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Create and Verify Assistant
+  summary: Create a voice AI assistant and read it back to confirm it was provisioned.
+  description: >-
+    The foundational Vapi flow. It creates a voice AI assistant with a model,
+    voice, and first message, then immediately fetches the assistant by its
+    returned id to confirm the configuration persisted. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-assistant
+  summary: Create a Vapi assistant and verify it by reading it back.
+  description: >-
+    Provisions a new voice AI assistant from a model, voice, and first message,
+    then retrieves the same assistant by id to confirm it exists.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - name
+    - firstMessage
+    - systemPrompt
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      name:
+        type: string
+        description: A human-readable name for the assistant.
+      firstMessage:
+        type: string
+        description: The first message the assistant speaks when a call connects.
+      systemPrompt:
+        type: string
+        description: The system prompt that shapes the assistant's behavior.
+      model:
+        type: string
+        description: The OpenAI model id to drive the assistant.
+        default: gpt-5.4
+      voiceId:
+        type: string
+        description: The Azure voice id the assistant speaks with.
+        default: andrew
+  steps:
+  - stepId: createAssistant
+    description: >-
+      Create a new voice AI assistant with an OpenAI model, an Azure voice,
+      and an opening message.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        firstMessage: $inputs.firstMessage
+        model:
+          provider: openai
+          model: $inputs.model
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+        voice:
+          provider: azure
+          voiceId: $inputs.voiceId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assistantId: $response.body#/id
+  - stepId: getAssistant
+    description: >-
+      Read the assistant back by its id to confirm it was created and persisted.
+    operationId: AssistantController_findOne
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    - name: id
+      in: path
+      value: $steps.createAssistant.outputs.assistantId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assistantId: $response.body#/id
+      assistantName: $response.body#/name
+  outputs:
+    assistantId: $steps.getAssistant.outputs.assistantId
+    assistantName: $steps.getAssistant.outputs.assistantName

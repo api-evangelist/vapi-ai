@@ -282,6 +282,33 @@ kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/vapi-ai-assistant-phone-outbound-call-workflow.yml
+    name: Vapi Assistant Outbound Call End to End
+    summary: Create an assistant, provision a Vapi phone number, place an outbound call, and poll until it ends.
+  - url: arazzo/vapi-ai-build-squad-workflow.yml
+    name: Vapi Build a Multi-Assistant Squad
+    summary: Create two specialized assistants and assemble them into a squad that can hand calls between them.
+  - url: arazzo/vapi-ai-call-then-analytics-workflow.yml
+    name: Vapi Outbound Call Then Cost Analytics
+    summary: Place an outbound call, poll it to completion, then query call analytics for cost and duration.
+  - url: arazzo/vapi-ai-create-assistant-workflow.yml
+    name: Vapi Create and Verify Assistant
+    summary: Create a voice AI assistant and read it back to confirm it was provisioned.
+  - url: arazzo/vapi-ai-create-tool-attach-assistant-workflow.yml
+    name: Vapi Create Function Tool and Attach to Assistant
+    summary: Create a custom function tool and attach it to a freshly created assistant.
+  - url: arazzo/vapi-ai-file-knowledge-base-assistant-workflow.yml
+    name: Vapi File-Backed Knowledge Base Assistant
+    summary: Upload a file, build a query tool knowledge base from it, and create an assistant that uses it.
+  - url: arazzo/vapi-ai-import-twilio-number-workflow.yml
+    name: Vapi Import Twilio Number and Bind Assistant
+    summary: Create an assistant and import an existing Twilio number that routes inbound calls to it.
+  - url: arazzo/vapi-ai-squad-outbound-call-workflow.yml
+    name: Vapi Squad Outbound Call
+    summary: Build a two-assistant squad, place an outbound call to it, and poll until the call ends.
 - url: https://vapi.ai
   type: Portal
 - url: https://docs.vapi.ai

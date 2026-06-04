@@ -1,0 +1,163 @@
+arazzo: 1.0.1
+info:
+  title: Vapi Assistant Outbound Call End to End
+  summary: Create an assistant, provision a Vapi phone number, place an outbound call, and poll until it ends.
+  description: >-
+    The complete outbound voice campaign flow. It creates a voice AI assistant,
+    buys a free Vapi-managed phone number bound to that assistant, places an
+    outbound call from the number to a customer, and then polls the call until
+    it reaches a terminal status. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+- name: phoneNumbersApi
+  url: ../openapi/vapi-phone-numbers-api-openapi.yml
+  type: openapi
+- name: callsApi
+  url: ../openapi/vapi-calls-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: assistant-phone-outbound-call
+  summary: Stand up an assistant, get a phone number, dial a customer, and watch the call.
+  description: >-
+    Chains assistant creation, phone number provisioning, outbound call
+    creation, and a status poll loop that branches on the call's terminal state.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - name
+    - firstMessage
+    - systemPrompt
+    - customerNumber
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      name:
+        type: string
+        description: A human-readable name for the assistant.
+      firstMessage:
+        type: string
+        description: The opening message the assistant speaks.
+      systemPrompt:
+        type: string
+        description: The system prompt that shapes the assistant's behavior.
+      customerNumber:
+        type: string
+        description: The destination phone number in E.164 format to dial.
+      areaCode:
+        type: string
+        description: Desired North American area code for the new Vapi number.
+        default: "415"
+  steps:
+  - stepId: createAssistant
+    description: Create the voice AI assistant that will handle the outbound call.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        firstMessage: $inputs.firstMessage
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assistantId: $response.body#/id
+  - stepId: provisionNumber
+    description: >-
+      Provision a free Vapi-managed phone number in the desired area code and
+      bind it to the newly created assistant.
+    operationId: PhoneNumberController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        provider: vapi
+        numberDesiredAreaCode: $inputs.areaCode
+        assistantId: $steps.createAssistant.outputs.assistantId
+        name: $inputs.name
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      phoneNumberId: $response.body#/id
+  - stepId: createCall
+    description: >-
+      Place an outbound call from the provisioned number to the customer using
+      the assistant.
+    operationId: CallController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        assistantId: $steps.createAssistant.outputs.assistantId
+        phoneNumberId: $steps.provisionNumber.outputs.phoneNumberId
+        customer:
+          number: $inputs.customerNumber
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      callId: $response.body#/id
+      callStatus: $response.body#/status
+  - stepId: pollCall
+    description: >-
+      Read the call status and branch: loop back while the call is still active,
+      and finish once it reaches the ended terminal state.
+    operationId: CallController_findOne
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    - name: id
+      in: path
+      value: $steps.createCall.outputs.callId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      callStatus: $response.body#/status
+      endedReason: $response.body#/endedReason
+      cost: $response.body#/cost
+    onSuccess:
+    - name: callEnded
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.status == 'ended'
+        type: jsonpath
+    - name: stillActive
+      type: goto
+      stepId: pollCall
+      criteria:
+      - context: $response.body
+        condition: $.status != 'ended'
+        type: jsonpath
+  outputs:
+    assistantId: $steps.createAssistant.outputs.assistantId
+    phoneNumberId: $steps.provisionNumber.outputs.phoneNumberId
+    callId: $steps.createCall.outputs.callId
+    callStatus: $steps.pollCall.outputs.callStatus
+    endedReason: $steps.pollCall.outputs.endedReason
+    cost: $steps.pollCall.outputs.cost

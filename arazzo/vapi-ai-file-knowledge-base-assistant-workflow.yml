@@ -1,0 +1,132 @@
+arazzo: 1.0.1
+info:
+  title: Vapi File-Backed Knowledge Base Assistant
+  summary: Upload a file, build a query tool knowledge base from it, and create an assistant that uses it.
+  description: >-
+    The retrieval-augmented assistant flow. It uploads a document to Vapi,
+    creates a query tool whose Google knowledge base is backed by that file, and
+    then creates a voice AI assistant that references the tool so it can answer
+    from the uploaded content. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: filesApi
+  url: ../openapi/vapi-files-api-openapi.yml
+  type: openapi
+- name: toolsApi
+  url: ../openapi/vapi-tools-api-openapi.yml
+  type: openapi
+- name: assistantsApi
+  url: ../openapi/vapi-assistants-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: file-knowledge-base-assistant
+  summary: Upload a file, wrap it in a query tool, and back an assistant with it.
+  description: >-
+    Uploads a document, creates a query tool with a Google knowledge base over
+    the uploaded file, then creates an assistant that references the tool by id.
+  inputs:
+    type: object
+    required:
+    - apiToken
+    - fileContent
+    - name
+    - firstMessage
+    - systemPrompt
+    properties:
+      apiToken:
+        type: string
+        description: Vapi private API key used as a Bearer token.
+      fileContent:
+        type: string
+        description: The file payload to upload to Vapi.
+      knowledgeBaseName:
+        type: string
+        description: A name for the knowledge base built from the file.
+        default: Uploaded Knowledge Base
+      knowledgeBaseDescription:
+        type: string
+        description: A description of what the knowledge base contains.
+        default: Knowledge base built from an uploaded document.
+      name:
+        type: string
+        description: A human-readable name for the assistant.
+      firstMessage:
+        type: string
+        description: The opening message the assistant speaks.
+      systemPrompt:
+        type: string
+        description: The system prompt that shapes the assistant's behavior.
+  steps:
+  - stepId: uploadFile
+    description: Upload the document to Vapi so it can back a knowledge base.
+    operationId: FileController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.fileContent
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      fileId: $response.body#/id
+  - stepId: createQueryTool
+    description: >-
+      Create a query tool whose Google knowledge base is backed by the uploaded
+      file so an assistant can retrieve from it.
+    operationId: ToolController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        type: query
+        knowledgeBases:
+        - name: $inputs.knowledgeBaseName
+          provider: google
+          description: $inputs.knowledgeBaseDescription
+          fileIds:
+          - $steps.uploadFile.outputs.fileId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      toolId: $response.body#/id
+  - stepId: createAssistant
+    description: >-
+      Create the assistant and attach the query tool by id so it can answer from
+      the uploaded knowledge base.
+    operationId: AssistantController_create
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        firstMessage: $inputs.firstMessage
+        model:
+          provider: openai
+          model: gpt-5.4
+          messages:
+          - role: system
+            content: $inputs.systemPrompt
+          toolIds:
+          - $steps.createQueryTool.outputs.toolId
+        voice:
+          provider: azure
+          voiceId: andrew
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      assistantId: $response.body#/id
+  outputs:
+    fileId: $steps.uploadFile.outputs.fileId
+    toolId: $steps.createQueryTool.outputs.toolId
+    assistantId: $steps.createAssistant.outputs.assistantId
