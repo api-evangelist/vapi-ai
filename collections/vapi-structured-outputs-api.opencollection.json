@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vapi Structured Outputs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Structured Outputs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Structured Outputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/structured-output",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "This will return structured outputs where the id matches the specified value."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "This will return structured outputs where the name matches the specified value."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "This is the page number to return. Defaults to 1."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "This is the sort order for pagination. Defaults to 'DESC'."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "This is the column to sort by. Defaults to 'createdAt'."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "This is the maximum number of items to return. Defaults to 100."
+              },
+              {
+                "name": "createdAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than the specified value."
+              },
+              {
+                "name": "createdAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than the specified value."
+              },
+              {
+                "name": "createdAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "createdAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than the specified value."
+              },
+              {
+                "name": "updatedAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than the specified value."
+              },
+              {
+                "name": "updatedAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than or equal to the specified value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Structured Outputs"
+        },
+        {
+          "info": {
+            "name": "Create Structured Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/structured-output",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Structured Output"
+        },
+        {
+          "info": {
+            "name": "Get Structured Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/structured-output/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Structured Output"
+        },
+        {
+          "info": {
+            "name": "Update Structured Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vapi.ai/structured-output/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              },
+              {
+                "name": "schemaOverride",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Structured Output"
+        },
+        {
+          "info": {
+            "name": "Delete Structured Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vapi.ai/structured-output/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Structured Output"
+        },
+        {
+          "info": {
+            "name": "Run Structured Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/structured-output/run",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Run Structured Output"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

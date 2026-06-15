@@ -1,0 +1,653 @@
+{
+  "info": {
+    "_postman_id": "def0d04e-90f6-4111-947e-4e629cb3a34d",
+    "name": "Vapi Tools API",
+    "description": "Vapi API \u2014 Tools resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:19:49.000Z",
+    "updatedAt": "2026-06-05T15:19:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-def0d04e-90f6-4111-947e-4e629cb3a34d"
+  },
+  "item": [
+    {
+      "name": "tool",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Tool",
+              "id": "15ea20ac-afe9-4bbd-af6e-d0c3ecdc85b9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tool/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c4a57ea2-f540-4677-986d-c665e68ebbb5",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b867a950-76ba-42d3-b2e7-397067287738",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tool/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tool",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ml\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"qu\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"mt\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/ZGWm2TEhT_HrjxZHGY4BK5dm9GWP36nd0Ent2H5\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"adipisicing_13\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"proident_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"email\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"officiaa\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date-time\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"boolean\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"labore_df\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"reprehenderit_bb2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"uuid\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/pgckSw14MS5/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/oiAadQ3XgHQ/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:19:50.000Z",
+                  "updatedAt": "2026-06-05T15:19:50.000Z",
+                  "uid": "35240-b867a950-76ba-42d3-b2e7-397067287738"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:50.000Z",
+              "updatedAt": "2026-06-05T15:19:50.000Z",
+              "uid": "35240-15ea20ac-afe9-4bbd-af6e-d0c3ecdc85b9"
+            },
+            {
+              "name": "Update Tool",
+              "id": "2d197b1f-a256-45a1-97b6-b4542b236f82",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"my\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ae\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"hz\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ki\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"method\": \"PUT\",\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/hv9ul6184U9DJsgVLW3oFMk/\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"ut691\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"ut_0a4\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"hostname\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"proident_9\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"eu5e\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"fixed\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"integer\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"aliquipc\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"et64f\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"ipv6\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/DUnJ/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/xd/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tool/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a910cbda-52d2-40b4-b30e-df2d3791213d",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "66c867d5-414d-4ae1-b07b-cd1e5ea8666d",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"my\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ae\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"hz\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ki\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"method\": \"PUT\",\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/hv9ul6184U9DJsgVLW3oFMk/\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"ut691\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"ut_0a4\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"hostname\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"proident_9\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"eu5e\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"fixed\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"integer\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"aliquipc\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"et64f\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"ipv6\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/DUnJ/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/xd/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tool/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tool",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ml\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"qu\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"mt\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/ZGWm2TEhT_HrjxZHGY4BK5dm9GWP36nd0Ent2H5\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"adipisicing_13\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"proident_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"email\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"officiaa\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date-time\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"boolean\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"labore_df\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"reprehenderit_bb2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"uuid\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/pgckSw14MS5/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/oiAadQ3XgHQ/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:19:50.000Z",
+                  "updatedAt": "2026-06-05T15:19:50.000Z",
+                  "uid": "35240-66c867d5-414d-4ae1-b07b-cd1e5ea8666d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:50.000Z",
+              "updatedAt": "2026-06-05T15:19:50.000Z",
+              "uid": "35240-2d197b1f-a256-45a1-97b6-b4542b236f82"
+            },
+            {
+              "name": "Delete Tool",
+              "id": "968a818e-5f24-4aec-8b39-7bbc019d3ada",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tool/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ed70f375-8870-4484-b6bd-cb22ff25f527",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "08c548c4-ffec-4d38-a6f5-98cfbc8be69b",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tool/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tool",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ml\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"qu\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"mt\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/ZGWm2TEhT_HrjxZHGY4BK5dm9GWP36nd0Ent2H5\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"adipisicing_13\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"proident_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"email\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"officiaa\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date-time\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"boolean\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"labore_df\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"reprehenderit_bb2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"uuid\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/pgckSw14MS5/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/oiAadQ3XgHQ/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:19:50.000Z",
+                  "updatedAt": "2026-06-05T15:19:50.000Z",
+                  "uid": "35240-08c548c4-ffec-4d38-a6f5-98cfbc8be69b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:50.000Z",
+              "updatedAt": "2026-06-05T15:19:50.000Z",
+              "uid": "35240-968a818e-5f24-4aec-8b39-7bbc019d3ada"
+            }
+          ],
+          "id": "13c996ab-1aab-4f23-9172-e685581f0174",
+          "createdAt": "2026-06-05T15:19:50.000Z",
+          "updatedAt": "2026-06-05T15:19:50.000Z",
+          "uid": "35240-13c996ab-1aab-4f23-9172-e685581f0174"
+        },
+        {
+          "name": "Create Tool",
+          "id": "2a54672b-d685-4057-97d2-57a4e569a47c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ku\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ee\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"zu\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"name\": \"/iSr5wlURm5Z_9ga6I3zH5ivvQlY-XT9Kh/\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"object\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"dolorb50\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"fugiat34\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"labore_f\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"esse_6\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"uuid\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"cillume4\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"esse_6\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"uuid\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"in_b\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"ipv6\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/kj1/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/aQRgKpk6jWI/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  },\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tool",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tool"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "108501de-a4f2-4fed-b2c4-437ed23e7ccc",
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ku\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ee\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"zu\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"name\": \"/iSr5wlURm5Z_9ga6I3zH5ivvQlY-XT9Kh/\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"object\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"dolorb50\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"fugiat34\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"labore_f\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"esse_6\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"uuid\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"cillume4\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"esse_6\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"uuid\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"in_b\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"ipv6\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/kj1/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/aQRgKpk6jWI/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  },\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tool",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tool"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"apiRequest\",\n  \"method\": \"DELETE\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"url\": \"<string>\",\n  \"messages\": [\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"an\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"ml\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"lte\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"neq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"request-start\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"qu\"\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"language\": \"mt\"\n        }\n      ],\n      \"blocking\": false,\n      \"content\": \"<string>\",\n      \"conditions\": [\n        {\n          \"operator\": \"eq\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"operator\": \"gt\",\n          \"param\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"timeoutSeconds\": \"<number>\",\n  \"credentialId\": \"<string>\",\n  \"encryptedPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parameters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"rejectionPlan\": {\n    \"conditions\": [\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"user\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      },\n      {\n        \"type\": \"regex\",\n        \"regex\": \"<string>\",\n        \"target\": {\n          \"role\": \"assistant\",\n          \"position\": \"<number>\"\n        },\n        \"negate\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"/ZGWm2TEhT_HrjxZHGY4BK5dm9GWP36nd0Ent2H5\",\n  \"description\": \"<string>\",\n  \"body\": {\n    \"type\": \"boolean\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"adipisicing_13\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"proident_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"email\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"headers\": {\n    \"type\": \"number\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"officiaa\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"date-time\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"backoffPlan\": {\n    \"type\": \"exponential\",\n    \"maxRetries\": \"<number>\",\n    \"baseDelaySeconds\": \"<number>\"\n  },\n  \"variableExtractionPlan\": {\n    \"schema\": {\n      \"type\": \"boolean\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"labore_df\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"reprehenderit_bb2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"uuid\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"aliases\": [\n      {\n        \"key\": \"/pgckSw14MS5/\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"/oiAadQ3XgHQ/\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:19:50.000Z",
+              "updatedAt": "2026-06-05T15:19:50.000Z",
+              "uid": "35240-108501de-a4f2-4fed-b2c4-437ed23e7ccc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:19:50.000Z",
+          "updatedAt": "2026-06-05T15:19:50.000Z",
+          "uid": "35240-2a54672b-d685-4057-97d2-57a4e569a47c"
+        },
+        {
+          "name": "List Tools",
+          "id": "c29f55c0-e37d-44f7-af95-3c70f3408434",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tool?limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tool"
+              ],
+              "query": [
+                {
+                  "description": "This is the maximum number of items to return. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "description": "This will return items where the createdAt is greater than the specified value.",
+                  "key": "createdAtGt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is less than the specified value.",
+                  "key": "createdAtLt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                  "key": "createdAtGe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                  "key": "createdAtLe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is greater than the specified value.",
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is less than the specified value.",
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f21ab62-c2f6-4fbf-b529-b097437ac3b8",
+              "name": "response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tool?limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tool"
+                  ],
+                  "query": [
+                    {
+                      "description": "This is the maximum number of items to return. Defaults to 100.",
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than the specified value.",
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than the specified value.",
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than the specified value.",
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than the specified value.",
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"type\": \"apiRequest\",\n    \"method\": \"PATCH\",\n    \"id\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"url\": \"<string>\",\n    \"messages\": [\n      {\n        \"type\": \"request-start\",\n        \"contents\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"ha\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"it\"\n          }\n        ],\n        \"blocking\": false,\n        \"content\": \"<string>\",\n        \"conditions\": [\n          {\n            \"operator\": \"gte\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"operator\": \"eq\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"request-start\",\n        \"contents\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"pa\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"fj\"\n          }\n        ],\n        \"blocking\": false,\n        \"content\": \"<string>\",\n        \"conditions\": [\n          {\n            \"operator\": \"lt\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"operator\": \"lte\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"parameters\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"rejectionPlan\": {\n      \"conditions\": [\n        {\n          \"type\": \"regex\",\n          \"regex\": \"<string>\",\n          \"target\": {\n            \"role\": \"assistant\",\n            \"position\": \"<number>\"\n          },\n          \"negate\": \"<boolean>\"\n        },\n        {\n          \"type\": \"regex\",\n          \"regex\": \"<string>\",\n          \"target\": {\n            \"role\": \"user\",\n            \"position\": \"<number>\"\n          },\n          \"negate\": \"<boolean>\"\n        }\n      ]\n    },\n    \"name\": \"/aQVC4-ZY8L/\",\n    \"description\": \"<string>\",\n    \"body\": {\n      \"type\": \"object\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"dolorfa5\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"date\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"headers\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"sunta6\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"eu6\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"email\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"backoffPlan\": {\n      \"type\": \"fixed\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    },\n    \"variableExtractionPlan\": {\n      \"schema\": {\n        \"type\": \"integer\",\n        \"items\": {\n          \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"properties\": {\n          \"ut6\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          },\n          \"mollit_0a8\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"pattern\": \"<string>\",\n        \"format\": \"ipv6\",\n        \"required\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enum\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"title\": \"<string>\"\n      },\n      \"aliases\": [\n        {\n          \"key\": \"/pCy1y9S9l6L/\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"/U_NF1kogAxK/\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  },\n  {\n    \"type\": \"apiRequest\",\n    \"method\": \"GET\",\n    \"id\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"url\": \"<string>\",\n    \"messages\": [\n      {\n        \"type\": \"request-start\",\n        \"contents\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"ki\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"so\"\n          }\n        ],\n        \"blocking\": false,\n        \"content\": \"<string>\",\n        \"conditions\": [\n          {\n            \"operator\": \"eq\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"operator\": \"eq\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"request-start\",\n        \"contents\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"pt\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"<string>\",\n            \"language\": \"na\"\n          }\n        ],\n        \"blocking\": false,\n        \"content\": \"<string>\",\n        \"conditions\": [\n          {\n            \"operator\": \"gte\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"operator\": \"gte\",\n            \"param\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"parameters\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"rejectionPlan\": {\n      \"conditions\": [\n        {\n          \"type\": \"regex\",\n          \"regex\": \"<string>\",\n          \"target\": {\n            \"role\": \"user\",\n            \"position\": \"<number>\"\n          },\n          \"negate\": \"<boolean>\"\n        },\n        {\n          \"type\": \"regex\",\n          \"regex\": \"<string>\",\n          \"target\": {\n            \"role\": \"assistant\",\n            \"position\": \"<number>\"\n          },\n          \"negate\": \"<boolean>\"\n        }\n      ]\n    },\n    \"name\": \"/RYh3G2e29vGCTwKRT4/\",\n    \"description\": \"<string>\",\n    \"body\": {\n      \"type\": \"boolean\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"Lorem_cc\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"veniam14\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"email\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"headers\": {\n      \"type\": \"object\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"consectetura62\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"date\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"backoffPlan\": {\n      \"type\": \"exponential\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    },\n    \"variableExtractionPlan\": {\n      \"schema\": {\n        \"type\": \"number\",\n        \"items\": {\n          \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"properties\": {\n          \"labore4\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          },\n          \"anim_0ee\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          },\n          \"Lorem_d0\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"pattern\": \"<string>\",\n        \"format\": \"date\",\n        \"required\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enum\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"title\": \"<string>\"\n      },\n      \"aliases\": [\n        {\n          \"key\": \"/Qb3XBan1/\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"/G/\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  }\n]",
+              "createdAt": "2026-06-05T15:19:50.000Z",
+              "updatedAt": "2026-06-05T15:19:50.000Z",
+              "uid": "35240-2f21ab62-c2f6-4fbf-b529-b097437ac3b8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:19:50.000Z",
+          "updatedAt": "2026-06-05T15:19:50.000Z",
+          "uid": "35240-c29f55c0-e37d-44f7-af95-3c70f3408434"
+        }
+      ],
+      "id": "11de02de-4f28-4b60-9cc2-66ec46013a74",
+      "createdAt": "2026-06-05T15:19:50.000Z",
+      "updatedAt": "2026-06-05T15:19:50.000Z",
+      "uid": "35240-11de02de-4f28-4b60-9cc2-66ec46013a74"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.vapi.ai"
+    }
+  ]
+}

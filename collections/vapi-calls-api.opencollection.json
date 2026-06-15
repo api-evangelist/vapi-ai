@@ -1,0 +1,362 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vapi Calls API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the call."
+              },
+              {
+                "name": "assistantId",
+                "value": "",
+                "type": "query",
+                "description": "This will return calls with the specified assistantId."
+              },
+              {
+                "name": "phoneNumberId",
+                "value": "",
+                "type": "query",
+                "description": "This is the phone number that will be used for the call. To use a transient number, use `phoneNumber` instead.\n\nOnly relevant for `outboundPhoneCall` and `inboundPhoneCall` type."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "This is the maximum number of items to return. Defaults to 100."
+              },
+              {
+                "name": "createdAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than the specified value."
+              },
+              {
+                "name": "createdAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than the specified value."
+              },
+              {
+                "name": "createdAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "createdAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than the specified value."
+              },
+              {
+                "name": "updatedAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than the specified value."
+              },
+              {
+                "name": "updatedAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than or equal to the specified value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Calls"
+        },
+        {
+          "info": {
+            "name": "Create Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Call"
+        },
+        {
+          "info": {
+            "name": "Get Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Call"
+        },
+        {
+          "info": {
+            "name": "Update Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vapi.ai/call/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Call"
+        },
+        {
+          "info": {
+            "name": "Delete Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vapi.ai/call/:id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Call"
+        },
+        {
+          "info": {
+            "name": "Download Call Mono Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/mono-recording",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Mono Recording"
+        },
+        {
+          "info": {
+            "name": "Download Call Stereo Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/stereo-recording",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Stereo Recording"
+        },
+        {
+          "info": {
+            "name": "Download Call Video Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/video-recording",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Video Recording"
+        },
+        {
+          "info": {
+            "name": "Download Call Customer Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/customer-recording",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Customer Recording"
+        },
+        {
+          "info": {
+            "name": "Download Call Assistant Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/assistant-recording",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Assistant Recording"
+        },
+        {
+          "info": {
+            "name": "Download Call Packet Capture (pcap)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/pcap",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Packet Capture (pcap)"
+        },
+        {
+          "info": {
+            "name": "Download Call Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/call/:id/call-logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Call ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download Call Logs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

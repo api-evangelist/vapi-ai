@@ -1,0 +1,1093 @@
+{
+  "info": {
+    "_postman_id": "2a71c374-2d9c-4fe5-8471-1a830afa6d93",
+    "name": "Vapi Insight API",
+    "description": "Vapi API \u2014 Insight resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:20:28.000Z",
+    "updatedAt": "2026-06-05T15:20:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a71c374-2d9c-4fe5-8471-1a830afa6d93"
+  },
+  "item": [
+    {
+      "name": "reporting",
+      "item": [
+        {
+          "name": "insight",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "run",
+                  "item": [
+                    {
+                      "name": "Run Insight",
+                      "id": "f214007f-fb50-4f36-9485-e9e979fa806f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"formatPlan\": {\n    \"format\": \"raw\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"day\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/:id/run",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            ":id",
+                            "run"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8097d255-67c1-408f-b707-2b543f83e6db",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique identifier for the resource."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d75e8e87-06ce-4d6d-8489-5f3cb4ceee88",
+                          "name": "response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"formatPlan\": {\n    \"format\": \"raw\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"day\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/reporting/insight/:id/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "reporting",
+                                "insight",
+                                ":id",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"insightId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:20:28.000Z",
+                          "updatedAt": "2026-06-05T15:20:28.000Z",
+                          "uid": "35240-d75e8e87-06ce-4d6d-8489-5f3cb4ceee88"
+                        },
+                        {
+                          "id": "f3a761d1-b20c-4e13-98f0-d8948433a22d",
+                          "name": "response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"formatPlan\": {\n    \"format\": \"raw\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"day\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/reporting/insight/:id/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "reporting",
+                                "insight",
+                                ":id",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"insightId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:20:28.000Z",
+                          "updatedAt": "2026-06-05T15:20:28.000Z",
+                          "uid": "35240-f3a761d1-b20c-4e13-98f0-d8948433a22d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-f214007f-fb50-4f36-9485-e9e979fa806f"
+                    }
+                  ],
+                  "id": "768ab8c2-87a3-4644-b22c-3080b8c23faf",
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-768ab8c2-87a3-4644-b22c-3080b8c23faf"
+                },
+                {
+                  "name": "Update Insight",
+                  "id": "cac3a68e-60e2-46d6-9ead-0d0477db61cf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"bar\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"phoneNumberId\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"status\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"type\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f89401ea-5c94-45fe-924c-64a722263cf1",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier for the resource."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "351f9d99-fdd5-4b5c-8963-d3bce704fe15",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"bar\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"phoneNumberId\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"status\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"type\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"workflowId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"status\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"hour\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-351f9d99-fdd5-4b5c-8963-d3bce704fe15"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-cac3a68e-60e2-46d6-9ead-0d0477db61cf"
+                },
+                {
+                  "name": "Get Insight",
+                  "id": "fe0b8ae9-a4b6-4c3e-b6bd-86cdf7c44c11",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5b7f1fec-d70a-4749-96d8-82cb6ded7cea",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier for the resource."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "e83e75b5-64f2-4d41-b302-81d7dafa5254",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"workflowId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"status\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"hour\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-e83e75b5-64f2-4d41-b302-81d7dafa5254"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-fe0b8ae9-a4b6-4c3e-b6bd-86cdf7c44c11"
+                },
+                {
+                  "name": "Delete Insight",
+                  "id": "ea5c0f77-23a1-4d65-a383-d1c0ed4fe90e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3cb651d6-eb4c-4a82-8df4-a2982b7b92f9",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier for the resource."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "45741439-5a49-44d1-a07f-2adb5f3921fc",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"workflowId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"status\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"hour\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-45741439-5a49-44d1-a07f-2adb5f3921fc"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-ea5c0f77-23a1-4d65-a383-d1c0ed4fe90e"
+                }
+              ],
+              "id": "cc6cb94c-404b-419e-8b38-c23b34e93d71",
+              "createdAt": "2026-06-05T15:20:28.000Z",
+              "updatedAt": "2026-06-05T15:20:28.000Z",
+              "uid": "35240-cc6cb94c-404b-419e-8b38-c23b34e93d71"
+            },
+            {
+              "name": "preview",
+              "item": [
+                {
+                  "name": "Preview Insight",
+                  "id": "64b4bfd6-5867-4937-87f4-1ca93314259c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"customerNumber\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"endedReason\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"phoneNumberId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"workflowId\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight/preview",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight",
+                        "preview"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "49e6e16f-feba-4ecf-9b02-d6bd07f3120e",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"customerNumber\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"endedReason\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"phoneNumberId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"workflowId\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            "preview"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"insightId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-49e6e16f-feba-4ecf-9b02-d6bd07f3120e"
+                    },
+                    {
+                      "id": "8c2a31b4-6438-42c0-82dd-d5a284b199a8",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"customerNumber\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"endedReason\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"phoneNumberId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"workflowId\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reporting/insight/preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reporting",
+                            "insight",
+                            "preview"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"insightId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:20:28.000Z",
+                      "updatedAt": "2026-06-05T15:20:28.000Z",
+                      "uid": "35240-8c2a31b4-6438-42c0-82dd-d5a284b199a8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-64b4bfd6-5867-4937-87f4-1ca93314259c"
+                }
+              ],
+              "id": "d6f4ac57-c94d-485e-aff2-c5a5ef493392",
+              "createdAt": "2026-06-05T15:20:28.000Z",
+              "updatedAt": "2026-06-05T15:20:28.000Z",
+              "uid": "35240-d6f4ac57-c94d-485e-aff2-c5a5ef493392"
+            },
+            {
+              "name": "Create Insight",
+              "id": "1b41d652-fe30-4515-8b22-18852d724267",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"customerNumber\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"endedReason\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"phoneNumberId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"workflowId\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/insight",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "insight"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "680e7f7f-1814-4328-bfda-cd575ffdbbe1",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"customerNumber\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"endedReason\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"phoneNumberId\",\n          \"operator\": \"contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"squadId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"year\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"workflowId\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"=\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"assistantId\",\n          \"operator\": \"!=\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"call\",\n      \"column\": \"artifact.structuredOutputs[OutputID]\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"column\": \"workflowId\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"column\": \"status\",\n          \"operator\": \"not_contains\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"hour\",\n    \"start\": {},\n    \"end\": {},\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-680e7f7f-1814-4328-bfda-cd575ffdbbe1"
+                }
+              ],
+              "createdAt": "2026-06-05T15:20:28.000Z",
+              "updatedAt": "2026-06-05T15:20:28.000Z",
+              "uid": "35240-1b41d652-fe30-4515-8b22-18852d724267"
+            },
+            {
+              "name": "Get Insights",
+              "id": "b4b864a6-a333-4a24-9f18-116674c63af5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/insight?id=<string>&page=<number>&sortOrder=DESC&sortBy=createdAt&limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "insight"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is the page number to return. Defaults to 1.",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is the sort order for pagination. Defaults to 'DESC'.",
+                      "key": "sortOrder",
+                      "value": "DESC"
+                    },
+                    {
+                      "description": "This is the column to sort by. Defaults to 'createdAt'.",
+                      "key": "sortBy",
+                      "value": "createdAt"
+                    },
+                    {
+                      "description": "This is the maximum number of items to return. Defaults to 100.",
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than the specified value.",
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than the specified value.",
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than the specified value.",
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than the specified value.",
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "72777c91-812b-47b3-a82c-d417db3e0df9",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/insight?id=<string>&page=<number>&sortOrder=DESC&sortBy=createdAt&limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "insight"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "This is the page number to return. Defaults to 1.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "This is the sort order for pagination. Defaults to 'DESC'.",
+                          "key": "sortOrder",
+                          "value": "DESC"
+                        },
+                        {
+                          "description": "This is the column to sort by. Defaults to 'createdAt'.",
+                          "key": "sortBy",
+                          "value": "createdAt"
+                        },
+                        {
+                          "description": "This is the maximum number of items to return. Defaults to 100.",
+                          "key": "limit",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is greater than the specified value.",
+                          "key": "createdAtGt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is less than the specified value.",
+                          "key": "createdAtLt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                          "key": "createdAtGe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                          "key": "createdAtLe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is greater than the specified value.",
+                          "key": "updatedAtGt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is less than the specified value.",
+                          "key": "updatedAtLt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                          "key": "updatedAtGe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                          "key": "updatedAtLe",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"results\": [\n    {\n      \"type\": \"line\",\n      \"id\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"systemKey\": \"<string>\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"systemKey\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": \"<number>\",\n    \"totalItems\": \"<number>\",\n    \"currentPage\": \"<number>\",\n    \"totalPages\": \"<number>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": \"<boolean>\",\n    \"createdAtLe\": \"<dateTime>\",\n    \"createdAtGe\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:20:28.000Z",
+                  "updatedAt": "2026-06-05T15:20:28.000Z",
+                  "uid": "35240-72777c91-812b-47b3-a82c-d417db3e0df9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:20:28.000Z",
+              "updatedAt": "2026-06-05T15:20:28.000Z",
+              "uid": "35240-b4b864a6-a333-4a24-9f18-116674c63af5"
+            }
+          ],
+          "id": "4a6c31d9-ccad-4428-aee2-43d8a0612b2b",
+          "createdAt": "2026-06-05T15:20:28.000Z",
+          "updatedAt": "2026-06-05T15:20:28.000Z",
+          "uid": "35240-4a6c31d9-ccad-4428-aee2-43d8a0612b2b"
+        }
+      ],
+      "id": "a572b9e8-faf0-4cf5-a5a8-091814df40ad",
+      "createdAt": "2026-06-05T15:20:28.000Z",
+      "updatedAt": "2026-06-05T15:20:28.000Z",
+      "uid": "35240-a572b9e8-faf0-4cf5-a5a8-091814df40ad"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.vapi.ai"
+    }
+  ]
+}

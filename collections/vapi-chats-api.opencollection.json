@@ -1,0 +1,231 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vapi Chats API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Chats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/chat",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the chat to filter by."
+              },
+              {
+                "name": "assistantId",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the assistant that will be used for the chat."
+              },
+              {
+                "name": "assistantIdAny",
+                "value": "",
+                "type": "query",
+                "description": "Filter by multiple assistant IDs. Provide as comma-separated values."
+              },
+              {
+                "name": "squadId",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the squad that will be used for the chat."
+              },
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the session that will be used for the chat."
+              },
+              {
+                "name": "previousChatId",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the previous chat to filter by."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "This is the page number to return. Defaults to 1."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "This is the sort order for pagination. Defaults to 'DESC'."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "This is the column to sort by. Defaults to 'createdAt'."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "This is the maximum number of items to return. Defaults to 100."
+              },
+              {
+                "name": "createdAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than the specified value."
+              },
+              {
+                "name": "createdAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than the specified value."
+              },
+              {
+                "name": "createdAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "createdAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than the specified value."
+              },
+              {
+                "name": "updatedAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than the specified value."
+              },
+              {
+                "name": "updatedAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than or equal to the specified value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Chats"
+        },
+        {
+          "info": {
+            "name": "Create Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/chat",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new chat with optional SMS delivery via transport field. Requires at least one of: assistantId/assistant, sessionId, or previousChatId. Note: sessionId and previousChatId are mutually exclusive. Transport field enables SMS delivery with two modes: (1) New conversation - provide transport.phoneNumberId and transport.customer to create a new session, (2) Existing conversation - provide sessionId to use existing session data. Cannot specify both sessionId and transport fields together. Th"
+        },
+        {
+          "info": {
+            "name": "Get Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/chat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Chat"
+        },
+        {
+          "info": {
+            "name": "Delete Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vapi.ai/chat/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Chat"
+        },
+        {
+          "info": {
+            "name": "Create Chat (OpenAI Compatible)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/chat/responses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Chat (OpenAI Compatible)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

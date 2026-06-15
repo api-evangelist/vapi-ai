@@ -1,0 +1,196 @@
+{
+  "info": {
+    "_postman_id": "b5b5f209-7067-4a1b-b8fb-2b1c907f9438",
+    "name": "Vapi Analytics API",
+    "description": "Vapi API \u2014 Analytics resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:20:26.000Z",
+    "updatedAt": "2026-06-05T15:20:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5b5f209-7067-4a1b-b8fb-2b1c907f9438"
+  },
+  "item": [
+    {
+      "name": "analytics",
+      "item": [
+        {
+          "name": "Create Analytics Queries",
+          "id": "cb3ca47f-e204-4ab4-8c79-e3b1b108cd8c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"subscription\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"avg\",\n          \"column\": \"costBreakdown.tts\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"sum\",\n          \"column\": \"costBreakdown.ttsCharacters\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"type\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"year\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"call\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"sum\",\n          \"column\": \"concurrency\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"min\",\n          \"column\": \"costBreakdown.vapi\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"analysis.successEvaluation\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"minute\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analytics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "analytics"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9c33dd7f-75a2-40bd-8f1e-dd4b8e539457",
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"subscription\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"avg\",\n          \"column\": \"costBreakdown.tts\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"sum\",\n          \"column\": \"costBreakdown.ttsCharacters\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"type\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"year\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"call\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"sum\",\n          \"column\": \"concurrency\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"min\",\n          \"column\": \"costBreakdown.vapi\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"analysis.successEvaluation\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"minute\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"timeRange\": {\n      \"step\": \"millennium\",\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"timezone\": \"<string>\"\n    },\n    \"result\": []\n  },\n  {\n    \"name\": \"<string>\",\n    \"timeRange\": {\n      \"step\": \"decade\",\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"timezone\": \"<string>\"\n    },\n    \"result\": []\n  }\n]",
+              "createdAt": "2026-06-05T15:20:26.000Z",
+              "updatedAt": "2026-06-05T15:20:26.000Z",
+              "uid": "35240-9c33dd7f-75a2-40bd-8f1e-dd4b8e539457"
+            },
+            {
+              "id": "704313ee-a8e6-48e9-9225-4ec7f2530153",
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"subscription\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"avg\",\n          \"column\": \"costBreakdown.tts\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"sum\",\n          \"column\": \"costBreakdown.ttsCharacters\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"type\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"year\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"call\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"sum\",\n          \"column\": \"concurrency\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"min\",\n          \"column\": \"costBreakdown.vapi\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"analysis.successEvaluation\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"minute\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:20:26.000Z",
+              "updatedAt": "2026-06-05T15:20:26.000Z",
+              "uid": "35240-704313ee-a8e6-48e9-9225-4ec7f2530153"
+            }
+          ],
+          "createdAt": "2026-06-05T15:20:26.000Z",
+          "updatedAt": "2026-06-05T15:20:26.000Z",
+          "uid": "35240-cb3ca47f-e204-4ab4-8c79-e3b1b108cd8c"
+        }
+      ],
+      "id": "e4a37c47-3810-40a5-a87d-96a28fb0be91",
+      "createdAt": "2026-06-05T15:20:26.000Z",
+      "updatedAt": "2026-06-05T15:20:26.000Z",
+      "uid": "35240-e4a37c47-3810-40a5-a87d-96a28fb0be91"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.vapi.ai"
+    }
+  ]
+}

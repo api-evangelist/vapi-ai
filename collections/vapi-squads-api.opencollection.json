@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vapi Squads API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Squads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Squads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/squad",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "This is the maximum number of items to return. Defaults to 100."
+              },
+              {
+                "name": "createdAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than the specified value."
+              },
+              {
+                "name": "createdAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than the specified value."
+              },
+              {
+                "name": "createdAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "createdAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than the specified value."
+              },
+              {
+                "name": "updatedAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than the specified value."
+              },
+              {
+                "name": "updatedAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than or equal to the specified value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Squads"
+        },
+        {
+          "info": {
+            "name": "Create Squad",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/squad",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Squad"
+        },
+        {
+          "info": {
+            "name": "Get Squad",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/squad/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Squad"
+        },
+        {
+          "info": {
+            "name": "Update Squad",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vapi.ai/squad/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Squad"
+        },
+        {
+          "info": {
+            "name": "Delete Squad",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vapi.ai/squad/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Squad"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

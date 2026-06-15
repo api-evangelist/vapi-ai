@@ -1,0 +1,1033 @@
+{
+  "item": [
+    {
+      "id": "7454caa3-7811-470e-b8e3-a21a537f1e3a",
+      "name": "Insight",
+      "description": {
+        "content": "Insight endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a222ed44-fa4b-4c81-b1ca-e881c2c09f28",
+          "name": "Create Insight",
+          "request": {
+            "name": "Create Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fcd3c10-6faf-45ae-beff-47444763f8fd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2024-04-04T18:39:25.674Z\",\n  \"updatedAt\": \"1982-02-12T20:38:20.315Z\",\n  \"name\": \"string\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4239b11-eb7e-42aa-9285-153318f8667a",
+          "name": "Get Insights",
+          "request": {
+            "name": "Get Insights",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "This is the page number to return. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "This is the sort order for pagination. Defaults to 'DESC'."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "This is the column to sort by. Defaults to 'createdAt'."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d15db1d-2d58-4c4c-b5ec-c2fd1a6d5db8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"type\": \"bar\",\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1972-08-02T17:48:50.468Z\",\n      \"updatedAt\": \"2002-01-30T02:30:32.441Z\",\n      \"name\": \"string\",\n      \"systemKey\": \"string\"\n    },\n    {\n      \"type\": \"bar\",\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1949-09-25T23:22:04.315Z\",\n      \"updatedAt\": \"2021-11-09T01:12:35.079Z\",\n      \"name\": \"string\",\n      \"systemKey\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": 8142.246701016948,\n    \"totalItems\": 582.4652205241199,\n    \"currentPage\": 8839.74159201382,\n    \"totalPages\": 492.19355263785405,\n    \"hasNextPage\": true,\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": true,\n    \"createdAtLe\": \"1968-03-24T14:47:46.692Z\",\n    \"createdAtGe\": \"1962-08-16T10:45:51.312Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30b6e343-66c6-4346-b542-b201a28e3821",
+          "name": "Update Insight",
+          "request": {
+            "name": "Update Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14b1179a-4573-47d9-b456-713980a7cac2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2024-02-12T17:47:50.506Z\",\n  \"updatedAt\": \"1953-07-01T16:43:57.398Z\",\n  \"name\": \"string\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e5b2501-9506-4c40-8bd8-755f8cc0fa78",
+          "name": "Get Insight",
+          "request": {
+            "name": "Get Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d93e06c-1a38-4964-a2a2-47a7a2aab931",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2024-02-12T17:47:50.506Z\",\n  \"updatedAt\": \"1953-07-01T16:43:57.398Z\",\n  \"name\": \"string\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57d270eb-c31a-449c-a18d-0246016fe903",
+          "name": "Delete Insight",
+          "request": {
+            "name": "Delete Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21e567ee-2b78-4390-97c3-3fbdf5fdbc64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bar\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2024-02-12T17:47:50.506Z\",\n  \"updatedAt\": \"1953-07-01T16:43:57.398Z\",\n  \"name\": \"string\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"type\",\n  \"systemKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3970ffa6-c8e9-4f53-957e-0b541e022fcb",
+          "name": "Run Insight",
+          "request": {
+            "name": "Run Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight",
+                ":id",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formatPlan\": {\n    \"format\": \"<string>\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74f8a7bc-46c2-4c99-a61d-add7d156a4d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formatPlan\": {\n    \"format\": \"raw\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"insightId\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1987-08-18T08:35:45.292Z\",\n  \"updatedAt\": \"1976-07-10T00:08:03.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56fbf76b-f970-4732-a584-33854427a503",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formatPlan\": {\n    \"format\": \"raw\"\n  },\n  \"timeRangeOverride\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"assistantId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"insightId\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1987-08-18T08:35:45.292Z\",\n  \"updatedAt\": \"1976-07-10T00:08:03.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5b77f92-bd7e-4eb3-bb27-5f556d049828",
+          "name": "Preview Insight",
+          "request": {
+            "name": "Preview Insight",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "insight",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"table\": \"<string>\",\n      \"column\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b08967ae-9e6c-4900-bb62-c0b0bfb23b91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"insightId\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1987-08-18T08:35:45.292Z\",\n  \"updatedAt\": \"1976-07-10T00:08:03.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9ff0fdc-f016-4885-81d9-ed6ce062ca22",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "insight",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"queries\": [\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    },\n    {\n      \"type\": \"vapiql-json\",\n      \"table\": \"<string>\",\n      \"column\": \"id\",\n      \"operation\": \"count\",\n      \"filters\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"Total Calls\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"formulas\": [\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    },\n    {\n      \"formula\": \"<string>\",\n      \"name\": \"Booking Rate\"\n    }\n  ],\n  \"metadata\": {\n    \"xAxisLabel\": \"<string>\",\n    \"yAxisLabel\": \"<string>\",\n    \"yAxisMin\": \"<number>\",\n    \"yAxisMax\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"timeRange\": {\n    \"step\": \"<string>\",\n    \"start\": \"<object>\",\n    \"end\": \"<object>\",\n    \"timezone\": \"<string>\"\n  },\n  \"groupBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"insightId\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1987-08-18T08:35:45.292Z\",\n  \"updatedAt\": \"1976-07-10T00:08:03.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2eaa6427-c47c-4b93-a646-60c8380c81d6",
+    "name": "Vapi Insight API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Insight resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}

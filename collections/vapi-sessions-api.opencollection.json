@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vapi Sessions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/session",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "This is the unique identifier for the session to filter by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "This is the name of the session to filter by."
+              },
+              {
+                "name": "assistantId",
+                "value": "",
+                "type": "query",
+                "description": "This is the ID of the assistant to filter sessions by."
+              },
+              {
+                "name": "assistantIdAny",
+                "value": "",
+                "type": "query",
+                "description": "Filter by multiple assistant IDs. Provide as comma-separated values."
+              },
+              {
+                "name": "squadId",
+                "value": "",
+                "type": "query",
+                "description": "This is the ID of the squad to filter sessions by."
+              },
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "query",
+                "description": "This is the ID of the workflow to filter sessions by."
+              },
+              {
+                "name": "numberE164CheckEnabled",
+                "value": "",
+                "type": "query",
+                "description": "This is the flag to toggle the E164 check for the `number` field. This is an advanced property which should be used if you know your use case requires it.\n\nUse cases:\n- `false`: To allow non-E164 numbers like `+001234567890`, `1234`, or `abc`. This is useful for dialing out to non-E164 numbers on your SIP trunks.\n- `true` (default): To allow only E164 numbers like `+14155551234`. This is standard for PSTN calls.\n\nIf `false`, the `number` is still required to only contain alphanumeric characters (regex: `/^\\+?[a-zA-Z0-9]+$/`).\n\n@default true (E164 check is enabled)"
+              },
+              {
+                "name": "extension",
+                "value": "",
+                "type": "query",
+                "description": "This is the extension that will be dialed after the call is answered."
+              },
+              {
+                "name": "assistantOverrides",
+                "value": "",
+                "type": "query",
+                "description": "These are the overrides for the assistant's settings and template variables specific to this customer.\nThis allows customization of the assistant's behavior for individual customers in batch calls."
+              },
+              {
+                "name": "number",
+                "value": "",
+                "type": "query",
+                "description": "This is the number of the customer."
+              },
+              {
+                "name": "sipUri",
+                "value": "",
+                "type": "query",
+                "description": "This is the SIP URI of the customer."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "This is the email of the customer."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "This is the external ID of the customer."
+              },
+              {
+                "name": "customerNumberAny",
+                "value": "",
+                "type": "query",
+                "description": "Filter by any of the specified customer phone numbers (comma-separated)."
+              },
+              {
+                "name": "phoneNumberId",
+                "value": "",
+                "type": "query",
+                "description": "This will return sessions with the specified phoneNumberId."
+              },
+              {
+                "name": "phoneNumberIdAny",
+                "value": "",
+                "type": "query",
+                "description": "This will return sessions with any of the specified phoneNumberIds."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "This is the page number to return. Defaults to 1."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "This is the sort order for pagination. Defaults to 'DESC'."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "This is the column to sort by. Defaults to 'createdAt'."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "This is the maximum number of items to return. Defaults to 100."
+              },
+              {
+                "name": "createdAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than the specified value."
+              },
+              {
+                "name": "createdAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than the specified value."
+              },
+              {
+                "name": "createdAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "createdAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the createdAt is less than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtGt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than the specified value."
+              },
+              {
+                "name": "updatedAtLt",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than the specified value."
+              },
+              {
+                "name": "updatedAtGe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+              },
+              {
+                "name": "updatedAtLe",
+                "value": "",
+                "type": "query",
+                "description": "This will return items where the updatedAt is less than or equal to the specified value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Sessions"
+        },
+        {
+          "info": {
+            "name": "Create Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.vapi.ai/session",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Session"
+        },
+        {
+          "info": {
+            "name": "Get Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.vapi.ai/session/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Session"
+        },
+        {
+          "info": {
+            "name": "Update Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.vapi.ai/session/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Session"
+        },
+        {
+          "info": {
+            "name": "Delete Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.vapi.ai/session/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

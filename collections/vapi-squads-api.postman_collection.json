@@ -1,0 +1,639 @@
+{
+  "item": [
+    {
+      "id": "bb15d04b-6315-4b68-bb5d-ac3a7f7fcb5a",
+      "name": "Squads",
+      "description": {
+        "content": "Squads endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36294568-2051-4a15-81ce-7cdba2c094f2",
+          "name": "Create Squad",
+          "request": {
+            "name": "Create Squad",
+            "description": {},
+            "url": {
+              "path": [
+                "squad"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"<string>\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"<string>\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"speech-update\",\n    \"serverMessages\": \"phone-call-control\",\n    \"maxDurationSeconds\": \"<number>\",\n    \"backgroundSound\": \"<string>\",\n    \"modelOutputInMessagesEnabled\": \"<boolean>\",\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3e72a57-dab2-4d6f-9136-735541cf39e7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "squad"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"model-output\",\n    \"serverMessages\": \"language-changed\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2000-01-21T19:34:12.209Z\",\n  \"updatedAt\": \"2008-06-04T01:24:57.355Z\",\n  \"name\": \"string\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"hang\",\n    \"serverMessages\": \"voice-input\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "967ef765-ece0-4090-bc5f-846cea9632b9",
+          "name": "List Squads",
+          "request": {
+            "name": "List Squads",
+            "description": {},
+            "url": {
+              "path": [
+                "squad"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56cc6ab0-10e7-4543-8a19-12e3fe078671",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "squad"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"members\": [\n      {\n        \"assistantDestinations\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistant\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantOverrides\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"assistantDestinations\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistant\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantOverrides\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"id\": \"string\",\n    \"orgId\": \"string\",\n    \"createdAt\": \"1980-03-24T12:28:23.942Z\",\n    \"updatedAt\": \"1999-11-16T03:25:41.374Z\",\n    \"name\": \"string\",\n    \"membersOverrides\": {\n      \"transcriber\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"model\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voice\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessageInterruptionsEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessageMode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voicemailDetection\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clientMessages\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"serverMessages\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxDurationSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"backgroundSound\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"modelOutputInMessagesEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"transportConfigurations\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"observabilityPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"credentials\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"hooks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"tools:append\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"variableValues\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voicemailMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endCallMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endCallPhrases\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliancePlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"metadata\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"backgroundSpeechDenoisingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analysisPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startSpeakingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stopSpeakingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"monitorPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"credentialIds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"server\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"keypadInputPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  {\n    \"members\": [\n      {\n        \"assistantDestinations\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistant\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantOverrides\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"assistantDestinations\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistant\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"assistantOverrides\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"id\": \"string\",\n    \"orgId\": \"string\",\n    \"createdAt\": \"1999-05-25T09:43:25.167Z\",\n    \"updatedAt\": \"1948-01-13T04:37:11.242Z\",\n    \"name\": \"string\",\n    \"membersOverrides\": {\n      \"transcriber\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"model\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voice\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessageInterruptionsEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"firstMessageMode\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voicemailDetection\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clientMessages\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"serverMessages\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxDurationSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"backgroundSound\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"modelOutputInMessagesEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"transportConfigurations\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"observabilityPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"credentials\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"hooks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"tools:append\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"variableValues\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"voicemailMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endCallMessage\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endCallPhrases\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliancePlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"metadata\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"backgroundSpeechDenoisingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analysisPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"startSpeakingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stopSpeakingPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"monitorPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"credentialIds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"server\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"keypadInputPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c25b046d-69d8-4c7d-9745-144039838f77",
+          "name": "Get Squad",
+          "request": {
+            "name": "Get Squad",
+            "description": {},
+            "url": {
+              "path": [
+                "squad",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8f30c49-714d-4b3f-95dc-adef450797c1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "squad",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1958-03-24T07:37:37.804Z\",\n  \"updatedAt\": \"1948-07-26T14:34:38.787Z\",\n  \"name\": \"string\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"function-call-result\",\n    \"serverMessages\": \"assistant.speechStarted\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02c9840b-0c3c-471a-9371-ad43014417da",
+          "name": "Update Squad",
+          "request": {
+            "name": "Update Squad",
+            "description": {},
+            "url": {
+              "path": [
+                "squad",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"<string>\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"<string>\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"metadata\",\n    \"serverMessages\": \"end-of-call-report\",\n    \"maxDurationSeconds\": \"<number>\",\n    \"backgroundSound\": \"<string>\",\n    \"modelOutputInMessagesEnabled\": \"<boolean>\",\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2af86e5-01cb-40f3-b71c-93958de8bfd5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "squad",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"model-output\",\n    \"serverMessages\": \"language-changed\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1958-03-24T07:37:37.804Z\",\n  \"updatedAt\": \"1948-07-26T14:34:38.787Z\",\n  \"name\": \"string\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"function-call-result\",\n    \"serverMessages\": \"assistant.speechStarted\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "388e2303-b966-4da4-b21b-defd593a4512",
+          "name": "Delete Squad",
+          "request": {
+            "name": "Delete Squad",
+            "description": {},
+            "url": {
+              "path": [
+                "squad",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9417c25f-924f-44f9-95df-fd8cd99ce377",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "squad",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    {\n      \"assistantDestinations\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"assistantId\": \"<string>\",\n      \"assistant\": {\n        \"description\": \"This is the assistant that will be used for the call. To use an existing assistant, use `assistantId` instead.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"assistantOverrides\": {\n        \"description\": \"This can be used to override the assistant's settings and provide values for it's template variables.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1958-03-24T07:37:37.804Z\",\n  \"updatedAt\": \"1948-07-26T14:34:38.787Z\",\n  \"name\": \"string\",\n  \"membersOverrides\": {\n    \"transcriber\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"model\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"voice\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"firstMessage\": \"Hello! How can I help you today?\",\n    \"firstMessageInterruptionsEnabled\": false,\n    \"firstMessageMode\": \"assistant-speaks-first\",\n    \"voicemailDetection\": \"<string>\",\n    \"clientMessages\": \"function-call-result\",\n    \"serverMessages\": \"assistant.speechStarted\",\n    \"maxDurationSeconds\": 600,\n    \"backgroundSound\": \"office\",\n    \"modelOutputInMessagesEnabled\": false,\n    \"transportConfigurations\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"observabilityPlan\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentials\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"hooks\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"tools:append\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"variableValues\": \"<object>\",\n    \"name\": \"<string>\",\n    \"voicemailMessage\": \"<string>\",\n    \"endCallMessage\": \"<string>\",\n    \"endCallPhrases\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"compliancePlan\": {\n      \"hipaaEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pciEnabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"securityFilterPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"recordingConsentPlan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"metadata\": \"<object>\",\n    \"backgroundSpeechDenoisingPlan\": {\n      \"description\": \"This enables filtering of noise and background speech while the user is talking.\\n\\nFeatures:\\n- Smart denoising using Krisp\\n- Fourier denoising\\n\\nSmart denoising can be combined with or used independently of Fourier denoising.\\n\\nOrder of precedence:\\n- Smart denoising\\n- Fourier denoising\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"analysisPlan\": {\n      \"description\": \"This is the plan for analysis of assistant's calls. Stored in `call.analysis`.\",\n      \"deprecated\": true,\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"artifactPlan\": {\n      \"description\": \"This is the plan for artifacts generated during assistant's calls. Stored in `call.artifact`.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"startSpeakingPlan\": {\n      \"description\": \"This is the plan for when the assistant should start talking.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to start talking after the customer is done speaking.\\n- The assistant is too fast to start talking after the customer is done speaking.\\n- The assistant is so fast that it's actually interrupting the customer.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"stopSpeakingPlan\": {\n      \"description\": \"This is the plan for when assistant should stop talking on customer interruption.\\n\\nYou should configure this if you're running into these issues:\\n- The assistant is too slow to recognize customer's interruption.\\n- The assistant is too fast to recognize customer's interruption.\\n- The assistant is getting interrupted by phrases that are just acknowledgments.\\n- The assistant is getting interrupted by background noises.\\n- The assistant is not properly stopping -- it starts talking right after getting interrupted.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"monitorPlan\": {\n      \"description\": \"This is the plan for real-time monitoring of the assistant's calls.\\n\\nUsage:\\n- To enable live listening of the assistant's calls, set `monitorPlan.listenEnabled` to `true`.\\n- To enable live control of the assistant's calls, set `monitorPlan.controlEnabled` to `true`.\\n- To attach monitors to the assistant, set `monitorPlan.monitorIds` to the set of monitor ids.\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"credentialIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"server\": {\n      \"description\": \"This is where Vapi will send webhooks. You can find all webhooks available along with their shape in ServerMessage schema.\\n\\nThe order of precedence is:\\n\\n1. assistant.server.url\\n2. phoneNumber.serverUrl\\n3. org.serverUrl\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"keypadInputPlan\": {\n      \"enabled\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"timeoutSeconds\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"delimiters\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "34cb25f1-27dd-4301-bca7-a42ba2e601b2",
+    "name": "Vapi Squads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Squads resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}

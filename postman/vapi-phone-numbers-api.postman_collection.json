@@ -1,0 +1,889 @@
+{
+  "info": {
+    "_postman_id": "c252ab6f-8a59-4aea-9b18-d0cdbef24187",
+    "name": "Vapi Phone Numbers API",
+    "description": "Vapi API \u2014 Phone Numbers resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:19:41.000Z",
+    "updatedAt": "2026-06-05T15:19:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c252ab6f-8a59-4aea-9b18-d0cdbef24187"
+  },
+  "item": [
+    {
+      "name": "phone-number",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Phone Number",
+              "id": "a04d3d81-d32c-4ab1-931e-9dc2739a9b7f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/phone-number/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "phone-number",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b3459b5c-5f72-4b72-a967-a85446ca7138",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "49956fae-df50-4b99-b202-13022166d22b",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/phone-number/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "phone-number",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"provider\": \"byo-phone-number\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"status\": \"blocked\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"fixed\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:19:41.000Z",
+                  "updatedAt": "2026-06-05T15:19:41.000Z",
+                  "uid": "35240-49956fae-df50-4b99-b202-13022166d22b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-a04d3d81-d32c-4ab1-931e-9dc2739a9b7f"
+            },
+            {
+              "name": "Update Phone Number",
+              "id": "c9c8780c-41c8-4963-9b79-351bb87ec7ef",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-twiml\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-twiml\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"exponential\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\",\n  \"credentialId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/phone-number/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "phone-number",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "203f9f58-d77c-42af-8025-f237b01a4b61",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ed32a8da-18b3-43d1-9bbd-8dfb1fb6ff46",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-twiml\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-twiml\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"exponential\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\",\n  \"credentialId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/phone-number/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "phone-number",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"provider\": \"byo-phone-number\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"status\": \"blocked\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"fixed\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:19:41.000Z",
+                  "updatedAt": "2026-06-05T15:19:41.000Z",
+                  "uid": "35240-ed32a8da-18b3-43d1-9bbd-8dfb1fb6ff46"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-c9c8780c-41c8-4963-9b79-351bb87ec7ef"
+            },
+            {
+              "name": "Delete Phone Number",
+              "id": "240d988b-c5d0-428e-b683-bb013d66ef25",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/phone-number/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "phone-number",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "edde4739-fbad-482c-80c4-86715d2c226d",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f66dcd0a-a2d7-4dd3-87ad-435f9e04826c",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/phone-number/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "phone-number",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"provider\": \"byo-phone-number\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"status\": \"blocked\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"fixed\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:19:41.000Z",
+                  "updatedAt": "2026-06-05T15:19:41.000Z",
+                  "uid": "35240-f66dcd0a-a2d7-4dd3-87ad-435f9e04826c"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-240d988b-c5d0-428e-b683-bb013d66ef25"
+            }
+          ],
+          "id": "d4a64ccd-4eb5-45f7-b8a8-de6094701871",
+          "createdAt": "2026-06-05T15:19:41.000Z",
+          "updatedAt": "2026-06-05T15:19:41.000Z",
+          "uid": "35240-d4a64ccd-4eb5-45f7-b8a8-de6094701871"
+        },
+        {
+          "name": "Create Phone Number",
+          "id": "64242e6d-2942-4219-8621-d9b48f991871",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"byo-phone-number\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-twiml\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-twiml\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"exponential\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/phone-number",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "phone-number"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e273ddf-484b-43e4-9551-d7a48c7a70fb",
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"byo-phone-number\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-twiml\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-twiml\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"exponential\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/phone-number",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "phone-number"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"provider\": \"byo-phone-number\",\n  \"id\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"credentialId\": \"<string>\",\n  \"fallbackDestination\": {\n    \"type\": \"number\",\n    \"number\": \"<string>\",\n    \"message\": \"<string>\",\n    \"numberE164CheckEnabled\": true,\n    \"extension\": \"<string>\",\n    \"callerId\": \"<string>\",\n    \"transferPlan\": {\n      \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n      \"message\": \"<string>\",\n      \"timeout\": 60,\n      \"sipVerb\": \"refer\",\n      \"dialTimeout\": 60,\n      \"holdAudioUrl\": \"<string>\",\n      \"transferCompleteAudioUrl\": \"<string>\",\n      \"contextEngineeringPlan\": {\n        \"type\": \"lastNMessages\",\n        \"maxMessages\": \"<number>\"\n      },\n      \"twiml\": \"<string>\",\n      \"summaryPlan\": {\n        \"enabled\": \"<boolean>\",\n        \"timeoutSeconds\": \"<number>\"\n      },\n      \"sipHeadersInReferToEnabled\": \"<boolean>\",\n      \"fallbackPlan\": {\n        \"message\": \"<string>\",\n        \"endCallEnabled\": true\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"hooks\": [\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"on\": \"call.ringing\",\n      \"do\": [\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-say-summary\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"transfer\",\n          \"destination\": {\n            \"type\": \"number\",\n            \"number\": \"<string>\",\n            \"message\": \"<string>\",\n            \"numberE164CheckEnabled\": true,\n            \"extension\": \"<string>\",\n            \"callerId\": \"<string>\",\n            \"transferPlan\": {\n              \"mode\": \"blind-transfer\",\n              \"message\": \"<string>\",\n              \"timeout\": 60,\n              \"sipVerb\": \"refer\",\n              \"dialTimeout\": 60,\n              \"holdAudioUrl\": \"<string>\",\n              \"transferCompleteAudioUrl\": \"<string>\",\n              \"contextEngineeringPlan\": {\n                \"type\": \"lastNMessages\",\n                \"maxMessages\": \"<number>\"\n              },\n              \"twiml\": \"<string>\",\n              \"summaryPlan\": {\n                \"enabled\": \"<boolean>\",\n                \"timeoutSeconds\": \"<number>\"\n              },\n              \"sipHeadersInReferToEnabled\": \"<boolean>\",\n              \"fallbackPlan\": {\n                \"message\": \"<string>\",\n                \"endCallEnabled\": true\n              }\n            },\n            \"description\": \"<string>\"\n          }\n        }\n      ],\n      \"filters\": [\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"type\": \"startsWith\",\n          \"key\": \"number\",\n          \"startsWith\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"numberE164CheckEnabled\": true,\n  \"status\": \"blocked\",\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"server\": {\n    \"timeoutSeconds\": \"<number>\",\n    \"credentialId\": \"<string>\",\n    \"staticIpAddressesEnabled\": \"<boolean>\",\n    \"encryptedPaths\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"headers\": {},\n    \"backoffPlan\": {\n      \"type\": \"fixed\",\n      \"maxRetries\": \"<number>\",\n      \"baseDelaySeconds\": \"<number>\"\n    }\n  },\n  \"number\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-1e273ddf-484b-43e4-9551-d7a48c7a70fb"
+            }
+          ],
+          "createdAt": "2026-06-05T15:19:41.000Z",
+          "updatedAt": "2026-06-05T15:19:41.000Z",
+          "uid": "35240-64242e6d-2942-4219-8621-d9b48f991871"
+        },
+        {
+          "name": "List Phone Numbers",
+          "id": "019fc99d-3fb8-4c5c-b1b6-2d68f5845caa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/phone-number?limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "phone-number"
+              ],
+              "query": [
+                {
+                  "description": "This is the maximum number of items to return. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "description": "This will return items where the createdAt is greater than the specified value.",
+                  "key": "createdAtGt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is less than the specified value.",
+                  "key": "createdAtLt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                  "key": "createdAtGe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                  "key": "createdAtLe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is greater than the specified value.",
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is less than the specified value.",
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a187431e-16ab-4270-a834-bcde894fc288",
+              "name": "response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/phone-number?limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "phone-number"
+                  ],
+                  "query": [
+                    {
+                      "description": "This is the maximum number of items to return. Defaults to 100.",
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than the specified value.",
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than the specified value.",
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than the specified value.",
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than the specified value.",
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"provider\": \"byo-phone-number\",\n    \"id\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"credentialId\": \"<string>\",\n    \"fallbackDestination\": {\n      \"type\": \"number\",\n      \"number\": \"<string>\",\n      \"message\": \"<string>\",\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"callerId\": \"<string>\",\n      \"transferPlan\": {\n        \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-summary\",\n        \"message\": \"<string>\",\n        \"timeout\": 60,\n        \"sipVerb\": \"refer\",\n        \"dialTimeout\": 60,\n        \"holdAudioUrl\": \"<string>\",\n        \"transferCompleteAudioUrl\": \"<string>\",\n        \"contextEngineeringPlan\": {\n          \"type\": \"lastNMessages\",\n          \"maxMessages\": \"<number>\"\n        },\n        \"twiml\": \"<string>\",\n        \"summaryPlan\": {\n          \"enabled\": \"<boolean>\",\n          \"timeoutSeconds\": \"<number>\"\n        },\n        \"sipHeadersInReferToEnabled\": \"<boolean>\",\n        \"fallbackPlan\": {\n          \"message\": \"<string>\",\n          \"endCallEnabled\": true\n        }\n      },\n      \"description\": \"<string>\"\n    },\n    \"hooks\": [\n      {\n        \"on\": \"call.ringing\",\n        \"do\": [\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"blind-transfer\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          },\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"blind-transfer-add-summary-to-sip-header\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          }\n        ],\n        \"filters\": [\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      {\n        \"on\": \"call.ringing\",\n        \"do\": [\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"warm-transfer-experimental\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          },\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"warm-transfer-twiml\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          }\n        ],\n        \"filters\": [\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"numberE164CheckEnabled\": true,\n    \"status\": \"active\",\n    \"name\": \"<string>\",\n    \"assistantId\": \"<string>\",\n    \"workflowId\": \"<string>\",\n    \"squadId\": \"<string>\",\n    \"server\": {\n      \"timeoutSeconds\": \"<number>\",\n      \"credentialId\": \"<string>\",\n      \"staticIpAddressesEnabled\": \"<boolean>\",\n      \"encryptedPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\",\n      \"headers\": {},\n      \"backoffPlan\": {\n        \"type\": \"fixed\",\n        \"maxRetries\": \"<number>\",\n        \"baseDelaySeconds\": \"<number>\"\n      }\n    },\n    \"number\": \"<string>\"\n  },\n  {\n    \"provider\": \"byo-phone-number\",\n    \"id\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"credentialId\": \"<string>\",\n    \"fallbackDestination\": {\n      \"type\": \"number\",\n      \"number\": \"<string>\",\n      \"message\": \"<string>\",\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"callerId\": \"<string>\",\n      \"transferPlan\": {\n        \"mode\": \"warm-transfer-experimental\",\n        \"message\": \"<string>\",\n        \"timeout\": 60,\n        \"sipVerb\": \"refer\",\n        \"dialTimeout\": 60,\n        \"holdAudioUrl\": \"<string>\",\n        \"transferCompleteAudioUrl\": \"<string>\",\n        \"contextEngineeringPlan\": {\n          \"type\": \"lastNMessages\",\n          \"maxMessages\": \"<number>\"\n        },\n        \"twiml\": \"<string>\",\n        \"summaryPlan\": {\n          \"enabled\": \"<boolean>\",\n          \"timeoutSeconds\": \"<number>\"\n        },\n        \"sipHeadersInReferToEnabled\": \"<boolean>\",\n        \"fallbackPlan\": {\n          \"message\": \"<string>\",\n          \"endCallEnabled\": true\n        }\n      },\n      \"description\": \"<string>\"\n    },\n    \"hooks\": [\n      {\n        \"on\": \"call.ringing\",\n        \"do\": [\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"warm-transfer-say-summary\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          },\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-summary\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          }\n        ],\n        \"filters\": [\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      {\n        \"on\": \"call.ringing\",\n        \"do\": [\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"warm-transfer-experimental\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          },\n          {\n            \"type\": \"transfer\",\n            \"destination\": {\n              \"type\": \"number\",\n              \"number\": \"<string>\",\n              \"message\": \"<string>\",\n              \"numberE164CheckEnabled\": true,\n              \"extension\": \"<string>\",\n              \"callerId\": \"<string>\",\n              \"transferPlan\": {\n                \"mode\": \"blind-transfer-add-summary-to-sip-header\",\n                \"message\": \"<string>\",\n                \"timeout\": 60,\n                \"sipVerb\": \"refer\",\n                \"dialTimeout\": 60,\n                \"holdAudioUrl\": \"<string>\",\n                \"transferCompleteAudioUrl\": \"<string>\",\n                \"contextEngineeringPlan\": {\n                  \"type\": \"lastNMessages\",\n                  \"maxMessages\": \"<number>\"\n                },\n                \"twiml\": \"<string>\",\n                \"summaryPlan\": {\n                  \"enabled\": \"<boolean>\",\n                  \"timeoutSeconds\": \"<number>\"\n                },\n                \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                \"fallbackPlan\": {\n                  \"message\": \"<string>\",\n                  \"endCallEnabled\": true\n                }\n              },\n              \"description\": \"<string>\"\n            }\n          }\n        ],\n        \"filters\": [\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"type\": \"startsWith\",\n            \"key\": \"number\",\n            \"startsWith\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"numberE164CheckEnabled\": true,\n    \"status\": \"active\",\n    \"name\": \"<string>\",\n    \"assistantId\": \"<string>\",\n    \"workflowId\": \"<string>\",\n    \"squadId\": \"<string>\",\n    \"server\": {\n      \"timeoutSeconds\": \"<number>\",\n      \"credentialId\": \"<string>\",\n      \"staticIpAddressesEnabled\": \"<boolean>\",\n      \"encryptedPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"url\": \"<string>\",\n      \"headers\": {},\n      \"backoffPlan\": {\n        \"type\": \"exponential\",\n        \"maxRetries\": \"<number>\",\n        \"baseDelaySeconds\": \"<number>\"\n      }\n    },\n    \"number\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-a187431e-16ab-4270-a834-bcde894fc288"
+            }
+          ],
+          "createdAt": "2026-06-05T15:19:41.000Z",
+          "updatedAt": "2026-06-05T15:19:41.000Z",
+          "uid": "35240-019fc99d-3fb8-4c5c-b1b6-2d68f5845caa"
+        }
+      ],
+      "id": "436d6274-adfe-421e-9af7-2373590c96df",
+      "createdAt": "2026-06-05T15:19:41.000Z",
+      "updatedAt": "2026-06-05T15:19:41.000Z",
+      "uid": "35240-436d6274-adfe-421e-9af7-2373590c96df"
+    },
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "phone-number",
+          "item": [
+            {
+              "name": "List Phone Numbers",
+              "id": "835f7b8d-4ada-4523-ac9f-aeecaa03a442",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/phone-number?search=<string>&page=<number>&sortOrder=ASC&sortBy=createdAt&limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "phone-number"
+                  ],
+                  "query": [
+                    {
+                      "description": "This will search phone numbers by name, number, or SIP URI (partial match, case-insensitive).",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is the page number to return. Defaults to 1.",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is the sort order for pagination. Defaults to 'DESC'.",
+                      "key": "sortOrder",
+                      "value": "ASC"
+                    },
+                    {
+                      "description": "This is the column to sort by. Defaults to 'createdAt'.",
+                      "key": "sortBy",
+                      "value": "createdAt"
+                    },
+                    {
+                      "description": "This is the maximum number of items to return. Defaults to 100.",
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than the specified value.",
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than the specified value.",
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than the specified value.",
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than the specified value.",
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "75695f66-896c-45ac-ab52-45a9719dfd43",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/phone-number?search=<string>&page=<number>&sortOrder=ASC&sortBy=createdAt&limit=<number>&createdAtGt=<dateTime>&createdAtLt=<dateTime>&createdAtGe=<dateTime>&createdAtLe=<dateTime>&updatedAtGt=<dateTime>&updatedAtLt=<dateTime>&updatedAtGe=<dateTime>&updatedAtLe=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "phone-number"
+                      ],
+                      "query": [
+                        {
+                          "description": "This will search phone numbers by name, number, or SIP URI (partial match, case-insensitive).",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "This is the page number to return. Defaults to 1.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "This is the sort order for pagination. Defaults to 'DESC'.",
+                          "key": "sortOrder",
+                          "value": "ASC"
+                        },
+                        {
+                          "description": "This is the column to sort by. Defaults to 'createdAt'.",
+                          "key": "sortBy",
+                          "value": "createdAt"
+                        },
+                        {
+                          "description": "This is the maximum number of items to return. Defaults to 100.",
+                          "key": "limit",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is greater than the specified value.",
+                          "key": "createdAtGt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is less than the specified value.",
+                          "key": "createdAtLt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is greater than or equal to the specified value.",
+                          "key": "createdAtGe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the createdAt is less than or equal to the specified value.",
+                          "key": "createdAtLe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is greater than the specified value.",
+                          "key": "updatedAtGt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is less than the specified value.",
+                          "key": "updatedAtLt",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is greater than or equal to the specified value.",
+                          "key": "updatedAtGe",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "This will return items where the updatedAt is less than or equal to the specified value.",
+                          "key": "updatedAtLe",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"results\": [\n    {\n      \"provider\": \"byo-phone-number\",\n      \"id\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"credentialId\": \"<string>\",\n      \"fallbackDestination\": {\n        \"type\": \"number\",\n        \"number\": \"<string>\",\n        \"message\": \"<string>\",\n        \"numberE164CheckEnabled\": true,\n        \"extension\": \"<string>\",\n        \"callerId\": \"<string>\",\n        \"transferPlan\": {\n          \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n          \"message\": \"<string>\",\n          \"timeout\": 60,\n          \"sipVerb\": \"refer\",\n          \"dialTimeout\": 60,\n          \"holdAudioUrl\": \"<string>\",\n          \"transferCompleteAudioUrl\": \"<string>\",\n          \"contextEngineeringPlan\": {\n            \"type\": \"lastNMessages\",\n            \"maxMessages\": \"<number>\"\n          },\n          \"twiml\": \"<string>\",\n          \"summaryPlan\": {\n            \"enabled\": \"<boolean>\",\n            \"timeoutSeconds\": \"<number>\"\n          },\n          \"sipHeadersInReferToEnabled\": \"<boolean>\",\n          \"fallbackPlan\": {\n            \"message\": \"<string>\",\n            \"endCallEnabled\": true\n          }\n        },\n        \"description\": \"<string>\"\n      },\n      \"hooks\": [\n        {\n          \"on\": \"call.ringing\",\n          \"do\": [\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-experimental\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"blind-transfer-add-summary-to-sip-header\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            }\n          ],\n          \"filters\": [\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        },\n        {\n          \"on\": \"call.ringing\",\n          \"do\": [\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-summary\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-say-summary\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            }\n          ],\n          \"filters\": [\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ],\n      \"numberE164CheckEnabled\": true,\n      \"status\": \"active\",\n      \"name\": \"<string>\",\n      \"assistantId\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"squadId\": \"<string>\",\n      \"server\": {\n        \"timeoutSeconds\": \"<number>\",\n        \"credentialId\": \"<string>\",\n        \"staticIpAddressesEnabled\": \"<boolean>\",\n        \"encryptedPaths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<string>\",\n        \"headers\": {},\n        \"backoffPlan\": {\n          \"type\": \"fixed\",\n          \"maxRetries\": \"<number>\",\n          \"baseDelaySeconds\": \"<number>\"\n        }\n      },\n      \"number\": \"<string>\"\n    },\n    {\n      \"provider\": \"byo-phone-number\",\n      \"id\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"credentialId\": \"<string>\",\n      \"fallbackDestination\": {\n        \"type\": \"number\",\n        \"number\": \"<string>\",\n        \"message\": \"<string>\",\n        \"numberE164CheckEnabled\": true,\n        \"extension\": \"<string>\",\n        \"callerId\": \"<string>\",\n        \"transferPlan\": {\n          \"mode\": \"blind-transfer-add-summary-to-sip-header\",\n          \"message\": \"<string>\",\n          \"timeout\": 60,\n          \"sipVerb\": \"refer\",\n          \"dialTimeout\": 60,\n          \"holdAudioUrl\": \"<string>\",\n          \"transferCompleteAudioUrl\": \"<string>\",\n          \"contextEngineeringPlan\": {\n            \"type\": \"lastNMessages\",\n            \"maxMessages\": \"<number>\"\n          },\n          \"twiml\": \"<string>\",\n          \"summaryPlan\": {\n            \"enabled\": \"<boolean>\",\n            \"timeoutSeconds\": \"<number>\"\n          },\n          \"sipHeadersInReferToEnabled\": \"<boolean>\",\n          \"fallbackPlan\": {\n            \"message\": \"<string>\",\n            \"endCallEnabled\": true\n          }\n        },\n        \"description\": \"<string>\"\n      },\n      \"hooks\": [\n        {\n          \"on\": \"call.ringing\",\n          \"do\": [\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-say-message\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"blind-transfer\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            }\n          ],\n          \"filters\": [\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        },\n        {\n          \"on\": \"call.ringing\",\n          \"do\": [\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-say-message\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"transfer\",\n              \"destination\": {\n                \"type\": \"number\",\n                \"number\": \"<string>\",\n                \"message\": \"<string>\",\n                \"numberE164CheckEnabled\": true,\n                \"extension\": \"<string>\",\n                \"callerId\": \"<string>\",\n                \"transferPlan\": {\n                  \"mode\": \"warm-transfer-wait-for-operator-to-speak-first-and-then-say-message\",\n                  \"message\": \"<string>\",\n                  \"timeout\": 60,\n                  \"sipVerb\": \"refer\",\n                  \"dialTimeout\": 60,\n                  \"holdAudioUrl\": \"<string>\",\n                  \"transferCompleteAudioUrl\": \"<string>\",\n                  \"contextEngineeringPlan\": {\n                    \"type\": \"lastNMessages\",\n                    \"maxMessages\": \"<number>\"\n                  },\n                  \"twiml\": \"<string>\",\n                  \"summaryPlan\": {\n                    \"enabled\": \"<boolean>\",\n                    \"timeoutSeconds\": \"<number>\"\n                  },\n                  \"sipHeadersInReferToEnabled\": \"<boolean>\",\n                  \"fallbackPlan\": {\n                    \"message\": \"<string>\",\n                    \"endCallEnabled\": true\n                  }\n                },\n                \"description\": \"<string>\"\n              }\n            }\n          ],\n          \"filters\": [\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"type\": \"startsWith\",\n              \"key\": \"number\",\n              \"startsWith\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ],\n      \"numberE164CheckEnabled\": true,\n      \"status\": \"blocked\",\n      \"name\": \"<string>\",\n      \"assistantId\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"squadId\": \"<string>\",\n      \"server\": {\n        \"timeoutSeconds\": \"<number>\",\n        \"credentialId\": \"<string>\",\n        \"staticIpAddressesEnabled\": \"<boolean>\",\n        \"encryptedPaths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<string>\",\n        \"headers\": {},\n        \"backoffPlan\": {\n          \"type\": \"exponential\",\n          \"maxRetries\": \"<number>\",\n          \"baseDelaySeconds\": \"<number>\"\n        }\n      },\n      \"number\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": \"<number>\",\n    \"totalItems\": \"<number>\",\n    \"currentPage\": \"<number>\",\n    \"totalPages\": \"<number>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": \"<boolean>\",\n    \"createdAtLe\": \"<dateTime>\",\n    \"createdAtGe\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:19:41.000Z",
+                  "updatedAt": "2026-06-05T15:19:41.000Z",
+                  "uid": "35240-75695f66-896c-45ac-ab52-45a9719dfd43"
+                }
+              ],
+              "createdAt": "2026-06-05T15:19:41.000Z",
+              "updatedAt": "2026-06-05T15:19:41.000Z",
+              "uid": "35240-835f7b8d-4ada-4523-ac9f-aeecaa03a442"
+            }
+          ],
+          "id": "3f536c59-8328-4e7e-859b-d7139441e031",
+          "createdAt": "2026-06-05T15:19:41.000Z",
+          "updatedAt": "2026-06-05T15:19:41.000Z",
+          "uid": "35240-3f536c59-8328-4e7e-859b-d7139441e031"
+        }
+      ],
+      "id": "35dd7a23-7f92-4f5c-91be-6fb4de162dc0",
+      "createdAt": "2026-06-05T15:19:41.000Z",
+      "updatedAt": "2026-06-05T15:19:41.000Z",
+      "uid": "35240-35dd7a23-7f92-4f5c-91be-6fb4de162dc0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.vapi.ai"
+    }
+  ]
+}

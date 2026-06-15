@@ -1,0 +1,687 @@
+{
+  "item": [
+    {
+      "id": "ca826f8e-9014-4e18-8566-8952095c2f0c",
+      "name": "Campaigns",
+      "description": {
+        "content": "Campaigns endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcdd823f-2b5d-4ba0-88ec-70607b30d52a",
+          "name": "Create Campaign",
+          "request": {
+            "name": "Create Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"phoneNumberId\": \"<string>\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73cc36de-f3b9-432e-be2f-4889b9a0d89e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Q2 Sales Campaign\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"phoneNumberId\": \"<string>\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"scheduled\",\n  \"name\": \"Q2 Sales Campaign\",\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1947-04-07T12:25:16.890Z\",\n  \"updatedAt\": \"1971-06-14T01:07:55.711Z\",\n  \"calls\": {},\n  \"callsCounterScheduled\": 8888.972216394635,\n  \"callsCounterQueued\": 2185.1251530999893,\n  \"callsCounterInProgress\": 5003.830566368453,\n  \"callsCounterEndedVoicemail\": 4663.188556140811,\n  \"callsCounterEnded\": 9918.750906081908,\n  \"endedReason\": \"campaign.ended.success\",\n  \"assistantId\": \"string\",\n  \"workflowId\": \"string\",\n  \"squadId\": \"string\",\n  \"phoneNumberId\": \"string\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61de2321-0188-4e4a-81d0-ccc81e924dda",
+          "name": "List Campaigns",
+          "request": {
+            "name": "List Campaigns",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "This is the page number to return. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "This is the sort order for pagination. Defaults to 'DESC'."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "This is the column to sort by. Defaults to 'createdAt'."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56d6ed8e-a6b8-4be2-87a3-7cc777d1df98",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"status\": \"scheduled\",\n      \"name\": \"Q2 Sales Campaign\",\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1966-10-22T17:05:21.107Z\",\n      \"updatedAt\": \"2014-10-22T00:42:58.977Z\",\n      \"calls\": {},\n      \"callsCounterScheduled\": 8124.624707463928,\n      \"callsCounterQueued\": 6857.911962017028,\n      \"callsCounterInProgress\": 3720.1972533888406,\n      \"callsCounterEndedVoicemail\": 3556.1108600655302,\n      \"callsCounterEnded\": 7844.668008681623,\n      \"endedReason\": \"campaign.in-progress.ended-by-user\",\n      \"assistantId\": \"string\",\n      \"workflowId\": \"string\",\n      \"squadId\": \"string\",\n      \"phoneNumberId\": \"string\",\n      \"dialPlan\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"schedulePlan\": {\n        \"description\": \"This is the schedule plan for the campaign. Calls will start at startedAt and continue until your organization’s concurrency limit is reached. Any remaining calls will be retried for up to one hour as capacity becomes available. After that hour or after latestAt, whichever comes first, any calls that couldn’t be placed won’t be retried.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"status\": \"scheduled\",\n      \"name\": \"Q2 Sales Campaign\",\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"2015-05-17T04:24:04.919Z\",\n      \"updatedAt\": \"1952-04-23T07:05:41.426Z\",\n      \"calls\": {},\n      \"callsCounterScheduled\": 9374.012141379078,\n      \"callsCounterQueued\": 145.56263638638268,\n      \"callsCounterInProgress\": 2046.5621244005272,\n      \"callsCounterEndedVoicemail\": 6565.55280241129,\n      \"callsCounterEnded\": 933.4494978046159,\n      \"endedReason\": \"campaign.scheduled.ended-by-user\",\n      \"assistantId\": \"string\",\n      \"workflowId\": \"string\",\n      \"squadId\": \"string\",\n      \"phoneNumberId\": \"string\",\n      \"dialPlan\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"schedulePlan\": {\n        \"description\": \"This is the schedule plan for the campaign. Calls will start at startedAt and continue until your organization’s concurrency limit is reached. Any remaining calls will be retried for up to one hour as capacity becomes available. After that hour or after latestAt, whichever comes first, any calls that couldn’t be placed won’t be retried.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": 6856.104276614428,\n    \"totalItems\": 1348.2187401775413,\n    \"currentPage\": 1398.850170754854,\n    \"totalPages\": 8302.202650852025,\n    \"hasNextPage\": true,\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": true,\n    \"createdAtLe\": \"1947-06-08T02:47:06.048Z\",\n    \"createdAtGe\": \"2013-03-14T01:45:40.091Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb2da0cf-ad1c-4099-87d5-516a60060875",
+          "name": "Get Campaign",
+          "request": {
+            "name": "Get Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "efa1eed6-9b20-4164-ab52-d61fdf63b626",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"in-progress\",\n  \"name\": \"Q2 Sales Campaign\",\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1976-12-23T07:48:49.605Z\",\n  \"updatedAt\": \"1955-06-11T11:55:53.428Z\",\n  \"calls\": {},\n  \"callsCounterScheduled\": 2138.6192103150147,\n  \"callsCounterQueued\": 9550.240976498068,\n  \"callsCounterInProgress\": 9707.418494231777,\n  \"callsCounterEndedVoicemail\": 210.04267317372816,\n  \"callsCounterEnded\": 8865.352587221405,\n  \"endedReason\": \"campaign.in-progress.ended-by-user\",\n  \"assistantId\": \"string\",\n  \"workflowId\": \"string\",\n  \"squadId\": \"string\",\n  \"phoneNumberId\": \"string\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "944c7ee3-e503-4581-8fff-da9584bc7adf",
+          "name": "Update Campaign",
+          "request": {
+            "name": "Update Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"phoneNumberId\": \"<string>\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8049c570-12df-444c-8303-a1c051b06744",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"assistantId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"squadId\": \"<string>\",\n  \"phoneNumberId\": \"<string>\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"in-progress\",\n  \"name\": \"Q2 Sales Campaign\",\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1976-12-23T07:48:49.605Z\",\n  \"updatedAt\": \"1955-06-11T11:55:53.428Z\",\n  \"calls\": {},\n  \"callsCounterScheduled\": 2138.6192103150147,\n  \"callsCounterQueued\": 9550.240976498068,\n  \"callsCounterInProgress\": 9707.418494231777,\n  \"callsCounterEndedVoicemail\": 210.04267317372816,\n  \"callsCounterEnded\": 8865.352587221405,\n  \"endedReason\": \"campaign.in-progress.ended-by-user\",\n  \"assistantId\": \"string\",\n  \"workflowId\": \"string\",\n  \"squadId\": \"string\",\n  \"phoneNumberId\": \"string\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "901fa070-401d-435f-a914-792c05d80058",
+          "name": "Delete Campaign",
+          "request": {
+            "name": "Delete Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd7d5a1d-3d14-46ad-b94e-8ef8a416928b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"in-progress\",\n  \"name\": \"Q2 Sales Campaign\",\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1976-12-23T07:48:49.605Z\",\n  \"updatedAt\": \"1955-06-11T11:55:53.428Z\",\n  \"calls\": {},\n  \"callsCounterScheduled\": 2138.6192103150147,\n  \"callsCounterQueued\": 9550.240976498068,\n  \"callsCounterInProgress\": 9707.418494231777,\n  \"callsCounterEndedVoicemail\": 210.04267317372816,\n  \"callsCounterEnded\": 8865.352587221405,\n  \"endedReason\": \"campaign.in-progress.ended-by-user\",\n  \"assistantId\": \"string\",\n  \"workflowId\": \"string\",\n  \"squadId\": \"string\",\n  \"phoneNumberId\": \"string\",\n  \"dialPlan\": [\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"phoneNumberId\": \"<string>\",\n      \"customers\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"schedulePlan\": {\n    \"earliestAt\": \"<dateTime>\",\n    \"latestAt\": \"<dateTime>\"\n  },\n  \"customers\": [\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"numberE164CheckEnabled\": true,\n      \"extension\": \"<string>\",\n      \"assistantOverrides\": {\n        \"description\": \"These are the overrides for the assistant's settings and template variables specific to this customer.\\nThis allows customization of the assistant's behavior for individual customers in batch calls.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"number\": \"<string>\",\n      \"sipUri\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6f17086f-ac51-4210-93ea-7aef09f70e16",
+    "name": "Vapi Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Campaigns resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}

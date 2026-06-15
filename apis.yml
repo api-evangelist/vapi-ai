@@ -1,459 +1,446 @@
 aid: vapi-ai
 url: https://raw.githubusercontent.com/api-evangelist/vapi-ai/refs/heads/main/apis.yml
 apis:
-- aid: vapi-ai:vapi-assistants-api
-  name: Vapi Assistants API
-  tags:
-  - Assistants
-  - Voice AI
-  - Agents
-  humanURL: https://docs.vapi.ai/api-reference/assistants/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/assistants/list
-    type: Documentation
-  - url: openapi/vapi-assistants-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/vapi-assistant-schema.json
-    type: JSONSchema
-  - url: json-structure/vapi-assistant-structure.json
-    type: JSONStructure
-  - url: examples/vapi-assistant-example.json
-    type: Example
-  - type: NaftikoCapability
-    url: capabilities/assistants-assistants.yaml
-  description: Create and manage Vapi voice assistants. An assistant bundles a transcriber, LLM, voice (TTS),
-    server URL, tools, first message, system prompt, voicemail handling, and call analysis plan into a reusable
-    voice agent configuration that can be attached to inbound or outbound phone numbers, web calls, or squads.
-- aid: vapi-ai:vapi-calls-api
-  name: Vapi Calls API
-  tags:
-  - Calls
-  - Voice AI
-  - Telephony
-  humanURL: https://docs.vapi.ai/api-reference/calls/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/calls/list
-    type: Documentation
-  - url: openapi/vapi-calls-api-openapi.yml
-    type: OpenAPI
-  - url: asyncapi/vapi-asyncapi.yml
-    type: AsyncAPI
-  - url: json-schema/vapi-call-schema.json
-    type: JSONSchema
-  - url: json-structure/vapi-call-structure.json
-    type: JSONStructure
-  - url: examples/vapi-call-example.json
-    type: Example
-  - type: NaftikoCapability
-    url: capabilities/calls-calls.yaml
-  description: Create outbound calls, accept inbound calls, list and filter calls, fetch call status and analysis,
-    delete call data, and download per-call artifacts including mono and stereo recordings, customer/assistant
-    isolated recordings, video recordings, PCAP packet captures, and structured call logs.
-- aid: vapi-ai:vapi-phone-numbers-api
-  name: Vapi Phone Numbers API
-  tags:
-  - Phone Numbers
-  - Telephony
-  - Voice AI
-  humanURL: https://docs.vapi.ai/api-reference/phone-numbers/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/phone-numbers/list
-    type: Documentation
-  - url: openapi/vapi-phone-numbers-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/vapi-phone-number-schema.json
-    type: JSONSchema
-  - url: json-structure/vapi-phone-number-structure.json
-    type: JSONStructure
-  - url: examples/vapi-phone-number-example.json
-    type: Example
-  - type: NaftikoCapability
-    url: capabilities/phone-numbers-phone-numbers.yaml
-  description: Buy, BYO-import, and manage phone numbers from Vapi (vapi.phoneNumber), Twilio, Telnyx, Vonage,
-    and SIP trunks. Attach an assistant or squad to a number for inbound routing and configure outbound caller-id
-    behavior.
-- aid: vapi-ai:vapi-squads-api
-  name: Vapi Squads API
-  tags:
-  - Squads
-  - Voice AI
-  - Agents
-  humanURL: https://docs.vapi.ai/api-reference/squads/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/squads/list
-    type: Documentation
-  - url: openapi/vapi-squads-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/squads-squads.yaml
-  description: Compose multiple assistants into a Squad — a multi-agent workflow where the active assistant can
-    hand off a live call to another assistant in the squad based on tools, intents, or transfer destinations.
-- aid: vapi-ai:vapi-tools-api
-  name: Vapi Tools API
-  tags:
-  - Tools
-  - Voice AI
-  - Function Calling
-  humanURL: https://docs.vapi.ai/api-reference/tools/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/tools/list
-    type: Documentation
-  - url: openapi/vapi-tools-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/tools-tools.yaml
-  description: Define and manage Tools (function tools, transfer-call tools, end-call tools, DTMF tools, hangup
-    tools, voicemail tools, MCP tools, query tools, Make/Zapier tools, knowledge-base tools, and Google/Slack/
-    GoHighLevel integrations) that the assistant LLM can invoke during a call.
-- aid: vapi-ai:vapi-files-api
-  name: Vapi Files API
-  tags:
-  - Files
-  - Voice AI
-  - Knowledge Base
-  humanURL: https://docs.vapi.ai/api-reference/files/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/files/list
-    type: Documentation
-  - url: openapi/vapi-files-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/files-files.yaml
-  description: Upload, list, retrieve, update, and delete files used as inputs to knowledge bases and other
-    assistant-side artifacts.
-- aid: vapi-ai:vapi-chats-api
-  name: Vapi Chats API
-  tags:
-  - Chats
-  - Voice AI
-  - Text
-  humanURL: https://docs.vapi.ai/api-reference/chats/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/chats/list
-    type: Documentation
-  - url: openapi/vapi-chats-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/chats-chats.yaml
-  description: Text-based conversation surface that reuses the same assistant configuration as voice calls,
-    including an OpenAI-compatible /chat/responses endpoint for drop-in replacement of OpenAI chat completions.
-- aid: vapi-ai:vapi-sessions-api
-  name: Vapi Sessions API
-  tags:
-  - Sessions
-  - Voice AI
-  - State
-  humanURL: https://docs.vapi.ai/api-reference/sessions/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/sessions/list
-    type: Documentation
-  - url: openapi/vapi-sessions-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/sessions-sessions.yaml
-  description: Stateful sessions that persist conversation history across calls and chats so an assistant can
-    pick up where the customer left off.
-- aid: vapi-ai:vapi-campaigns-api
-  name: Vapi Campaigns API
-  tags:
-  - Campaigns
-  - Voice AI
-  - Outbound
-  humanURL: https://docs.vapi.ai/api-reference/campaigns/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/campaigns/list
-    type: Documentation
-  - url: openapi/vapi-campaigns-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/campaigns-campaigns.yaml
-  description: Outbound calling campaigns — upload a customer list and schedule batched outbound calls against
-    one or more assistants and phone numbers with concurrency and retry policies.
-- aid: vapi-ai:vapi-analytics-api
-  name: Vapi Analytics API
-  tags:
-  - Analytics
-  - Voice AI
-  - Reporting
-  humanURL: https://docs.vapi.ai/api-reference/analytics/create
-  properties:
-  - url: https://docs.vapi.ai/api-reference/analytics/create
-    type: Documentation
-  - url: openapi/vapi-analytics-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/analytics-analytics.yaml
-  description: Run aggregate analytics queries across calls — group by assistant, time bucket, status,
-    end-reason, success evaluation, cost, and duration — for dashboards and chargeback reporting.
-- aid: vapi-ai:vapi-insight-api
-  name: Vapi Insight API
-  tags:
-  - Insight
-  - Voice AI
-  - Observability
-  humanURL: https://docs.vapi.ai/api-reference/insights/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/insights/list
-    type: Documentation
-  - url: openapi/vapi-insight-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/insight-insight.yaml
-  description: Define and run Insight queries across call data, including preview-before-save and on-demand
-    runs, to extract structured signals from conversation transcripts.
-- aid: vapi-ai:vapi-observability-api
-  name: Vapi Observability Scorecard API
-  tags:
-  - Observability
-  - Scorecard
-  - Voice AI
-  - Evaluation
-  humanURL: https://docs.vapi.ai/api-reference/scorecards/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/scorecards/list
-    type: Documentation
-  - url: openapi/vapi-observability-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/observability-observability.yaml
-  description: Define LLM-graded scorecards that automatically evaluate every call against your defined
-    success criteria and produce structured scores for trend analysis and regression detection.
-- aid: vapi-ai:vapi-eval-api
-  name: Vapi Eval API
-  tags:
-  - Eval
-  - Voice AI
-  - Testing
-  humanURL: https://docs.vapi.ai/api-reference/evals/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/evals/list
-    type: Documentation
-  - url: openapi/vapi-eval-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/eval-eval.yaml
-  description: Create test suites that simulate end-user behavior against an assistant, run them on demand,
-    and inspect per-run pass/fail and judge output for regression testing of voice agents.
-- aid: vapi-ai:vapi-structured-outputs-api
-  name: Vapi Structured Outputs API
-  tags:
-  - Structured Outputs
-  - Voice AI
-  humanURL: https://docs.vapi.ai/api-reference/structured-outputs/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/structured-outputs/list
-    type: Documentation
-  - url: openapi/vapi-structured-outputs-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/structured-outputs-structured-outputs.yaml
-  description: Define JSON-Schema-driven structured outputs that the assistant must populate from a call,
-    plus an on-demand /structured-output/run endpoint to backfill outputs against an existing transcript.
-- aid: vapi-ai:vapi-provider-resources-api
-  name: Vapi Provider Resources API
-  tags:
-  - Provider Resources
-  - Voice AI
-  - Integrations
-  humanURL: https://docs.vapi.ai/api-reference/provider-resources/list
-  properties:
-  - url: https://docs.vapi.ai/api-reference/provider-resources/list
-    type: Documentation
-  - url: openapi/vapi-provider-resources-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/provider-resources-provider-resources.yaml
-  description: Generic CRUD over provider-side resources (e.g. ElevenLabs voices, Cartesia voices, Deepgram
-    custom models) so they can be created and managed through Vapi without leaving the platform.
+  - aid: vapi-ai:vapi-assistants-api
+    name: Vapi Assistants API
+    tags:
+      - Assistants
+      - Voice AI
+      - Agents
+    humanURL: https://docs.vapi.ai/api-reference/assistants/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/assistants/list
+        type: Documentation
+      - url: openapi/vapi-assistants-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/vapi-assistant-schema.json
+        type: JSONSchema
+      - url: json-structure/vapi-assistant-structure.json
+        type: JSONStructure
+      - url: examples/vapi-assistant-example.json
+        type: Example
+    description: >-
+      Create and manage Vapi voice assistants. An assistant bundles a transcriber, LLM, voice (TTS), server URL, tools,
+      first message, system prompt, voicemail handling, and call analysis plan into a reusable voice agent configuration
+      that can be attached to inbound or outbound phone numbers, web calls, or squads.
+  - aid: vapi-ai:vapi-calls-api
+    name: Vapi Calls API
+    tags:
+      - Calls
+      - Voice AI
+      - Telephony
+    humanURL: https://docs.vapi.ai/api-reference/calls/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/calls/list
+        type: Documentation
+      - url: openapi/vapi-calls-api-openapi.yml
+        type: OpenAPI
+      - url: asyncapi/vapi-asyncapi.yml
+        type: AsyncAPI
+      - url: json-schema/vapi-call-schema.json
+        type: JSONSchema
+      - url: json-structure/vapi-call-structure.json
+        type: JSONStructure
+      - url: examples/vapi-call-example.json
+        type: Example
+    description: >-
+      Create outbound calls, accept inbound calls, list and filter calls, fetch call status and analysis, delete call
+      data, and download per-call artifacts including mono and stereo recordings, customer/assistant isolated
+      recordings, video recordings, PCAP packet captures, and structured call logs.
+  - aid: vapi-ai:vapi-phone-numbers-api
+    name: Vapi Phone Numbers API
+    tags:
+      - Phone Numbers
+      - Telephony
+      - Voice AI
+    humanURL: https://docs.vapi.ai/api-reference/phone-numbers/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/phone-numbers/list
+        type: Documentation
+      - url: openapi/vapi-phone-numbers-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/vapi-phone-number-schema.json
+        type: JSONSchema
+      - url: json-structure/vapi-phone-number-structure.json
+        type: JSONStructure
+      - url: examples/vapi-phone-number-example.json
+        type: Example
+    description: >-
+      Buy, BYO-import, and manage phone numbers from Vapi (vapi.phoneNumber), Twilio, Telnyx, Vonage, and SIP trunks.
+      Attach an assistant or squad to a number for inbound routing and configure outbound caller-id behavior.
+  - aid: vapi-ai:vapi-squads-api
+    name: Vapi Squads API
+    tags:
+      - Squads
+      - Voice AI
+      - Agents
+    humanURL: https://docs.vapi.ai/api-reference/squads/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/squads/list
+        type: Documentation
+      - url: openapi/vapi-squads-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Compose multiple assistants into a Squad — a multi-agent workflow where the active assistant can hand off a live
+      call to another assistant in the squad based on tools, intents, or transfer destinations.
+  - aid: vapi-ai:vapi-tools-api
+    name: Vapi Tools API
+    tags:
+      - Tools
+      - Voice AI
+      - Function Calling
+    humanURL: https://docs.vapi.ai/api-reference/tools/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/tools/list
+        type: Documentation
+      - url: openapi/vapi-tools-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Define and manage Tools (function tools, transfer-call tools, end-call tools, DTMF tools, hangup tools, voicemail
+      tools, MCP tools, query tools, Make/Zapier tools, knowledge-base tools, and Google/Slack/ GoHighLevel
+      integrations) that the assistant LLM can invoke during a call.
+  - aid: vapi-ai:vapi-files-api
+    name: Vapi Files API
+    tags:
+      - Files
+      - Voice AI
+      - Knowledge Base
+    humanURL: https://docs.vapi.ai/api-reference/files/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/files/list
+        type: Documentation
+      - url: openapi/vapi-files-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Upload, list, retrieve, update, and delete files used as inputs to knowledge bases and other assistant-side
+      artifacts.
+  - aid: vapi-ai:vapi-chats-api
+    name: Vapi Chats API
+    tags:
+      - Chats
+      - Voice AI
+      - Text
+    humanURL: https://docs.vapi.ai/api-reference/chats/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/chats/list
+        type: Documentation
+      - url: openapi/vapi-chats-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Text-based conversation surface that reuses the same assistant configuration as voice calls, including an
+      OpenAI-compatible /chat/responses endpoint for drop-in replacement of OpenAI chat completions.
+  - aid: vapi-ai:vapi-sessions-api
+    name: Vapi Sessions API
+    tags:
+      - Sessions
+      - Voice AI
+      - State
+    humanURL: https://docs.vapi.ai/api-reference/sessions/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/sessions/list
+        type: Documentation
+      - url: openapi/vapi-sessions-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Stateful sessions that persist conversation history across calls and chats so an assistant can pick up where the
+      customer left off.
+  - aid: vapi-ai:vapi-campaigns-api
+    name: Vapi Campaigns API
+    tags:
+      - Campaigns
+      - Voice AI
+      - Outbound
+    humanURL: https://docs.vapi.ai/api-reference/campaigns/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/campaigns/list
+        type: Documentation
+      - url: openapi/vapi-campaigns-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Outbound calling campaigns — upload a customer list and schedule batched outbound calls against one or more
+      assistants and phone numbers with concurrency and retry policies.
+  - aid: vapi-ai:vapi-analytics-api
+    name: Vapi Analytics API
+    tags:
+      - Analytics
+      - Voice AI
+      - Reporting
+    humanURL: https://docs.vapi.ai/api-reference/analytics/create
+    properties:
+      - url: https://docs.vapi.ai/api-reference/analytics/create
+        type: Documentation
+      - url: openapi/vapi-analytics-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Run aggregate analytics queries across calls — group by assistant, time bucket, status, end-reason, success
+      evaluation, cost, and duration — for dashboards and chargeback reporting.
+  - aid: vapi-ai:vapi-insight-api
+    name: Vapi Insight API
+    tags:
+      - Insight
+      - Voice AI
+      - Observability
+    humanURL: https://docs.vapi.ai/api-reference/insights/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/insights/list
+        type: Documentation
+      - url: openapi/vapi-insight-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Define and run Insight queries across call data, including preview-before-save and on-demand runs, to extract
+      structured signals from conversation transcripts.
+  - aid: vapi-ai:vapi-observability-api
+    name: Vapi Observability Scorecard API
+    tags:
+      - Observability
+      - Scorecard
+      - Voice AI
+      - Evaluation
+    humanURL: https://docs.vapi.ai/api-reference/scorecards/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/scorecards/list
+        type: Documentation
+      - url: openapi/vapi-observability-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Define LLM-graded scorecards that automatically evaluate every call against your defined success criteria and
+      produce structured scores for trend analysis and regression detection.
+  - aid: vapi-ai:vapi-eval-api
+    name: Vapi Eval API
+    tags:
+      - Eval
+      - Voice AI
+      - Testing
+    humanURL: https://docs.vapi.ai/api-reference/evals/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/evals/list
+        type: Documentation
+      - url: openapi/vapi-eval-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Create test suites that simulate end-user behavior against an assistant, run them on demand, and inspect per-run
+      pass/fail and judge output for regression testing of voice agents.
+  - aid: vapi-ai:vapi-structured-outputs-api
+    name: Vapi Structured Outputs API
+    tags:
+      - Structured Outputs
+      - Voice AI
+    humanURL: https://docs.vapi.ai/api-reference/structured-outputs/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/structured-outputs/list
+        type: Documentation
+      - url: openapi/vapi-structured-outputs-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Define JSON-Schema-driven structured outputs that the assistant must populate from a call, plus an on-demand
+      /structured-output/run endpoint to backfill outputs against an existing transcript.
+  - aid: vapi-ai:vapi-provider-resources-api
+    name: Vapi Provider Resources API
+    tags:
+      - Provider Resources
+      - Voice AI
+      - Integrations
+    humanURL: https://docs.vapi.ai/api-reference/provider-resources/list
+    properties:
+      - url: https://docs.vapi.ai/api-reference/provider-resources/list
+        type: Documentation
+      - url: openapi/vapi-provider-resources-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Generic CRUD over provider-side resources (e.g. ElevenLabs voices, Cartesia voices, Deepgram custom models) so
+      they can be created and managed through Vapi without leaving the platform.
 name: Vapi
 tags:
-- AI
-- Voice AI
-- Voice Agents
-- Conversational AI
-- Telephony
-- Real-Time
-- Transcription
-- Text-to-Speech
-- LLM
-- Agents
-- MCP
+  - AI
+  - Voice AI
+  - Voice Agents
+  - Conversational AI
+  - Telephony
+  - Real-Time
+  - Transcription
+  - Text-to-Speech
+  - LLM
+  - Agents
+  - MCP
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/vapi-ai-assistant-phone-outbound-call-workflow.yml
-    name: Vapi Assistant Outbound Call End to End
-    summary: Create an assistant, provision a Vapi phone number, place an outbound call, and poll until it ends.
-  - url: arazzo/vapi-ai-build-squad-workflow.yml
-    name: Vapi Build a Multi-Assistant Squad
-    summary: Create two specialized assistants and assemble them into a squad that can hand calls between them.
-  - url: arazzo/vapi-ai-call-then-analytics-workflow.yml
-    name: Vapi Outbound Call Then Cost Analytics
-    summary: Place an outbound call, poll it to completion, then query call analytics for cost and duration.
-  - url: arazzo/vapi-ai-create-assistant-workflow.yml
-    name: Vapi Create and Verify Assistant
-    summary: Create a voice AI assistant and read it back to confirm it was provisioned.
-  - url: arazzo/vapi-ai-create-tool-attach-assistant-workflow.yml
-    name: Vapi Create Function Tool and Attach to Assistant
-    summary: Create a custom function tool and attach it to a freshly created assistant.
-  - url: arazzo/vapi-ai-file-knowledge-base-assistant-workflow.yml
-    name: Vapi File-Backed Knowledge Base Assistant
-    summary: Upload a file, build a query tool knowledge base from it, and create an assistant that uses it.
-  - url: arazzo/vapi-ai-import-twilio-number-workflow.yml
-    name: Vapi Import Twilio Number and Bind Assistant
-    summary: Create an assistant and import an existing Twilio number that routes inbound calls to it.
-  - url: arazzo/vapi-ai-squad-outbound-call-workflow.yml
-    name: Vapi Squad Outbound Call
-    summary: Build a two-assistant squad, place an outbound call to it, and poll until the call ends.
-- url: https://vapi.ai
-  type: Portal
-- url: https://docs.vapi.ai
-  name: Vapi Docs
-  type: Documentation
-- url: https://api.vapi.ai/api
-  name: Swagger UI
-  type: Documentation
-- url: https://api.vapi.ai/api-json
-  name: Raw OpenAPI JSON
-  type: OpenAPI
-- url: https://docs.vapi.ai/quickstart
-  name: Quickstart
-  type: GettingStarted
-- url: https://dashboard.vapi.ai
-  name: Vapi Dashboard
-  type: SignUp
-- url: https://status.vapi.ai
-  name: Vapi Status
-  type: StatusPage
-- url: https://vapi.ai/pricing
-  name: Vapi Pricing
-  type: Pricing
-- url: https://discord.gg/pUFNcf2WmH
-  name: Vapi Discord
-  type: Forum
-- url: https://vapi.ai/blog
-  name: Vapi Blog
-  type: Blog
-- url: https://vapi.ai/changelog
-  name: Vapi Changelog
-  type: ChangeLog
-- url: https://github.com/VapiAI
-  name: Vapi GitHub
-  type: GitHubOrganization
-- url: https://github.com/VapiAI/server-sdk-typescript
-  name: TypeScript Server SDK
-  type: SDK
-- url: https://github.com/VapiAI/server-sdk-python
-  name: Python Server SDK
-  type: SDK
-- url: https://github.com/VapiAI/server-sdk-csharp
-  name: C# Server SDK
-  type: SDK
-- url: https://github.com/VapiAI/server-sdk-ruby
-  name: Ruby Server SDK
-  type: SDK
-- url: https://github.com/VapiAI/server-sdk-php
-  name: PHP Server SDK
-  type: SDK
-- url: https://github.com/VapiAI/client-sdk-web
-  name: Web Client SDK
-  type: SDK
-- url: https://github.com/VapiAI/client-sdk-python
-  name: Python Client SDK
-  type: SDK
-- url: https://github.com/VapiAI/client-sdk-react-native
-  name: React Native Client SDK
-  type: SDK
-- url: https://github.com/VapiAI/client-sdk-ios
-  name: iOS Client SDK
-  type: SDK
-- url: https://github.com/VapiAI/client-sdk-html-script-tag
-  name: HTML Script Tag Client SDK
-  type: SDK
-- url: https://github.com/VapiAI/mcp-server
-  name: Vapi MCP Server
-  type: Tool
-- url: https://github.com/VapiAI/skills
-  name: Vapi Agent Skills
-  type: Tool
-- url: https://github.com/VapiAI/gitops
-  name: Vapi GitOps
-  type: Tool
-- url: https://github.com/VapiAI/docs
-  name: Vapi Docs Repo
-  type: CodeExamples
-- url: https://docs.vapi.ai/server-url
-  name: Server URL (Webhooks)
-  type: Webhooks
-- url: https://docs.vapi.ai/server-url/events
-  name: Server Events
-  type: Webhooks
-- url: asyncapi/vapi-asyncapi.yml
-  name: Vapi Realtime AsyncAPI (WebSocket Transport + Server URL Events)
-  type: AsyncAPI
-- url: https://trust.vapi.ai
-  name: Vapi Trust Center
-  type: TrustCenter
-- url: https://vapi.ai/privacy
-  type: PrivacyPolicy
-- url: https://vapi.ai/terms-of-service
-  type: TermsOfService
-- url: https://vapi.ai/aup
-  type: TermsOfService
-- url: https://x.com/Vapi_AI
-  type: Twitter
-- url: https://www.linkedin.com/company/vapi-ai
-  type: LinkedIn
-- url: https://www.ycombinator.com/companies/vapi
-  name: Y Combinator Profile
-  type: Documentation
-- url: plans/vapi-ai-plans-pricing.yml
-  type: Plans
-- url: rate-limits/vapi-ai-rate-limits.yml
-  type: RateLimits
-- url: finops/vapi-ai-finops.yml
-  type: FinOps
-- type: Features
-  data:
-  - Sub-700ms voice-to-voice latency orchestration layer
-  - Transcriber + LLM + voice (TTS) modular pipeline with multi-provider choice
-  - Bring your own provider keys to pay providers at cost
-  - Assistants, Squads (multi-agent handoff), Sessions (persistent state)
-  - Inbound and outbound calling over Twilio, Telnyx, Vonage, vapi.phoneNumber, and SIP
-  - Campaigns for batched outbound calling with concurrency/retry
-  - Tools (function, transfer-call, end-call, DTMF, hangup, voicemail, MCP, query, Make, Zapier, GHL, KB)
-  - Server URL webhooks for real-time call events and function execution
-  - Per-call mono/stereo/customer/assistant/video recordings, PCAP packet captures, call logs
-  - Analytics, Insights, Observability Scorecards, and Evals for production monitoring and regression testing
-  - Structured Outputs for JSON-schema-constrained extraction from calls
-  - Chats API (text channel) and OpenAI-compatible /chat/responses
-  - Official SDKs - server (TS, Python, C#, Ruby, PHP) and client (Web, Python, React Native, iOS, HTML)
-  - Vapi MCP Server for Model Context Protocol integration
-  - HIPAA and Zero Data Retention add-ons; SOC2 and PCI on Scale plan
-  - $0.05/min Vapi orchestration fee on Build plan; model and voice costs passed at cost
-  sources:
-  - https://vapi.ai/pricing
-  - https://docs.vapi.ai
-  - https://api.vapi.ai/api
-  - https://github.com/VapiAI
-  - https://status.vapi.ai
-  updated: '2026-05-24'
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/vapi/overview
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+      - url: arazzo/vapi-ai-assistant-phone-outbound-call-workflow.yml
+        name: Vapi Assistant Outbound Call End to End
+        summary: Create an assistant, provision a Vapi phone number, place an outbound call, and poll until it ends.
+      - url: arazzo/vapi-ai-build-squad-workflow.yml
+        name: Vapi Build a Multi-Assistant Squad
+        summary: Create two specialized assistants and assemble them into a squad that can hand calls between them.
+      - url: arazzo/vapi-ai-call-then-analytics-workflow.yml
+        name: Vapi Outbound Call Then Cost Analytics
+        summary: Place an outbound call, poll it to completion, then query call analytics for cost and duration.
+      - url: arazzo/vapi-ai-create-assistant-workflow.yml
+        name: Vapi Create and Verify Assistant
+        summary: Create a voice AI assistant and read it back to confirm it was provisioned.
+      - url: arazzo/vapi-ai-create-tool-attach-assistant-workflow.yml
+        name: Vapi Create Function Tool and Attach to Assistant
+        summary: Create a custom function tool and attach it to a freshly created assistant.
+      - url: arazzo/vapi-ai-file-knowledge-base-assistant-workflow.yml
+        name: Vapi File-Backed Knowledge Base Assistant
+        summary: Upload a file, build a query tool knowledge base from it, and create an assistant that uses it.
+      - url: arazzo/vapi-ai-import-twilio-number-workflow.yml
+        name: Vapi Import Twilio Number and Bind Assistant
+        summary: Create an assistant and import an existing Twilio number that routes inbound calls to it.
+      - url: arazzo/vapi-ai-squad-outbound-call-workflow.yml
+        name: Vapi Squad Outbound Call
+        summary: Build a two-assistant squad, place an outbound call to it, and poll until the call ends.
+  - url: https://vapi.ai
+    type: Portal
+  - url: https://docs.vapi.ai
+    name: Vapi Docs
+    type: Documentation
+  - url: https://api.vapi.ai/api
+    name: Swagger UI
+    type: Documentation
+  - url: https://api.vapi.ai/api-json
+    name: Raw OpenAPI JSON
+    type: OpenAPI
+  - url: https://docs.vapi.ai/quickstart
+    name: Quickstart
+    type: GettingStarted
+  - url: https://dashboard.vapi.ai
+    name: Vapi Dashboard
+    type: SignUp
+  - url: https://status.vapi.ai
+    name: Vapi Status
+    type: StatusPage
+  - url: https://vapi.ai/pricing
+    name: Vapi Pricing
+    type: Pricing
+  - url: https://discord.gg/pUFNcf2WmH
+    name: Vapi Discord
+    type: Forum
+  - url: https://vapi.ai/blog
+    name: Vapi Blog
+    type: Blog
+  - url: https://vapi.ai/changelog
+    name: Vapi Changelog
+    type: ChangeLog
+  - url: https://github.com/VapiAI
+    name: Vapi GitHub
+    type: GitHubOrganization
+  - url: https://github.com/VapiAI/server-sdk-typescript
+    name: TypeScript Server SDK
+    type: SDK
+  - url: https://github.com/VapiAI/server-sdk-python
+    name: Python Server SDK
+    type: SDK
+  - url: https://github.com/VapiAI/server-sdk-csharp
+    name: C# Server SDK
+    type: SDK
+  - url: https://github.com/VapiAI/server-sdk-ruby
+    name: Ruby Server SDK
+    type: SDK
+  - url: https://github.com/VapiAI/server-sdk-php
+    name: PHP Server SDK
+    type: SDK
+  - url: https://github.com/VapiAI/client-sdk-web
+    name: Web Client SDK
+    type: SDK
+  - url: https://github.com/VapiAI/client-sdk-python
+    name: Python Client SDK
+    type: SDK
+  - url: https://github.com/VapiAI/client-sdk-react-native
+    name: React Native Client SDK
+    type: SDK
+  - url: https://github.com/VapiAI/client-sdk-ios
+    name: iOS Client SDK
+    type: SDK
+  - url: https://github.com/VapiAI/client-sdk-html-script-tag
+    name: HTML Script Tag Client SDK
+    type: SDK
+  - url: https://github.com/VapiAI/mcp-server
+    name: Vapi MCP Server
+    type: Tool
+  - url: https://github.com/VapiAI/skills
+    name: Vapi Agent Skills
+    type: Tool
+  - url: https://github.com/VapiAI/gitops
+    name: Vapi GitOps
+    type: Tool
+  - url: https://github.com/VapiAI/docs
+    name: Vapi Docs Repo
+    type: CodeExamples
+  - url: https://docs.vapi.ai/server-url
+    name: Server URL (Webhooks)
+    type: Webhooks
+  - url: https://docs.vapi.ai/server-url/events
+    name: Server Events
+    type: Webhooks
+  - url: asyncapi/vapi-asyncapi.yml
+    name: Vapi Realtime AsyncAPI (WebSocket Transport + Server URL Events)
+    type: AsyncAPI
+  - url: https://trust.vapi.ai
+    name: Vapi Trust Center
+    type: TrustCenter
+  - url: https://vapi.ai/privacy
+    type: PrivacyPolicy
+  - url: https://vapi.ai/terms-of-service
+    type: TermsOfService
+  - url: https://vapi.ai/aup
+    type: TermsOfService
+  - url: https://x.com/Vapi_AI
+    type: Twitter
+  - url: https://www.linkedin.com/company/vapi-ai
+    type: LinkedIn
+  - url: https://www.ycombinator.com/companies/vapi
+    name: Y Combinator Profile
+    type: Documentation
+  - url: plans/vapi-ai-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/vapi-ai-rate-limits.yml
+    type: RateLimits
+  - url: finops/vapi-ai-finops.yml
+    type: FinOps
+  - type: Features
+    data:
+      - Sub-700ms voice-to-voice latency orchestration layer
+      - Transcriber + LLM + voice (TTS) modular pipeline with multi-provider choice
+      - Bring your own provider keys to pay providers at cost
+      - Assistants, Squads (multi-agent handoff), Sessions (persistent state)
+      - Inbound and outbound calling over Twilio, Telnyx, Vonage, vapi.phoneNumber, and SIP
+      - Campaigns for batched outbound calling with concurrency/retry
+      - Tools (function, transfer-call, end-call, DTMF, hangup, voicemail, MCP, query, Make, Zapier, GHL, KB)
+      - Server URL webhooks for real-time call events and function execution
+      - Per-call mono/stereo/customer/assistant/video recordings, PCAP packet captures, call logs
+      - Analytics, Insights, Observability Scorecards, and Evals for production monitoring and regression testing
+      - Structured Outputs for JSON-schema-constrained extraction from calls
+      - Chats API (text channel) and OpenAI-compatible /chat/responses
+      - Official SDKs - server (TS, Python, C#, Ruby, PHP) and client (Web, Python, React Native, iOS, HTML)
+      - Vapi MCP Server for Model Context Protocol integration
+      - HIPAA and Zero Data Retention add-ons; SOC2 and PCI on Scale plan
+      - $0.05/min Vapi orchestration fee on Build plan; model and voice costs passed at cost
+    sources:
+      - https://vapi.ai/pricing
+      - https://docs.vapi.ai
+      - https://api.vapi.ai/api
+      - https://github.com/VapiAI
+      - https://status.vapi.ai
+    updated: '2026-05-24'
 created: '2026-05-24T00:00:00.000Z'
 modified: '2026-05-29'
 position: Consuming
-description: Vapi is a San Francisco-based voice AI platform that lets developers build real-time, low-latency
-  voice agents over phone, web, and SIP. It orchestrates three modular components — a transcriber (STT), an
-  LLM, and a voice (TTS) — into a sub-700ms voice-to-voice pipeline, with first-class support for tools/function
-  calling, multi-agent squads, outbound campaigns, persistent sessions, structured outputs, recording artifacts,
-  evaluation scorecards, and a full REST API plus official SDKs in TypeScript, Python, C#, Ruby, PHP, and
-  client SDKs for Web, React Native, iOS, and Python. Vapi is a Y Combinator company.
+description: >-
+  Vapi is a San Francisco-based voice AI platform that lets developers build real-time, low-latency voice agents over
+  phone, web, and SIP. It orchestrates three modular components — a transcriber (STT), an LLM, and a voice (TTS) — into
+  a sub-700ms voice-to-voice pipeline, with first-class support for tools/function calling, multi-agent squads, outbound
+  campaigns, persistent sessions, structured outputs, recording artifacts, evaluation scorecards, and a full REST API
+  plus official SDKs in TypeScript, Python, C#, Ruby, PHP, and client SDKs for Web, React Native, iOS, and Python. Vapi
+  is a Y Combinator company.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'

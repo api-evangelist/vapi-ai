@@ -1,0 +1,857 @@
+{
+  "item": [
+    {
+      "id": "1dacb7aa-86e9-4bae-bd07-1098515c5937",
+      "name": "Structured Outputs",
+      "description": {
+        "content": "Structured Outputs endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff56c94b-fa41-4205-aeb4-9a6bdefbdbae",
+          "name": "List Structured Outputs",
+          "request": {
+            "name": "List Structured Outputs",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "This will return structured outputs where the id matches the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "This will return structured outputs where the name matches the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "This is the page number to return. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "This is the sort order for pagination. Defaults to 'DESC'."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "This is the column to sort by. Defaults to 'createdAt'."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35509571-ba7f-42cd-8360-4673ba7c8539",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1995-08-15T05:17:00.886Z\",\n      \"updatedAt\": \"1978-02-14T01:15:48.032Z\",\n      \"name\": \"string\",\n      \"schema\": {\n        \"type\": \"boolean\",\n        \"items\": {\n          \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"properties\": {\n          \"key_0\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          }\n        },\n        \"description\": \"string\",\n        \"pattern\": \"string\",\n        \"format\": \"email\",\n        \"required\": [\n          \"string\",\n          \"string\"\n        ],\n        \"enum\": [\n          \"string\",\n          \"string\"\n        ],\n        \"title\": \"string\"\n      },\n      \"type\": \"regex\",\n      \"regex\": \"string\",\n      \"model\": {\n        \"provider\": \"openai\",\n        \"model\": \"gpt-5.1-chat-latest\",\n        \"temperature\": 1.8772973820047998,\n        \"maxTokens\": 3002.3732291768774\n      },\n      \"compliancePlan\": {\n        \"forceStoreOnHipaaEnabled\": false\n      },\n      \"description\": \"string\",\n      \"assistantIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"workflowIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1955-04-20T10:16:15.163Z\",\n      \"updatedAt\": \"1997-07-31T05:37:53.541Z\",\n      \"name\": \"string\",\n      \"schema\": {\n        \"type\": \"string\",\n        \"items\": {\n          \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"properties\": {\n          \"key_0\": {\n            \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n          }\n        },\n        \"description\": \"string\",\n        \"pattern\": \"string\",\n        \"format\": \"email\",\n        \"required\": [\n          \"string\",\n          \"string\"\n        ],\n        \"enum\": [\n          \"string\",\n          \"string\"\n        ],\n        \"title\": \"string\"\n      },\n      \"type\": \"ai\",\n      \"regex\": \"string\",\n      \"model\": {\n        \"provider\": \"openai\",\n        \"model\": \"gpt-3.5-turbo-0613\",\n        \"temperature\": 1.2783134096699917,\n        \"maxTokens\": 4530.209812178326\n      },\n      \"compliancePlan\": {\n        \"forceStoreOnHipaaEnabled\": false\n      },\n      \"description\": \"string\",\n      \"assistantIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"workflowIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": 7427.863565469748,\n    \"totalItems\": 3303.631244512435,\n    \"currentPage\": 5149.370861441228,\n    \"totalPages\": 3860.4398467173105,\n    \"hasNextPage\": false,\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": false,\n    \"createdAtLe\": \"1977-10-16T01:55:38.940Z\",\n    \"createdAtGe\": \"2023-03-01T06:58:28.776Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb88cbdf-dc47-4645-bab7-7b55d494b5b2",
+          "name": "Create Structured Output",
+          "request": {
+            "name": "Create Structured Output",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"<string>\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": \"<boolean>\"\n  },\n  \"description\": \"<string>\",\n  \"assistantIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workflowIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5da4643-f01e-461b-b64d-08c29b72617d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"<string>\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"<string>\",\n  \"assistantIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workflowIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1996-10-23T07:33:35.117Z\",\n  \"updatedAt\": \"2016-05-05T21:33:56.772Z\",\n  \"name\": \"string\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"string\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"string\",\n  \"assistantIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workflowIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f117d5d7-0357-4af5-a52c-b074c589c0f9",
+          "name": "Get Structured Output",
+          "request": {
+            "name": "Get Structured Output",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6bbd404-540b-4acb-a1e8-d7c2b1e87108",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1996-10-23T07:33:35.117Z\",\n  \"updatedAt\": \"2016-05-05T21:33:56.772Z\",\n  \"name\": \"string\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"string\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"string\",\n  \"assistantIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workflowIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66653529-4c39-4eb7-87cf-d91befc3cf7b",
+          "name": "Update Structured Output",
+          "request": {
+            "name": "Update Structured Output",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "schemaOverride",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": \"<boolean>\"\n  },\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assistantIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workflowIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_3\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3a30bab-e8f8-476a-82fa-a0bbb73f648a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schemaOverride",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assistantIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workflowIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1996-10-23T07:33:35.117Z\",\n  \"updatedAt\": \"2016-05-05T21:33:56.772Z\",\n  \"name\": \"string\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"string\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"string\",\n  \"assistantIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workflowIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53f494bf-227e-43ad-ab83-bf8161a39037",
+          "name": "Delete Structured Output",
+          "request": {
+            "name": "Delete Structured Output",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5819ab2f-e176-456f-8041-458b92c04314",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1996-10-23T07:33:35.117Z\",\n  \"updatedAt\": \"2016-05-05T21:33:56.772Z\",\n  \"name\": \"string\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"string\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"string\",\n  \"assistantIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workflowIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "475e5acb-e47f-4ecf-9fde-71ccb8a5de3c",
+          "name": "Run Structured Output",
+          "request": {
+            "name": "Run Structured Output",
+            "description": {},
+            "url": {
+              "path": [
+                "structured-output",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"previewEnabled\": false,\n  \"structuredOutputId\": \"<string>\",\n  \"structuredOutput\": {\n    \"name\": \"<string>\",\n    \"schema\": {\n      \"type\": \"<string>\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"key_0\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_1\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"<string>\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"type\": \"ai\",\n    \"regex\": \"<string>\",\n    \"model\": {\n      \"provider\": \"<string>\",\n      \"model\": \"<string>\",\n      \"temperature\": \"<number>\",\n      \"maxTokens\": \"<number>\"\n    },\n    \"compliancePlan\": {\n      \"forceStoreOnHipaaEnabled\": \"<boolean>\"\n    },\n    \"description\": \"<string>\",\n    \"assistantIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"workflowIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1aeed65-60ab-4cf2-8586-e504ccd7a157",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"previewEnabled\": false,\n  \"structuredOutputId\": \"<string>\",\n  \"structuredOutput\": {\n    \"name\": \"<string>\",\n    \"schema\": {\n      \"type\": \"<string>\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"key_0\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_1\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_3\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"<string>\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"type\": \"ai\",\n    \"regex\": \"<string>\",\n    \"model\": {\n      \"provider\": \"<string>\",\n      \"model\": \"<string>\",\n      \"temperature\": \"<number>\",\n      \"maxTokens\": \"<number>\"\n    },\n    \"compliancePlan\": {\n      \"forceStoreOnHipaaEnabled\": false\n    },\n    \"description\": \"<string>\",\n    \"assistantIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"workflowIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1996-10-23T07:33:35.117Z\",\n  \"updatedAt\": \"2016-05-05T21:33:56.772Z\",\n  \"name\": \"string\",\n  \"schema\": {\n    \"type\": \"<string>\",\n    \"items\": {\n      \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n      \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n    },\n    \"properties\": {\n      \"key_0\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"key_2\": {\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"pattern\": \"<string>\",\n    \"format\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"enum\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"title\": \"<string>\"\n  },\n  \"type\": \"ai\",\n  \"regex\": \"string\",\n  \"model\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"temperature\": \"<number>\",\n    \"maxTokens\": \"<number>\"\n  },\n  \"compliancePlan\": {\n    \"forceStoreOnHipaaEnabled\": false\n  },\n  \"description\": \"string\",\n  \"assistantIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workflowIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0480d457-0f7f-4f88-98e2-9190d68e6561",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "structured-output",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"previewEnabled\": false,\n  \"structuredOutputId\": \"<string>\",\n  \"structuredOutput\": {\n    \"name\": \"<string>\",\n    \"schema\": {\n      \"type\": \"<string>\",\n      \"items\": {\n        \"description\": \"This is required if the type is \\\"array\\\". This is the schema of the items in the array. This is a recursive reference to JsonSchema.\",\n        \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n      },\n      \"properties\": {\n        \"key_0\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_1\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_2\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        },\n        \"key_3\": {\n          \"value\": \"<Circular reference to #/components/schemas/JsonSchema detected>\"\n        }\n      },\n      \"description\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"format\": \"<string>\",\n      \"required\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\"\n    },\n    \"type\": \"ai\",\n    \"regex\": \"<string>\",\n    \"model\": {\n      \"provider\": \"<string>\",\n      \"model\": \"<string>\",\n      \"temperature\": \"<number>\",\n      \"maxTokens\": \"<number>\"\n    },\n    \"compliancePlan\": {\n      \"forceStoreOnHipaaEnabled\": false\n    },\n    \"description\": \"<string>\",\n    \"assistantIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"workflowIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e557571-e172-46c9-9676-678708e1df01",
+    "name": "Vapi Structured Outputs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Structured Outputs resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}

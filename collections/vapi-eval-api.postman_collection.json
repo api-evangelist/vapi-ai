@@ -1,0 +1,1249 @@
+{
+  "item": [
+    {
+      "id": "6e2c0493-2cee-4151-9b2b-0c81577d3e66",
+      "name": "Eval",
+      "description": {
+        "content": "Eval endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3808521-8a62-496a-90ab-e7e7d5dd9d27",
+          "name": "Create Eval",
+          "request": {
+            "name": "Create Eval",
+            "description": {},
+            "url": {
+              "path": [
+                "eval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8154479d-ead2-4d22-9763-d256fa737a2b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"chat.mockConversation\",\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1984-06-05T18:18:43.459Z\",\n  \"updatedAt\": \"1995-12-29T07:43:51.730Z\",\n  \"type\": \"chat.mockConversation\",\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67978230-e709-4901-a927-24068b860dbd",
+          "name": "List Evals",
+          "request": {
+            "name": "List Evals",
+            "description": {},
+            "url": {
+              "path": [
+                "eval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "This is the page number to return. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "This is the sort order for pagination. Defaults to 'DESC'."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "This is the column to sort by. Defaults to 'createdAt'."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8364d947-08e1-4163-a211-4af57dc9f32a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"2018-03-11T20:36:57.352Z\",\n      \"updatedAt\": \"1984-06-18T22:21:47.641Z\",\n      \"type\": \"chat.mockConversation\",\n      \"name\": \"Verified User Flow Eval\",\n      \"description\": \"This eval checks if the user flow is verified.\"\n    },\n    {\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1991-01-03T16:08:19.058Z\",\n      \"updatedAt\": \"1951-08-30T21:45:21.241Z\",\n      \"type\": \"chat.mockConversation\",\n      \"name\": \"Verified User Flow Eval\",\n      \"description\": \"This eval checks if the user flow is verified.\"\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": 9069.592151448927,\n    \"totalItems\": 4540.347071500647,\n    \"currentPage\": 7777.688416169292,\n    \"totalPages\": 2353.8723157969644,\n    \"hasNextPage\": true,\n    \"sortOrder\": \"ASC\",\n    \"itemsBeyondRetention\": false,\n    \"createdAtLe\": \"1992-04-03T17:18:37.652Z\",\n    \"createdAtGe\": \"1997-05-12T12:41:13.264Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8efdadb3-0647-4f74-9233-d734e0fd3272",
+          "name": "Update Eval",
+          "request": {
+            "name": "Update Eval",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e91139a-1e0e-4a77-869d-f6de50e03b71",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\",\n  \"type\": \"chat.mockConversation\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1949-06-04T02:31:21.160Z\",\n  \"updatedAt\": \"1998-06-18T06:06:42.773Z\",\n  \"type\": \"chat.mockConversation\",\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c93ec37-c86a-441b-864a-c3a9c694dfbc",
+          "name": "Delete Eval",
+          "request": {
+            "name": "Delete Eval",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "948e78d1-7c5a-4481-9c25-6f78b8a76a2b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1949-06-04T02:31:21.160Z\",\n  \"updatedAt\": \"1998-06-18T06:06:42.773Z\",\n  \"type\": \"chat.mockConversation\",\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aec809c5-5111-4932-bdbc-8fa203701bb6",
+          "name": "Get Eval",
+          "request": {
+            "name": "Get Eval",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7ffd1b2-0e06-4ace-969f-b2a7d97f8089",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"The weather in San Francisco is sunny.\",\n      \"toolCalls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1949-06-04T02:31:21.160Z\",\n  \"updatedAt\": \"1998-06-18T06:06:42.773Z\",\n  \"type\": \"chat.mockConversation\",\n  \"name\": \"Verified User Flow Eval\",\n  \"description\": \"This eval checks if the user flow is verified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "693e430b-e50b-42b4-b7f0-493d23b88fd7",
+          "name": "Delete Eval Run",
+          "request": {
+            "name": "Delete Eval Run",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                "run",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dace8f1c-7323-4a21-baa8-0a78c001f623",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    "run",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"running\",\n  \"endedReason\": \"mockConversation.done\",\n  \"target\": {\n    \"type\": \"assistant\",\n    \"assistant\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantOverrides\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantId\": \"123e4567-e89b-12d3-a456-426614174000\"\n  },\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"1962-11-26T20:06:20.747Z\",\n  \"startedAt\": \"2012-12-18T10:31:18.036Z\",\n  \"endedAt\": \"2003-10-20T22:22:04.259Z\",\n  \"results\": [\n    {\n      \"status\": \"pass\",\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"startedAt\": \"2021-01-01T00:00:00.000Z\",\n      \"endedAt\": \"2021-01-01T00:00:00.000Z\"\n    },\n    {\n      \"status\": \"pass\",\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"startedAt\": \"2021-01-01T00:00:00.000Z\",\n      \"endedAt\": \"2021-01-01T00:00:00.000Z\"\n    }\n  ],\n  \"cost\": 0.01,\n  \"costs\": [],\n  \"type\": \"eval\",\n  \"eval\": {\n    \"messages\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"type\": \"chat.mockConversation\",\n    \"name\": \"Verified User Flow Eval\",\n    \"description\": \"This eval checks if the user flow is verified.\"\n  },\n  \"endedMessage\": \"The Assistant returned an error\",\n  \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53ea8ecc-9f1d-42ba-90e0-59e7dde7c3de",
+          "name": "Get Eval Run",
+          "request": {
+            "name": "Get Eval Run",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                "run",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "243fc2be-c7d4-4bac-80bc-b20430cb4c23",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    "run",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"running\",\n  \"endedReason\": \"mockConversation.done\",\n  \"target\": {\n    \"type\": \"assistant\",\n    \"assistant\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantOverrides\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantId\": \"123e4567-e89b-12d3-a456-426614174000\"\n  },\n  \"id\": \"string\",\n  \"orgId\": \"string\",\n  \"createdAt\": \"2024-11-02T16:48:31.831Z\",\n  \"startedAt\": \"1984-05-23T09:35:07.893Z\",\n  \"endedAt\": \"1964-06-04T18:25:02.285Z\",\n  \"results\": [\n    {\n      \"status\": \"pass\",\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"startedAt\": \"2021-01-01T00:00:00.000Z\",\n      \"endedAt\": \"2021-01-01T00:00:00.000Z\"\n    },\n    {\n      \"status\": \"pass\",\n      \"messages\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"startedAt\": \"2021-01-01T00:00:00.000Z\",\n      \"endedAt\": \"2021-01-01T00:00:00.000Z\"\n    }\n  ],\n  \"cost\": 0.01,\n  \"costs\": [],\n  \"type\": \"eval\",\n  \"eval\": {\n    \"messages\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"type\": \"chat.mockConversation\",\n    \"name\": \"Verified User Flow Eval\",\n    \"description\": \"This eval checks if the user flow is verified.\"\n  },\n  \"endedMessage\": \"The Assistant returned an error\",\n  \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cad7892-86de-4cb1-a034-55f17cdf6746",
+          "name": "Create Eval Run",
+          "request": {
+            "name": "Create Eval Run",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target\": {\n    \"type\": \"<string>\",\n    \"assistant\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantOverrides\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantId\": \"<string>\"\n  },\n  \"type\": \"<string>\",\n  \"eval\": {\n    \"messages\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"evalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b728faeb-2b80-4ac1-ad9e-1617b7ef8a10",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": {\n    \"type\": \"assistant\",\n    \"assistant\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantOverrides\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantId\": \"123e4567-e89b-12d3-a456-426614174000\"\n  },\n  \"type\": \"eval\",\n  \"eval\": {\n    \"messages\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"type\": \"chat.mockConversation\",\n    \"name\": \"Verified User Flow Eval\",\n    \"description\": \"This eval checks if the user flow is verified.\"\n  },\n  \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "406cada9-2611-48ca-bfd1-48412fcf6f65",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": {\n    \"type\": \"assistant\",\n    \"assistant\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantOverrides\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"assistantId\": \"123e4567-e89b-12d3-a456-426614174000\"\n  },\n  \"type\": \"eval\",\n  \"eval\": {\n    \"messages\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"type\": \"chat.mockConversation\",\n    \"name\": \"Verified User Flow Eval\",\n    \"description\": \"This eval checks if the user flow is verified.\"\n  },\n  \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "962cb0b7-a763-403f-bf03-9a496a4525ba",
+          "name": "List Eval Runs",
+          "request": {
+            "name": "List Eval Runs",
+            "description": {},
+            "url": {
+              "path": [
+                "eval",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "This is the page number to return. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "This is the sort order for pagination. Defaults to 'DESC'."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "This is the column to sort by. Defaults to 'createdAt'."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5e0f0a49-ec89-46e2-b425-3de6af9c9200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eval",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"status\": \"running\",\n      \"endedReason\": \"mockConversation.done\",\n      \"target\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"1961-08-27T14:00:31.317Z\",\n      \"startedAt\": \"2010-01-17T03:41:31.074Z\",\n      \"endedAt\": \"1952-04-24T22:30:30.313Z\",\n      \"results\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"cost\": 0.01,\n      \"type\": \"eval\",\n      \"eval\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endedMessage\": \"The Assistant returned an error\",\n      \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n    },\n    {\n      \"status\": \"running\",\n      \"endedReason\": \"mockConversation.done\",\n      \"target\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"string\",\n      \"orgId\": \"string\",\n      \"createdAt\": \"2009-10-03T11:11:46.596Z\",\n      \"startedAt\": \"1992-09-14T03:46:58.455Z\",\n      \"endedAt\": \"2014-12-11T19:36:43.803Z\",\n      \"results\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"cost\": 0.01,\n      \"type\": \"eval\",\n      \"eval\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"endedMessage\": \"The Assistant returned an error\",\n      \"evalId\": \"123e4567-e89b-12d3-a456-426614174000\"\n    }\n  ],\n  \"metadata\": {\n    \"itemsPerPage\": 35.72753107357496,\n    \"totalItems\": 633.3595809100445,\n    \"currentPage\": 1844.3259612104112,\n    \"totalPages\": 4425.2384914408685,\n    \"hasNextPage\": true,\n    \"sortOrder\": \"DESC\",\n    \"itemsBeyondRetention\": false,\n    \"createdAtLe\": \"1999-02-18T16:21:24.013Z\",\n    \"createdAtGe\": \"1989-09-04T01:05:20.046Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "582f0eec-6211-4ffb-b992-bb8843d7f089",
+    "name": "Vapi Eval API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Eval resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}
