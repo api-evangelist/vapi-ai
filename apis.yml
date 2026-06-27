@@ -18,7 +18,7 @@ apis:
       - url: json-structure/vapi-assistant-structure.json
         type: JSONStructure
       - url: examples/vapi-assistant-example.json
-        type: Example
+        type: Examples
     description: >-
       Create and manage Vapi voice assistants. An assistant bundles a transcriber, LLM, voice (TTS), server URL, tools,
       first message, system prompt, voicemail handling, and call analysis plan into a reusable voice agent configuration
@@ -42,7 +42,7 @@ apis:
       - url: json-structure/vapi-call-structure.json
         type: JSONStructure
       - url: examples/vapi-call-example.json
-        type: Example
+        type: Examples
     description: >-
       Create outbound calls, accept inbound calls, list and filter calls, fetch call status and analysis, delete call
       data, and download per-call artifacts including mono and stereo recordings, customer/assistant isolated
@@ -64,7 +64,7 @@ apis:
       - url: json-structure/vapi-phone-number-structure.json
         type: JSONStructure
       - url: examples/vapi-phone-number-example.json
-        type: Example
+        type: Examples
     description: >-
       Buy, BYO-import, and manage phone numbers from Vapi (vapi.phoneNumber), Twilio, Telnyx, Vonage, and SIP trunks.
       Attach an assistant or squad to a number for inbound routing and configure outbound caller-id behavior.
@@ -268,33 +268,30 @@ access: 3rd-Party
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/vapi/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/vapi-ai-assistant-phone-outbound-call-workflow.yml
-        name: Vapi Assistant Outbound Call End to End
-        summary: Create an assistant, provision a Vapi phone number, place an outbound call, and poll until it ends.
-      - url: arazzo/vapi-ai-build-squad-workflow.yml
-        name: Vapi Build a Multi-Assistant Squad
-        summary: Create two specialized assistants and assemble them into a squad that can hand calls between them.
-      - url: arazzo/vapi-ai-call-then-analytics-workflow.yml
-        name: Vapi Outbound Call Then Cost Analytics
-        summary: Place an outbound call, poll it to completion, then query call analytics for cost and duration.
-      - url: arazzo/vapi-ai-create-assistant-workflow.yml
-        name: Vapi Create and Verify Assistant
-        summary: Create a voice AI assistant and read it back to confirm it was provisioned.
-      - url: arazzo/vapi-ai-create-tool-attach-assistant-workflow.yml
-        name: Vapi Create Function Tool and Attach to Assistant
-        summary: Create a custom function tool and attach it to a freshly created assistant.
-      - url: arazzo/vapi-ai-file-knowledge-base-assistant-workflow.yml
-        name: Vapi File-Backed Knowledge Base Assistant
-        summary: Upload a file, build a query tool knowledge base from it, and create an assistant that uses it.
-      - url: arazzo/vapi-ai-import-twilio-number-workflow.yml
-        name: Vapi Import Twilio Number and Bind Assistant
-        summary: Create an assistant and import an existing Twilio number that routes inbound calls to it.
-      - url: arazzo/vapi-ai-squad-outbound-call-workflow.yml
-        name: Vapi Squad Outbound Call
-        summary: Build a two-assistant squad, place an outbound call to it, and poll until the call ends.
+  - type: Arazzo
+    url: arazzo/vapi-ai-assistant-phone-outbound-call-workflow.yml
+    name: Vapi Assistant Outbound Call End to End
+  - type: Arazzo
+    url: arazzo/vapi-ai-build-squad-workflow.yml
+    name: Vapi Build a Multi-Assistant Squad
+  - type: Arazzo
+    url: arazzo/vapi-ai-call-then-analytics-workflow.yml
+    name: Vapi Outbound Call Then Cost Analytics
+  - type: Arazzo
+    url: arazzo/vapi-ai-create-assistant-workflow.yml
+    name: Vapi Create and Verify Assistant
+  - type: Arazzo
+    url: arazzo/vapi-ai-create-tool-attach-assistant-workflow.yml
+    name: Vapi Create Function Tool and Attach to Assistant
+  - type: Arazzo
+    url: arazzo/vapi-ai-file-knowledge-base-assistant-workflow.yml
+    name: Vapi File-Backed Knowledge Base Assistant
+  - type: Arazzo
+    url: arazzo/vapi-ai-import-twilio-number-workflow.yml
+    name: Vapi Import Twilio Number and Bind Assistant
+  - type: Arazzo
+    url: arazzo/vapi-ai-squad-outbound-call-workflow.yml
+    name: Vapi Squad Outbound Call
   - url: https://vapi.ai
     type: Portal
   - url: https://docs.vapi.ai
@@ -311,7 +308,7 @@ common:
     type: GettingStarted
   - url: https://dashboard.vapi.ai
     name: Vapi Dashboard
-    type: SignUp
+    type: Signup
   - url: https://status.vapi.ai
     name: Vapi Status
     type: StatusPage
@@ -320,7 +317,7 @@ common:
     type: Pricing
   - url: https://discord.gg/pUFNcf2WmH
     name: Vapi Discord
-    type: Forum
+    type: Forums
   - url: https://vapi.ai/blog
     name: Vapi Blog
     type: Blog
@@ -332,43 +329,43 @@ common:
     type: GitHubOrganization
   - url: https://github.com/VapiAI/server-sdk-typescript
     name: TypeScript Server SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/server-sdk-python
     name: Python Server SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/server-sdk-csharp
     name: C# Server SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/server-sdk-ruby
     name: Ruby Server SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/server-sdk-php
     name: PHP Server SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/client-sdk-web
     name: Web Client SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/client-sdk-python
     name: Python Client SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/client-sdk-react-native
     name: React Native Client SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/client-sdk-ios
     name: iOS Client SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/client-sdk-html-script-tag
     name: HTML Script Tag Client SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/VapiAI/mcp-server
     name: Vapi MCP Server
-    type: Tool
+    type: Tools
   - url: https://github.com/VapiAI/skills
     name: Vapi Agent Skills
-    type: Tool
+    type: Tools
   - url: https://github.com/VapiAI/gitops
     name: Vapi GitOps
-    type: Tool
+    type: Tools
   - url: https://github.com/VapiAI/docs
     name: Vapi Docs Repo
     type: CodeExamples
