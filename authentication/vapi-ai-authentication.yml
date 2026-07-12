@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/vapi-analytics-api-openapi.yml, openapi/vapi-assistants-api-openapi.yml, openapi/vapi-calls-api-openapi.yml,
+  openapi/vapi-campaigns-api-openapi.yml, openapi/vapi-chats-api-openapi.yml, openapi/vapi-eval-api-openapi.yml,
+  openapi/vapi-files-api-openapi.yml, openapi/vapi-insight-api-openapi.yml, openapi/vapi-observability-api-openapi.yml,
+  openapi/vapi-phone-numbers-api-openapi.yml, openapi/vapi-provider-resources-api-openapi.yml,
+  openapi/vapi-sessions-api-openapi.yml ...
+summary:
+  types:
+  - http
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  bearerFormat: Bearer
+  description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  sources:
+  - openapi/vapi-analytics-api-openapi.yml
+  - openapi/vapi-assistants-api-openapi.yml
+  - openapi/vapi-calls-api-openapi.yml
+  - openapi/vapi-campaigns-api-openapi.yml
+  - openapi/vapi-chats-api-openapi.yml
+  - openapi/vapi-eval-api-openapi.yml
+  - openapi/vapi-files-api-openapi.yml
+  - openapi/vapi-insight-api-openapi.yml
+  - openapi/vapi-observability-api-openapi.yml
+  - openapi/vapi-phone-numbers-api-openapi.yml
+  - openapi/vapi-provider-resources-api-openapi.yml
+  - openapi/vapi-sessions-api-openapi.yml
+  - openapi/vapi-squads-api-openapi.yml
+  - openapi/vapi-structured-outputs-api-openapi.yml
+  - openapi/vapi-tools-api-openapi.yml
