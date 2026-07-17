@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.vapi.ai/changelog
+also: https://docs.vapi.ai/whats-new
+scheme: continuous-dated
+current_version: unversioned (api.vapi.ai)
+note: >-
+  Vapi publishes a continuously updated, dated changelog rendered client-side. Exact per-entry dates
+  are not machine-fetchable from this pass; the highlights below are the notable recent themes
+  captured from the changelog and product-update posts. Treat the live changelog as the source of
+  truth for dates.
+highlights:
+  - area: Evals
+    type: addition
+    summary: >-
+      New evaluation framework — create test scenarios that validate assistant behavior, conversation
+      flow, and tool usage via mock conversations (EvalRun / CreateEvalRunDTO execution engine).
+  - area: Messaging
+    type: addition
+    summary: >-
+      Cross-platform continuity — seamlessly transition between voice calls and SMS within the same
+      session, sending and receiving SMS through the voice assistant while keeping context.
+  - area: Transcription
+    type: addition
+    summary: >-
+      Gladia transcription gains us-west and eu-west regional options; partial transcripts for lower
+      perceived latency; configurable end-of-turn detection thresholds and timeouts.
+  - area: API
+    type: breaking
+    summary: >-
+      Legacy endpoint removal — deprecated /logs and /workflow endpoints removed as part of API
+      modernization.
+  - area: Developer Experience
+    type: addition
+    summary: >-
+      Version Preview (diff view of unpublished vs live assistant changes), Version History, and
+      Role-Based Access Control (RBAC).
+entries: []

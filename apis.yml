@@ -13,6 +13,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-assistants-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-assistants-api-overlay.yaml
+        type: Overlay
       - url: json-schema/vapi-assistant-schema.json
         type: JSONSchema
       - url: json-structure/vapi-assistant-structure.json
@@ -35,6 +37,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-calls-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-calls-api-overlay.yaml
+        type: Overlay
       - url: asyncapi/vapi-asyncapi.yml
         type: AsyncAPI
       - url: json-schema/vapi-call-schema.json
@@ -59,6 +63,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-phone-numbers-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-phone-numbers-api-overlay.yaml
+        type: Overlay
       - url: json-schema/vapi-phone-number-schema.json
         type: JSONSchema
       - url: json-structure/vapi-phone-number-structure.json
@@ -80,6 +86,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-squads-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-squads-api-overlay.yaml
+        type: Overlay
     description: >-
       Compose multiple assistants into a Squad — a multi-agent workflow where the active assistant can hand off a live
       call to another assistant in the squad based on tools, intents, or transfer destinations.
@@ -95,6 +103,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-tools-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-tools-api-overlay.yaml
+        type: Overlay
     description: >-
       Define and manage Tools (function tools, transfer-call tools, end-call tools, DTMF tools, hangup tools, voicemail
       tools, MCP tools, query tools, Make/Zapier tools, knowledge-base tools, and Google/Slack/ GoHighLevel
@@ -111,6 +121,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-files-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-files-api-overlay.yaml
+        type: Overlay
     description: >-
       Upload, list, retrieve, update, and delete files used as inputs to knowledge bases and other assistant-side
       artifacts.
@@ -126,6 +138,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-chats-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-chats-api-overlay.yaml
+        type: Overlay
     description: >-
       Text-based conversation surface that reuses the same assistant configuration as voice calls, including an
       OpenAI-compatible /chat/responses endpoint for drop-in replacement of OpenAI chat completions.
@@ -141,6 +155,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-sessions-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-sessions-api-overlay.yaml
+        type: Overlay
     description: >-
       Stateful sessions that persist conversation history across calls and chats so an assistant can pick up where the
       customer left off.
@@ -156,6 +172,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-campaigns-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-campaigns-api-overlay.yaml
+        type: Overlay
     description: >-
       Outbound calling campaigns — upload a customer list and schedule batched outbound calls against one or more
       assistants and phone numbers with concurrency and retry policies.
@@ -171,6 +189,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-analytics-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-analytics-api-overlay.yaml
+        type: Overlay
     description: >-
       Run aggregate analytics queries across calls — group by assistant, time bucket, status, end-reason, success
       evaluation, cost, and duration — for dashboards and chargeback reporting.
@@ -186,6 +206,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-insight-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-insight-api-overlay.yaml
+        type: Overlay
     description: >-
       Define and run Insight queries across call data, including preview-before-save and on-demand runs, to extract
       structured signals from conversation transcripts.
@@ -202,6 +224,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-observability-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-observability-api-overlay.yaml
+        type: Overlay
     description: >-
       Define LLM-graded scorecards that automatically evaluate every call against your defined success criteria and
       produce structured scores for trend analysis and regression detection.
@@ -217,6 +241,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-eval-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-eval-api-overlay.yaml
+        type: Overlay
     description: >-
       Create test suites that simulate end-user behavior against an assistant, run them on demand, and inspect per-run
       pass/fail and judge output for regression testing of voice agents.
@@ -231,6 +257,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-structured-outputs-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-structured-outputs-api-overlay.yaml
+        type: Overlay
     description: >-
       Define JSON-Schema-driven structured outputs that the assistant must populate from a call, plus an on-demand
       /structured-output/run endpoint to backfill outputs against an existing transcript.
@@ -246,6 +274,8 @@ apis:
         type: Documentation
       - url: openapi/vapi-provider-resources-api-openapi.yml
         type: OpenAPI
+      - url: overlays/vapi-ai-provider-resources-api-overlay.yaml
+        type: Overlay
     description: >-
       Generic CRUD over provider-side resources (e.g. ElevenLabs voices, Cartesia voices, Deepgram custom models) so
       they can be created and managed through Vapi without leaving the platform.
@@ -268,6 +298,30 @@ access: 3rd-Party
 common:
   - type: AgenticAccess
     url: agentic-access/vapi-ai-agentic-access.yml
+  - type: Packages
+    url: packages/vapi-ai-packages.yml
+  - type: WellKnown
+    url: well-known/vapi-ai-well-known.yml
+  - type: MCPServer
+    url: mcp/vapi-ai-mcp.yml
+  - type: LLMsTxt
+    url: llms/vapi-ai-llms.txt
+  - type: Conformance
+    url: conformance/vapi-ai-conformance.yml
+  - type: ErrorCatalog
+    url: errors/vapi-ai-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/vapi-ai-lifecycle.yml
+  - type: Conventions
+    url: conventions/vapi-ai-conventions.yml
+  - type: ChangeLog
+    url: changelog/vapi-ai-changelog.yml
+  - type: CLI
+    url: cli/vapi-ai-cli.yml
+  - type: Components
+    url: components/vapi-ai-components.yml
+  - type: DataModel
+    url: data-model/vapi-ai-data-model.yml
   - type: TrustCenter
     url: security/vapi-ai-trust-center.yml
   - type: DomainSecurity
@@ -434,7 +488,7 @@ common:
       - https://status.vapi.ai
     updated: '2026-05-24'
 created: '2026-05-24T00:00:00.000Z'
-modified: '2026-05-29'
+modified: '2026-06-20'
 position: Consuming
 description: >-
   Vapi is a San Francisco-based voice AI platform that lets developers build real-time, low-latency voice agents over

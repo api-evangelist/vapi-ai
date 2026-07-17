@@ -1,0 +1,110 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.vapi.ai/sdks
+packages:
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/server-sdk"
+    version: 1.2.0
+    url: https://www.npmjs.com/package/@vapi-ai/server-sdk
+    install: npm install @vapi-ai/server-sdk
+    kind: server-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/web"
+    version: 2.6.1
+    url: https://www.npmjs.com/package/@vapi-ai/web
+    install: npm install @vapi-ai/web
+    kind: client-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/client-sdk-react"
+    version: 0.1.1
+    url: https://www.npmjs.com/package/@vapi-ai/client-sdk-react
+    install: npm install @vapi-ai/client-sdk-react
+    kind: client-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/react-native"
+    version: 0.3.0
+    url: https://www.npmjs.com/package/@vapi-ai/react-native
+    install: npm install @vapi-ai/react-native
+    kind: client-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/cli"
+    version: 0.2.1
+    url: https://www.npmjs.com/package/@vapi-ai/cli
+    install: npm install -g @vapi-ai/cli
+    kind: cli
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@vapi-ai/mcp-server"
+    url: https://www.npmjs.com/package/@vapi-ai/mcp-server
+    install: npx -y @vapi-ai/mcp-server
+    kind: mcp-server
+    official: true
+  - language: python
+    registry: pypi
+    name: vapi_server_sdk
+    url: https://pypi.org/project/vapi-server-sdk/
+    install: pip install vapi_server_sdk
+    kind: server-sdk
+    official: true
+  - language: python
+    registry: pypi
+    name: vapi-python
+    version: 0.1.9
+    url: https://pypi.org/project/vapi-python/
+    install: pip install vapi-python
+    kind: client-sdk
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: vapi_server_sdk
+    url: https://rubygems.org/gems/vapi_server_sdk
+    install: gem install vapi_server_sdk
+    kind: server-sdk
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/VapiAI/server-sdk-go
+    url: https://pkg.go.dev/github.com/VapiAI/server-sdk-go
+    install: go get github.com/VapiAI/server-sdk-go
+    kind: server-sdk
+    official: true
+  - language: csharp
+    registry: github
+    name: VapiAI/server-sdk-csharp
+    url: https://github.com/VapiAI/server-sdk-csharp
+    kind: server-sdk
+    official: true
+  - language: php
+    registry: github
+    name: VapiAI/server-sdk-php
+    url: https://github.com/VapiAI/server-sdk-php
+    kind: server-sdk
+    official: true
+  - language: swift
+    registry: github
+    name: VapiAI/client-sdk-ios
+    url: https://github.com/VapiAI/client-sdk-ios
+    kind: client-sdk
+    official: true
+  - language: javascript
+    registry: cdn
+    name: "@vapi-ai/client-sdk-html-script-tag"
+    url: https://github.com/VapiAI/html-script-tag
+    install: '<script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>'
+    kind: client-sdk
+    official: true
+notes: >-
+  First-party client library surface for Vapi. Server SDKs (TypeScript, Python, Ruby, Go, C#, PHP)
+  are Fern-generated from the OpenAPI. Client/real-time SDKs (Web, React, React Native, iOS, HTML
+  script tag) start Vapi calls directly in the app. The CLI binary is also distributed as a bash/
+  PowerShell installer and a ghcr.io/vapiai/cli Docker image (see cli/vapi-ai-cli.yml).

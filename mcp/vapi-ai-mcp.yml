@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: https://docs.vapi.ai/sdk/mcp-server
+server:
+  name: vapi
+  vendor: Vapi
+  transports:
+    - transport: http
+      url: https://mcp.vapi.ai/mcp
+      note: streamable-HTTP, recommended for production
+    - transport: sse
+      url: https://mcp.vapi.ai/sse
+    - transport: stdio
+      command: npx -y @vapi-ai/mcp-server
+      package: "@vapi-ai/mcp-server"
+  authentication:
+    type: bearer
+    header: Authorization
+    note: Vapi private API key as a bearer token
+  docs_mcp:
+    url: https://docs.vapi.ai/_mcp/server
+    note: separate documentation MCP server for IDE assistants (Claude Code, Cursor)
+tools:
+  - name: list_assistants
+    description: List Vapi assistants
+  - name: create_assistant
+    description: Create a Vapi assistant
+  - name: get_assistant
+    description: Retrieve a Vapi assistant by id
+  - name: list_calls
+    description: List calls
+  - name: create_call
+    description: Create an outbound call (supports scheduledAt for future execution)
+  - name: get_call
+    description: Retrieve a call by id
+  - name: list_phone_numbers
+    description: List phone numbers
+  - name: get_phone_number
+    description: Retrieve a phone number by id
+  - name: list_tools
+    description: List tools
+  - name: get_tool
+    description: Retrieve a tool by id
+notes: >-
+  Official hosted MCP server (mcp.vapi.ai) plus a local npm package. Tools mirror the core
+  Assistants/Calls/Phone Numbers/Tools resources of the REST API. A separate docs MCP server at
+  docs.vapi.ai/_mcp/server gives IDE agents Vapi API knowledge. Vapi also ships an agent Skills
+  repo (github.com/VapiAI/skills).

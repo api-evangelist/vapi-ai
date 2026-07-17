@@ -1,0 +1,58 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml, https://docs.vapi.ai/api-reference
+base_url: https://api.vapi.ai
+authentication:
+  style: bearer
+  header: Authorization
+  format: "Bearer <VAPI_PRIVATE_API_KEY>"
+  note: Private API key from the dashboard; a separate public key is used only for client/web SDK calls.
+  ref: authentication/vapi-ai-authentication.yml
+pagination:
+  style: offset
+  params:
+    - name: limit
+      in: query
+      note: page size
+    - name: page
+      in: query
+      note: 1-based page number
+  time_filters:
+    - createdAtGt
+    - createdAtLt
+    - createdAtGe
+    - createdAtLe
+    - updatedAtGt
+    - updatedAtLt
+  note: >-
+    List endpoints use page + limit offset pagination combined with createdAt/updatedAt range
+    filters (Gt/Lt/Ge/Le). No cursor pagination.
+idempotency:
+  supported: false
+  note: No Idempotency-Key header is documented; create operations are not idempotent.
+versioning:
+  style: unversioned
+  ref: lifecycle/vapi-ai-lifecycle.yml
+error_envelope:
+  format: plain-json
+  shape: { statusCode: integer, message: "string | string[]", error: string }
+  ref: errors/vapi-ai-problem-types.yml
+rate_limiting:
+  ref: rate-limits/vapi-ai-rate-limits.yml
+webhooks:
+  mechanism: server-url
+  note: >-
+    Real-time call events and function/tool execution are delivered to your configured Server URL
+    (webhook). Payloads are documented in asyncapi/vapi-asyncapi.yml and docs.vapi.ai/server-url.
+  docs: https://docs.vapi.ai/server-url
+realtime:
+  transports:
+    - websocket
+  note: Live call audio/transcript streaming over WebSocket; see asyncapi/vapi-asyncapi.yml.
+openai_compatibility:
+  endpoint: /chat/responses
+  note: OpenAI-compatible chat endpoint for drop-in replacement of OpenAI chat completions.
+notes: >-
+  Cross-cutting request/response semantics derived from the 15 OpenAPI specs and the API reference.
+  Auth is static bearer keys (no OAuth scopes); pagination is offset+time-range; errors are plain
+  JSON; there is no idempotency-key or API version header.

@@ -1,0 +1,42 @@
+generated: '2026-06-20'
+method: searched
+hosts:
+  - host: https://vapi.ai
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        file: vapi-ai-api-catalog.json
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.vapi.ai
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        note: identical linkset to vapi.ai; not re-saved
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://api.vapi.ai
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+notes: >-
+  RFC 9727 api-catalog is published (a linkset pointing at the api-reference and webhooks OpenAPI
+  YAML). No security.txt, no OIDC/OAuth discovery (Vapi uses static bearer API keys, not OAuth), and
+  no ai-plugin.json. The MCP surface is advertised out-of-band at https://mcp.vapi.ai/mcp and via
+  docs.vapi.ai/_mcp/server rather than through a well-known document.

@@ -1,0 +1,42 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.vapi.ai/assistants/examples/voice-widget
+components:
+  - family: Voice Widget
+    kind: web-component
+    element: vapi-widget
+    description: >-
+      Drop-in custom HTML element that renders a floating voice button and starts a Vapi web call
+      in the browser. Configured entirely through element attributes.
+    loaders:
+      - name: client-sdk-react embed
+        cdn: https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js
+        package: "@vapi-ai/client-sdk-react"
+    attributes:
+      - public-key
+      - assistant-id
+      - mode
+      - theme
+      - size
+      - color-accent
+    docs: https://docs.vapi.ai/assistants/examples/voice-widget
+  - family: HTML Script Tag Snippet
+    kind: script-embed
+    global: window.vapiSDK
+    description: >-
+      Legacy vanilla-JS embed that exposes window.vapiSDK; call vapiSDK.run({ apiKey, assistant,
+      config }) to render the voice button. Repo VapiAI/html-script-tag.
+    loaders:
+      - name: html-script-tag jsdelivr
+        cdn: https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js
+        repo: https://github.com/VapiAI/html-script-tag
+  - family: Chat Web Widget
+    kind: web-component
+    description: >-
+      Text-chat widget backed by the Chats API for embedding a text conversation surface using the
+      same assistant configuration as voice.
+    docs: https://docs.vapi.ai/chat/web-widget
+notes: >-
+  Client-side/embeddable UI surfaces distinct from the server SDKs in packages/. The vapi-widget
+  web component and the html-script-tag snippet are the two supported ways to embed a voice button
+  on any site (Framer, Squarespace, plain HTML); the chat web widget embeds the text channel.

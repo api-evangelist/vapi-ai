@@ -1,0 +1,66 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.vapi.ai/cli
+name: Vapi CLI
+binary: vapi
+repo: https://github.com/VapiAI/cli
+docs: https://docs.vapi.ai/cli
+install:
+  - method: npm
+    command: npm install -g @vapi-ai/cli
+  - method: bash
+    command: curl -sSL https://vapi.ai/install.sh | bash
+  - method: powershell
+    command: iex ((New-Object System.Net.WebClient).DownloadString('https://vapi.ai/install.ps1'))
+  - method: docker
+    command: docker run -it ghcr.io/vapiai/cli:latest --help
+authentication:
+  - command: vapi login
+    description: Authenticate via OAuth
+  - command: vapi auth status
+    description: Display authenticated accounts
+  - command: vapi auth switch
+    description: Switch between accounts
+  - command: vapi auth login
+    description: Add an additional account
+command_groups:
+  - group: config
+    commands: [config get, config set]
+    description: Manage CLI settings
+  - group: init
+    commands: [init]
+    description: Add Vapi to an existing project with framework auto-detection and SDK install
+  - group: mcp
+    commands: [mcp setup]
+    description: Integrate the Vapi MCP server into your IDE for AI-assisted development
+  - group: assistant
+    commands: [assistant create, assistant list, assistant get, assistant update, assistant delete]
+    description: Full CRUD over assistants
+  - group: phone
+    commands: [phone create, phone list, phone update, phone delete]
+    description: Manage phone numbers
+  - group: call
+    commands: [call create, call list, call get, call end]
+    description: Create and manage outbound calls
+  - group: listen
+    commands: [listen --forward-to]
+    description: Forward webhook (server URL) events to a local endpoint for debugging
+  - group: logs
+    commands: [logs list, logs calls, logs errors, logs webhooks]
+    description: Access call, error, and webhook logs
+  - group: update
+    commands: [update check, update]
+    description: Version management for the CLI itself
+key_flows:
+  - name: Local webhook debugging
+    steps: >-
+      Start an external tunnel (e.g. ngrok), then `vapi listen --forward-to localhost:3000/webhook`
+      to forward live server-URL events to your local server before updating the dashboard webhook URL.
+  - name: Project bootstrap
+    steps: >-
+      `vapi init` auto-detects the framework, installs the appropriate SDK, and generates
+      production-ready starter code.
+notes: >-
+  First-party CLI ("the best developer experience for building voice AI agents"). The binary is
+  catalogued in packages/ (@vapi-ai/cli + ghcr.io/vapiai/cli); this artifact captures its command
+  surface. Ships MCP setup for IDE integration.

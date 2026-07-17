@@ -1,0 +1,105 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml (schema $ref links + id-reference fields)
+note: >-
+  Entity-relationship graph derived from id-reference fields across the 15 OpenAPI specs. Vapi ids
+  are opaque UUIDs (no typed prefixes observed in the published examples).
+entities:
+  - name: Assistant
+    spec: openapi/vapi-assistants-api-openapi.yml
+    description: Reusable voice-agent configuration (transcriber + model + voice + tools + prompts).
+  - name: Squad
+    spec: openapi/vapi-squads-api-openapi.yml
+    description: Ordered set of assistants with handoff/transfer between members.
+  - name: Call
+    spec: openapi/vapi-calls-api-openapi.yml
+    description: A single inbound or outbound voice session with artifacts (recordings, logs).
+  - name: PhoneNumber
+    spec: openapi/vapi-phone-numbers-api-openapi.yml
+    description: Owned or BYO number bound to an assistant or squad for routing.
+  - name: Tool
+    spec: openapi/vapi-tools-api-openapi.yml
+    description: Function/transfer/MCP/query/integration tool invocable by the assistant LLM.
+  - name: File
+    spec: openapi/vapi-files-api-openapi.yml
+    description: Uploaded file used as knowledge-base input.
+  - name: Campaign
+    spec: openapi/vapi-campaigns-api-openapi.yml
+    description: Batched outbound calling job over a customer list.
+  - name: Session
+    spec: openapi/vapi-sessions-api-openapi.yml
+    description: Persistent conversation state spanning calls and chats.
+  - name: Chat
+    spec: openapi/vapi-chats-api-openapi.yml
+    description: Text conversation reusing assistant configuration.
+  - name: StructuredOutput
+    spec: openapi/vapi-structured-outputs-api-openapi.yml
+    description: JSON-schema-constrained extraction populated from a call.
+  - name: Scorecard
+    spec: openapi/vapi-observability-api-openapi.yml
+    description: LLM-graded evaluation applied to calls.
+  - name: Eval
+    spec: openapi/vapi-eval-api-openapi.yml
+    description: Simulated-user test suite for regression testing an assistant.
+relationships:
+  - from: Assistant
+    to: Tool
+    type: has_many
+    via: toolIds
+  - from: Assistant
+    to: File
+    type: has_many
+    via: fileIds
+    note: via knowledge base configuration
+  - from: Assistant
+    to: StructuredOutput
+    type: has_many
+    via: structuredOutputIds
+  - from: Squad
+    to: Assistant
+    type: has_many
+    via: members[].assistantId
+  - from: Call
+    to: Assistant
+    type: belongs_to
+    via: assistantId
+  - from: Call
+    to: Squad
+    type: belongs_to
+    via: squadId
+  - from: Call
+    to: PhoneNumber
+    type: belongs_to
+    via: phoneNumberId
+  - from: Call
+    to: Customer
+    type: belongs_to
+    via: customerId
+  - from: PhoneNumber
+    to: Assistant
+    type: has_one
+    via: assistantId
+  - from: PhoneNumber
+    to: Squad
+    type: has_one
+    via: squadId
+  - from: Campaign
+    to: Assistant
+    type: belongs_to
+    via: assistantId
+  - from: Campaign
+    to: PhoneNumber
+    type: belongs_to
+    via: phoneNumberId
+  - from: Chat
+    to: Assistant
+    type: belongs_to
+    via: assistantId
+  - from: Chat
+    to: Session
+    type: belongs_to
+    via: sessionId
+  - from: Session
+    to: Assistant
+    type: belongs_to
+    via: assistantId

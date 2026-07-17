@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml, authentication/vapi-ai-authentication.yml
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: all 15 specs declare openapi 3.0.0
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: securityScheme type http scheme bearer across all specs (Vapi private API key)
+  - id: oauth2
+    conforms: false
+    evidence: no oauth2 securityScheme in any spec; static API keys only (CLI login uses OAuth, the REST API does not)
+  - id: openid-connect
+    conforms: false
+    evidence: no /.well-known/openid-configuration (404)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error responses do not use application/problem+json; errors are plain JSON envelopes
+  - id: rfc9727-api-catalog
+    conforms: true
+    evidence: /.well-known/api-catalog published on vapi.ai and docs.vapi.ai
+  - id: asyncapi
+    conforms: true
+    evidence: asyncapi/vapi-asyncapi.yml documents the realtime WebSocket transport and server-URL events
+  - id: mcp
+    conforms: true
+    evidence: official hosted MCP server at mcp.vapi.ai (mcp/vapi-ai-mcp.yml)
+  - id: openai-chat-completions-compatible
+    conforms: true
+    evidence: Chats API exposes an OpenAI-compatible /chat/responses endpoint
+  - id: cursor-pagination
+    conforms: false
+    evidence: list endpoints use page + limit offset pagination, not cursors
+  - id: rfc8594-deprecation-sunset
+    conforms: false
+    evidence: no Deprecation/Sunset header policy documented; deprecated endpoints (/logs, /workflow) were removed rather than sunset-signaled
+  - id: soc2
+    conforms: true
+    evidence: SOC 2 named on trust center (security/vapi-ai-trust-center.yml)
+  - id: pci-dss
+    conforms: true
+    evidence: PCI DSS named on trust center
+  - id: hipaa
+    conforms: true
+    evidence: HIPAA available as a paid add-on (apis.yml Features; Scale plan)
+  - id: gdpr
+    conforms: true
+    evidence: GDPR named on trust center

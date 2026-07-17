@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Vapi Files API
+  version: 1.0.0
+generated: '2026-06-20'
+method: generated
+source: openapi/vapi-files-api-openapi.yml
+extends: openapi/vapi-files-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: vapi-ai
+      x-apievangelist-catalog: https://apis.io/providers/vapi-ai
+      x-apievangelist-agentic-access: agentic-access/vapi-ai-agentic-access.yml
+      x-apievangelist-authentication: authentication/vapi-ai-authentication.yml
+  - target: $.info
+    update:
+      x-apievangelist-standards:
+        - rfc6750-bearer-token
+  - target: $.servers[*]
+    update:
+      x-apievangelist-base-host: api.vapi.ai

@@ -1,0 +1,35 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml
+format: plain-json
+envelope:
+  note: >-
+    Vapi returns plain JSON error bodies (not RFC 9457 application/problem+json). NestJS-style
+    envelope with statusCode, message (string or array of validation strings), and error fields.
+  shape:
+    statusCode: integer
+    message: string | string[]
+    error: string
+problems:
+  - status: 400
+    title: Bad Request
+    description: Invalid request payload (e.g. invalid file upload, failed validation)
+    evidence: File upload endpoint returns 400 "Invalid file"; validation errors on create/update DTOs
+    remediation: Check the request body against the OpenAPI schema; message[] lists the invalid fields.
+  - status: 401
+    title: Unauthorized
+    description: Missing or invalid API token
+    evidence: 7 artifact/download operations document 401 "Unauthorized — missing or invalid API token."
+    remediation: "Send Authorization: Bearer <VAPI_PRIVATE_API_KEY> from https://dashboard.vapi.ai."
+  - status: 404
+    title: Not Found
+    description: Requested resource or artifact does not exist
+    variants:
+      - "Artifact not found."          # call recording / artifact downloads (7 ops)
+      - "Provider resource not found"    # provider-resources API (3 ops)
+    remediation: Verify the resource id; artifacts (recordings, logs) exist only after a call completes.
+notes: >-
+  The published OpenAPI documents a thin error surface (400/401/404 with prose descriptions and no
+  error schema on most operations). Two typed error schemas exist in components — CallBatchError
+  (campaign/batch call failures) and ResponseErrorEvent (streaming chat error events). No 403/429/
+  5xx are declared in the specs.

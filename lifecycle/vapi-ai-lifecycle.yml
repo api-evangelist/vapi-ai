@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.vapi.ai, https://status.vapi.ai, https://vapi.ai/changelog
+versioning:
+  scheme: unversioned-base-path
+  current: v1
+  base_url: https://api.vapi.ai
+  note: >-
+    The REST API is served from a single unversioned host (api.vapi.ai); there is no /v1 path or
+    version header. Behavior evolves continuously and is tracked in the changelog. Assistants
+    themselves are independently versioned in-product (Version Preview, Version History, diff view).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  practice: >-
+    Deprecated endpoints have been removed outright (the /logs and /workflow legacy endpoints were
+    removed as part of API modernization) rather than signaled with RFC 8594 Sunset/Deprecation
+    headers. No formal published deprecation window.
+sla:
+  url: null
+  uptime_target: null
+  note: Uptime is published on the status page; no contractual SLA percentage is documented publicly.
+status_page: https://status.vapi.ai
+changelog: https://vapi.ai/changelog
+whats_new: https://docs.vapi.ai/whats-new
+deprecated_operations: []
+notes: >-
+  No deprecated operations are flagged in the current OpenAPI specs. Product versioning applies to
+  assistant configurations, not the HTTP API surface. See changelog/vapi-ai-changelog.yml for the
+  recent-change window.
