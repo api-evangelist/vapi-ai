@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Vapi Files API
-  description: Vapi API — Files resource. Voice AI for developers.
+  title: Vapi Analytics Files API
+  description: Vapi API — Analytics resource. Voice AI for developers.
   version: '1.0'
   contact:
     name: Vapi
@@ -134,13 +134,15 @@ paths:
       security:
       - bearer: []
 components:
-  securitySchemes:
-    bearer:
-      scheme: bearer
-      bearerFormat: Bearer
-      type: http
-      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
   schemas:
+    UpdateFileDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the file. This is just for your own reference.
+          minLength: 1
+          maxLength: 40
     CreateFileDTO:
       type: object
       properties:
@@ -208,11 +210,9 @@ components:
       - orgId
       - createdAt
       - updatedAt
-    UpdateFileDTO:
-      type: object
-      properties:
-        name:
-          type: string
-          description: This is the name of the file. This is just for your own reference.
-          minLength: 1
-          maxLength: 40
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).

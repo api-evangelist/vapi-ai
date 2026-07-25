@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Vapi Observability/Scorecard API
-  description: Vapi API — Observability/Scorecard resource. Voice AI for developers.
+  title: Vapi Analytics Observability/Scorecard API
+  description: Vapi API — Analytics resource. Voice AI for developers.
   version: '1.0'
   contact:
     name: Vapi
@@ -214,41 +214,7 @@ paths:
       security:
       - bearer: []
 components:
-  securitySchemes:
-    bearer:
-      scheme: bearer
-      bearerFormat: Bearer
-      type: http
-      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
   schemas:
-    CreateScorecardDTO:
-      type: object
-      properties:
-        name:
-          type: string
-          description: This is the name of the scorecard. It is only for user reference and will not be used for any evaluation.
-          maxLength: 80
-        description:
-          type: string
-          description: This is the description of the scorecard. It is only for user reference and will not be used for any
-            evaluation.
-          maxLength: 500
-        metrics:
-          description: 'These are the metrics that will be used to evaluate the scorecard.
-
-            Each metric will have a set of conditions and points that will be used to generate the score.'
-          type: array
-          items:
-            $ref: '#/components/schemas/ScorecardMetric'
-        assistantIds:
-          description: 'These are the assistant IDs that this scorecard is linked to.
-
-            When linked to assistants, this scorecard will be available for evaluation during those assistants'' calls.'
-          type: array
-          items:
-            type: string
-      required:
-      - metrics
     PaginationMeta:
       type: object
       properties:
@@ -279,6 +245,67 @@ components:
       - itemsPerPage
       - totalItems
       - currentPage
+    ScorecardMetric:
+      type: object
+      properties:
+        structuredOutputId:
+          type: string
+          description: 'This is the unique identifier for the structured output that will be used to evaluate the scorecard.
+
+            The structured output must be of type number or boolean only for now.'
+        conditions:
+          description: 'These are the conditions that will be used to evaluate the scorecard.
+
+            Each condition will have a comparator, value, and points that will be used to calculate the final score.
+
+            The points will be added to the overall score if the condition is met.
+
+            The overall score will be normalized to a 100 point scale to ensure uniformity across different scorecards.'
+          type: array
+          items:
+            type: object
+      required:
+      - structuredOutputId
+      - conditions
+    CreateScorecardDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the scorecard. It is only for user reference and will not be used for any evaluation.
+          maxLength: 80
+        description:
+          type: string
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any evaluation.
+          maxLength: 500
+        metrics:
+          description: 'These are the metrics that will be used to evaluate the scorecard.
+
+            Each metric will have a set of conditions and points that will be used to generate the score.'
+          type: array
+          items:
+            $ref: '#/components/schemas/ScorecardMetric'
+        assistantIds:
+          description: 'These are the assistant IDs that this scorecard is linked to.
+
+            When linked to assistants, this scorecard will be available for evaluation during those assistants'' calls.'
+          type: array
+          items:
+            type: string
+      required:
+      - metrics
+    ScorecardPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scorecard'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata
     Scorecard:
       type: object
       properties:
@@ -302,8 +329,7 @@ components:
           maxLength: 80
         description:
           type: string
-          description: This is the description of the scorecard. It is only for user reference and will not be used for any
-            evaluation.
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any evaluation.
           maxLength: 500
         metrics:
           description: 'These are the metrics that will be used to evaluate the scorecard.
@@ -325,40 +351,6 @@ components:
       - createdAt
       - updatedAt
       - metrics
-    ScorecardMetric:
-      type: object
-      properties:
-        structuredOutputId:
-          type: string
-          description: 'This is the unique identifier for the structured output that will be used to evaluate the scorecard.
-
-            The structured output must be of type number or boolean only for now.'
-        conditions:
-          description: 'These are the conditions that will be used to evaluate the scorecard.
-
-            Each condition will have a comparator, value, and points that will be used to calculate the final score.
-
-            The points will be added to the overall score if the condition is met.
-
-            The overall score will be normalized to a 100 point scale to ensure uniformity across different scorecards.'
-          type: array
-          items:
-            type: object
-      required:
-      - structuredOutputId
-      - conditions
-    ScorecardPaginatedResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Scorecard'
-        metadata:
-          $ref: '#/components/schemas/PaginationMeta'
-      required:
-      - results
-      - metadata
     UpdateScorecardDTO:
       type: object
       properties:
@@ -368,8 +360,7 @@ components:
           maxLength: 80
         description:
           type: string
-          description: This is the description of the scorecard. It is only for user reference and will not be used for any
-            evaluation.
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any evaluation.
           maxLength: 500
         metrics:
           description: 'These are the metrics that will be used to evaluate the scorecard.
@@ -385,3 +376,9 @@ components:
           type: array
           items:
             type: string
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).

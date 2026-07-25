@@ -41,53 +41,36 @@ paths:
       security:
       - bearer: []
 components:
-  securitySchemes:
-    bearer:
-      scheme: bearer
-      bearerFormat: Bearer
-      type: http
-      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
   schemas:
-    AnalyticsOperation:
+    AnalyticsQueryDTO:
       type: object
       properties:
-        operation:
-          type: string
-          description: This is the aggregation operation you want to perform.
-          enum:
-          - sum
-          - avg
-          - count
-          - min
-          - max
-          - history
-        column:
-          type: string
-          description: This is the columns you want to perform the aggregation operation on.
-          enum:
-          - id
-          - cost
-          - costBreakdown.llm
-          - costBreakdown.stt
-          - costBreakdown.tts
-          - costBreakdown.vapi
-          - costBreakdown.transport
-          - costBreakdown.analysisBreakdown.summary
-          - costBreakdown.transcriber
-          - costBreakdown.ttsCharacters
-          - costBreakdown.llmPromptTokens
-          - costBreakdown.llmCompletionTokens
-          - costBreakdown.llmCachedPromptTokens
-          - duration
-          - concurrency
-          - minutesUsed
-        alias:
-          type: string
-          description: This is the alias for column name returned. Defaults to `${operation}${column}`.
-          maxLength: 40
+        queries:
+          description: This is the list of metric queries you want to perform.
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsQuery'
       required:
-      - operation
-      - column
+      - queries
+    AnalyticsQueryResult:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the unique key for the query.
+        timeRange:
+          description: This is the time range for the query.
+          allOf:
+          - $ref: '#/components/schemas/TimeRange'
+        result:
+          description: "This is the result of the query, a list of unique groups with result of their aggregations.\n\nExample:\n\"result\": [\n  { \"date\": \"2023-01-01\", \"assistantId\": \"123\", \"endedReason\": \"customer-ended-call\", \"sumDuration\": 120, \"avgCost\": 10.5 },\n  { \"date\": \"2023-01-02\", \"assistantId\": \"123\", \"endedReason\": \"customer-did-not-give-microphone-permission\", \"sumDuration\": 0, \"avgCost\": 0 },\n  // Additional results\n]"
+          type: array
+          items:
+            type: object
+      required:
+      - name
+      - timeRange
+      - result
     AnalyticsQuery:
       type: object
       properties:
@@ -136,39 +119,6 @@ components:
       - table
       - name
       - operations
-    AnalyticsQueryDTO:
-      type: object
-      properties:
-        queries:
-          description: This is the list of metric queries you want to perform.
-          type: array
-          items:
-            $ref: '#/components/schemas/AnalyticsQuery'
-      required:
-      - queries
-    AnalyticsQueryResult:
-      type: object
-      properties:
-        name:
-          type: string
-          description: This is the unique key for the query.
-        timeRange:
-          description: This is the time range for the query.
-          allOf:
-          - $ref: '#/components/schemas/TimeRange'
-        result:
-          description: "This is the result of the query, a list of unique groups with result of their aggregations.\n\nExample:\n\
-            \"result\": [\n  { \"date\": \"2023-01-01\", \"assistantId\": \"123\", \"endedReason\": \"customer-ended-call\"\
-            , \"sumDuration\": 120, \"avgCost\": 10.5 },\n  { \"date\": \"2023-01-02\", \"assistantId\": \"123\", \"endedReason\"\
-            : \"customer-did-not-give-microphone-permission\", \"sumDuration\": 0, \"avgCost\": 0 },\n  // Additional results\n\
-            ]"
-          type: array
-          items:
-            type: object
-      required:
-      - name
-      - timeRange
-      - result
     TimeRange:
       type: object
       properties:
@@ -219,3 +169,49 @@ components:
           maxLength: 100
       required:
       - key
+    AnalyticsOperation:
+      type: object
+      properties:
+        operation:
+          type: string
+          description: This is the aggregation operation you want to perform.
+          enum:
+          - sum
+          - avg
+          - count
+          - min
+          - max
+          - history
+        column:
+          type: string
+          description: This is the columns you want to perform the aggregation operation on.
+          enum:
+          - id
+          - cost
+          - costBreakdown.llm
+          - costBreakdown.stt
+          - costBreakdown.tts
+          - costBreakdown.vapi
+          - costBreakdown.transport
+          - costBreakdown.analysisBreakdown.summary
+          - costBreakdown.transcriber
+          - costBreakdown.ttsCharacters
+          - costBreakdown.llmPromptTokens
+          - costBreakdown.llmCompletionTokens
+          - costBreakdown.llmCachedPromptTokens
+          - duration
+          - concurrency
+          - minutesUsed
+        alias:
+          type: string
+          description: This is the alias for column name returned. Defaults to `${operation}${column}`.
+          maxLength: 40
+      required:
+      - operation
+      - column
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).

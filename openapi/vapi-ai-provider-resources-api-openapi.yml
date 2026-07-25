@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Vapi Provider Resources API
-  description: Vapi API — Provider Resources resource. Voice AI for developers.
+  title: Vapi Analytics Provider Resources API
+  description: Vapi API — Analytics resource. Voice AI for developers.
   version: '1.0'
   contact:
     name: Vapi
@@ -306,43 +306,7 @@ paths:
       security:
       - bearer: []
 components:
-  securitySchemes:
-    bearer:
-      scheme: bearer
-      bearerFormat: Bearer
-      type: http
-      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        itemsPerPage:
-          type: number
-        totalItems:
-          type: number
-        currentPage:
-          type: number
-        totalPages:
-          type: number
-        hasNextPage:
-          type: boolean
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        itemsBeyondRetention:
-          type: boolean
-        createdAtLe:
-          format: date-time
-          type: string
-        createdAtGe:
-          format: date-time
-          type: string
-      required:
-      - itemsPerPage
-      - totalItems
-      - currentPage
     ProviderResource:
       type: object
       properties:
@@ -398,3 +362,39 @@ components:
       required:
       - results
       - metadata
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
