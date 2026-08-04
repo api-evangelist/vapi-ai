@@ -1,0 +1,1197 @@
+openapi: 3.0.0
+info:
+  title: Vapi Structured Outputs API
+  description: Vapi API — Structured Outputs resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Structured Outputs
+  description: Structured Outputs endpoints.
+paths:
+  /structured-output:
+    get:
+      operationId: StructuredOutputController_findAll
+      summary: List Structured Outputs
+      parameters:
+      - name: id
+        required: false
+        in: query
+        description: This will return structured outputs where the id matches the specified value.
+        schema:
+          type: string
+      - name: name
+        required: false
+        in: query
+        description: This will return structured outputs where the name matches the specified value.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: This is the page number to return. Defaults to 1.
+        schema:
+          minimum: 1
+          type: number
+      - name: sortOrder
+        required: false
+        in: query
+        description: This is the sort order for pagination. Defaults to 'DESC'.
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+      - name: sortBy
+        required: false
+        in: query
+        description: This is the column to sort by. Defaults to 'createdAt'.
+        schema:
+          enum:
+          - createdAt
+          - duration
+          - cost
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: This is the maximum number of items to return. Defaults to 100.
+        schema:
+          minimum: 0
+          maximum: 1000
+          type: number
+      - name: createdAtGt
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLt
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtGe
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLe
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutputPaginatedResponse'
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+    post:
+      operationId: StructuredOutputController_create
+      summary: Create Structured Output
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStructuredOutputDTO'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutput'
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+  /structured-output/{id}:
+    get:
+      operationId: StructuredOutputController_findOne
+      summary: Get Structured Output
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutput'
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+    patch:
+      operationId: StructuredOutputController_update
+      summary: Update Structured Output
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      - name: schemaOverride
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStructuredOutputDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutput'
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+    delete:
+      operationId: StructuredOutputController_remove
+      summary: Delete Structured Output
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutput'
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+  /structured-output/run:
+    post:
+      operationId: StructuredOutputController_run
+      summary: Run Structured Output
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StructuredOutputRunDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StructuredOutput'
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Structured Outputs
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    AnthropicThinkingConfig:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - enabled
+        budgetTokens:
+          type: number
+          description: 'The maximum number of tokens to allocate for thinking.
+
+            Must be between 1024 and 100000 tokens.'
+          minimum: 1024
+          maximum: 100000
+      required:
+      - type
+      - budgetTokens
+    ComplianceOverride:
+      type: object
+      properties:
+        forceStoreOnHipaaEnabled:
+          type: boolean
+          description: Force storage for this output under HIPAA. Only enable if output contains no sensitive data.
+          example: false
+    CreateStructuredOutputDTO:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'This is the type of structured output.
+
+
+            - ''ai'': Uses an LLM to extract structured data from the conversation (default).
+
+            - ''regex'': Uses a regex pattern to extract data from the transcript without an LLM.
+
+
+            Defaults to ''ai'' if not specified.'
+          enum:
+          - ai
+          - regex
+          default: ai
+        regex:
+          type: string
+          description: 'This is the regex pattern to match against the transcript.
+
+
+            Only used when type is ''regex''. Supports both raw patterns (e.g. ''\d+'') and
+
+            regex literal format (e.g. ''/\d+/gi''). Uses RE2 syntax for safety.
+
+
+            The result depends on the schema type:
+
+            - boolean: true if the pattern matches, false otherwise
+
+            - string: the first match or first capture group
+
+            - number/integer: the first match parsed as a number
+
+            - array: all matches'
+          minLength: 1
+          maxLength: 1000
+        model:
+          description: 'This is the model that will be used to extract the structured output.
+
+
+            To provide your own custom system and user prompts for structured output extraction, populate the messages array
+            with your system and user messages. You can specify liquid templating in your system and user messages.
+
+            Between the system or user messages, you must reference either ''transcript'' or ''messages'' with the `{{}}`
+            syntax to access the conversation history.
+
+            Between the system or user messages, you must reference a variation of the structured output with the `{{}}` syntax
+            to access the structured output definition.
+
+            i.e.:
+
+            `{{structuredOutput}}`
+
+            `{{structuredOutput.name}}`
+
+            `{{structuredOutput.description}}`
+
+            `{{structuredOutput.schema}}`
+
+
+            If model is not specified, GPT-4.1 will be used by default for extraction, utilizing default system and user prompts.
+
+            If messages or required fields are not specified, the default system and user prompts will be used.'
+          oneOf:
+          - $ref: '#/components/schemas/WorkflowOpenAIModel'
+            title: WorkflowOpenAIModel
+          - $ref: '#/components/schemas/WorkflowAnthropicModel'
+            title: WorkflowAnthropicModel
+          - $ref: '#/components/schemas/WorkflowAnthropicBedrockModel'
+            title: WorkflowAnthropicBedrockModel
+          - $ref: '#/components/schemas/WorkflowGoogleModel'
+            title: WorkflowGoogleModel
+          - $ref: '#/components/schemas/WorkflowCustomModel'
+            title: WorkflowCustomModel
+        compliancePlan:
+          description: Compliance configuration for this output. Only enable overrides if no sensitive data will be stored.
+          example:
+            forceStoreOnHipaaEnabled: false
+          allOf:
+          - $ref: '#/components/schemas/ComplianceOverride'
+        name:
+          type: string
+          description: This is the name of the structured output.
+          minLength: 1
+          maxLength: 40
+        schema:
+          description: 'This is the JSON Schema definition for the structured output.
+
+
+            This is required when creating a structured output. Defines the structure and validation rules for the data that
+            will be extracted. Supports all JSON Schema features including:
+
+            - Objects and nested properties
+
+            - Arrays and array validation
+
+            - String, number, boolean, and null types
+
+            - Enums and const values
+
+            - Validation constraints (min/max, patterns, etc.)
+
+            - Composition with allOf, anyOf, oneOf'
+          allOf:
+          - $ref: '#/components/schemas/JsonSchema'
+        description:
+          type: string
+          description: 'This is the description of what the structured output extracts.
+
+
+            Use this to provide context about what data will be extracted and how it will be used.'
+        assistantIds:
+          description: 'These are the assistant IDs that this structured output is linked to.
+
+
+            When linked to assistants, this structured output will be available for extraction during those assistant''s calls.'
+          type: array
+          items:
+            type: string
+        workflowIds:
+          description: 'These are the workflow IDs that this structured output is linked to.
+
+
+            When linked to workflows, this structured output will be available for extraction during those workflow''s execution.'
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - schema
+    JsonSchema:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'This is the type of output you''d like.
+
+
+            `string`, `number`, `integer`, `boolean` are the primitive types and should be obvious.
+
+
+            `array` and `object` are more interesting and quite powerful. They allow you to define nested structures.
+
+
+            For `array`, you can define the schema of the items in the array using the `items` property.
+
+
+            For `object`, you can define the properties of the object using the `properties` property.'
+          enum:
+          - string
+          - number
+          - integer
+          - boolean
+          - array
+          - object
+        items:
+          description: This is required if the type is "array". This is the schema of the items in the array. This is a recursive
+            reference to JsonSchema.
+          allOf:
+          - $ref: '#/components/schemas/JsonSchema'
+        properties:
+          type: object
+          description: This is required if the type is "object". This specifies the properties of the object. This is a map
+            of property names to JsonSchema objects.
+          additionalProperties:
+            $ref: '#/components/schemas/JsonSchema'
+        description:
+          type: string
+          description: This is the description to help the model understand what it needs to output.
+        pattern:
+          type: string
+          description: 'This is the pattern of the string. This is a regex that will be used to validate the data in question.
+            To use a common format, use the `format` property instead.
+
+
+            OpenAI documentation: https://platform.openai.com/docs/guides/structured-outputs#supported-properties'
+        format:
+          type: string
+          description: 'This is the format of the string. To pass a regex, use the `pattern` property instead.
+
+
+            OpenAI documentation: https://platform.openai.com/docs/guides/structured-outputs?api-mode=chat&type-restrictions=string-restrictions'
+          enum:
+          - date-time
+          - time
+          - date
+          - duration
+          - email
+          - hostname
+          - ipv4
+          - ipv6
+          - uuid
+        required:
+          description: 'This is a list of properties that are required.
+
+
+            This only makes sense if the type is "object".'
+          type: array
+          items:
+            type: string
+        enum:
+          description: This array specifies the allowed values that can be used to restrict the output of the model.
+          type: array
+          items:
+            type: string
+        title:
+          type: string
+          description: This is the title of the schema.
+      required:
+      - type
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+    StructuredOutput:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'This is the type of structured output.
+
+
+            - ''ai'': Uses an LLM to extract structured data from the conversation (default).
+
+            - ''regex'': Uses a regex pattern to extract data from the transcript without an LLM.'
+          enum:
+          - ai
+          - regex
+        regex:
+          type: string
+          description: 'This is the regex pattern to match against the transcript.
+
+
+            Only used when type is ''regex''. Supports both raw patterns (e.g. ''\d+'') and
+
+            regex literal format (e.g. ''/\d+/gi''). Uses RE2 syntax for safety.
+
+
+            The result depends on the schema type:
+
+            - boolean: true if the pattern matches, false otherwise
+
+            - string: the first match or first capture group
+
+            - number/integer: the first match parsed as a number
+
+            - array: all matches'
+          minLength: 1
+          maxLength: 1000
+        model:
+          description: 'This is the model that will be used to extract the structured output.
+
+
+            To provide your own custom system and user prompts for structured output extraction, populate the messages array
+            with your system and user messages. You can specify liquid templating in your system and user messages.
+
+            Between the system or user messages, you must reference either ''transcript'' or ''messages'' with the `{{}}`
+            syntax to access the conversation history.
+
+            Between the system or user messages, you must reference a variation of the structured output with the `{{}}` syntax
+            to access the structured output definition.
+
+            i.e.:
+
+            `{{structuredOutput}}`
+
+            `{{structuredOutput.name}}`
+
+            `{{structuredOutput.description}}`
+
+            `{{structuredOutput.schema}}`
+
+
+            If model is not specified, GPT-4.1 will be used by default for extraction, utilizing default system and user prompts.
+
+            If messages or required fields are not specified, the default system and user prompts will be used.'
+          oneOf:
+          - $ref: '#/components/schemas/WorkflowOpenAIModel'
+            title: WorkflowOpenAIModel
+          - $ref: '#/components/schemas/WorkflowAnthropicModel'
+            title: WorkflowAnthropicModel
+          - $ref: '#/components/schemas/WorkflowAnthropicBedrockModel'
+            title: WorkflowAnthropicBedrockModel
+          - $ref: '#/components/schemas/WorkflowGoogleModel'
+            title: WorkflowGoogleModel
+          - $ref: '#/components/schemas/WorkflowCustomModel'
+            title: WorkflowCustomModel
+        compliancePlan:
+          description: Compliance configuration for this output. Only enable overrides if no sensitive data will be stored.
+          example:
+            forceStoreOnHipaaEnabled: false
+          allOf:
+          - $ref: '#/components/schemas/ComplianceOverride'
+        id:
+          type: string
+          description: This is the unique identifier for the structured output.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this structured output belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the structured output was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the structured output was last updated.
+        name:
+          type: string
+          description: This is the name of the structured output.
+          minLength: 1
+          maxLength: 40
+        description:
+          type: string
+          description: 'This is the description of what the structured output extracts.
+
+
+            Use this to provide context about what data will be extracted and how it will be used.'
+        assistantIds:
+          description: 'These are the assistant IDs that this structured output is linked to.
+
+
+            When linked to assistants, this structured output will be available for extraction during those assistant''s calls.'
+          type: array
+          items:
+            type: string
+        workflowIds:
+          description: 'These are the workflow IDs that this structured output is linked to.
+
+
+            When linked to workflows, this structured output will be available for extraction during those workflow''s execution.'
+          type: array
+          items:
+            type: string
+        schema:
+          description: 'This is the JSON Schema definition for the structured output.
+
+
+            Defines the structure and validation rules for the data that will be extracted. Supports all JSON Schema features
+            including:
+
+            - Objects and nested properties
+
+            - Arrays and array validation
+
+            - String, number, boolean, and null types
+
+            - Enums and const values
+
+            - Validation constraints (min/max, patterns, etc.)
+
+            - Composition with allOf, anyOf, oneOf'
+          allOf:
+          - $ref: '#/components/schemas/JsonSchema'
+      required:
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+      - name
+      - schema
+    StructuredOutputPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StructuredOutput'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata
+    StructuredOutputRunDTO:
+      type: object
+      properties:
+        previewEnabled:
+          type: boolean
+          description: 'This is the preview flag for the re-run. If true, the re-run will be executed and the response will
+            be returned immediately and the call artifact will NOT be updated.
+
+            If false (default), the re-run will be executed and the response will be updated in the call artifact.'
+          default: false
+        structuredOutputId:
+          type: string
+          description: 'This is the ID of the structured output that will be run. This must be provided unless a transient
+            structured output is provided.
+
+            When the re-run is executed, only the value of this structured output will be replaced with the new value, or
+            added if not present.'
+        structuredOutput:
+          description: 'This is the transient structured output that will be run. This must be provided if a structured output
+            ID is not provided.
+
+            When the re-run is executed, the structured output value will be added to the existing artifact.'
+          allOf:
+          - $ref: '#/components/schemas/CreateStructuredOutputDTO'
+        callIds:
+          description: 'This is the array of callIds that will be updated with the new structured output value. If preview
+            is true, this array must be provided and contain exactly 1 callId.
+
+            If preview is false, up to 100 callIds may be provided.'
+          type: array
+          items:
+            type: string
+      required:
+      - callIds
+    UpdateStructuredOutputDTO:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'This is the type of structured output.
+
+
+            - ''ai'': Uses an LLM to extract structured data from the conversation (default).
+
+            - ''regex'': Uses a regex pattern to extract data from the transcript without an LLM.'
+          enum:
+          - ai
+          - regex
+        regex:
+          type: string
+          description: 'This is the regex pattern to match against the transcript.
+
+
+            Only used when type is ''regex''. Supports both raw patterns (e.g. ''\d+'') and
+
+            regex literal format (e.g. ''/\d+/gi''). Uses RE2 syntax for safety.
+
+
+            The result depends on the schema type:
+
+            - boolean: true if the pattern matches, false otherwise
+
+            - string: the first match or first capture group
+
+            - number/integer: the first match parsed as a number
+
+            - array: all matches'
+          minLength: 1
+          maxLength: 1000
+        model:
+          description: 'This is the model that will be used to extract the structured output.
+
+
+            To provide your own custom system and user prompts for structured output extraction, populate the messages array
+            with your system and user messages. You can specify liquid templating in your system and user messages.
+
+            Between the system or user messages, you must reference either ''transcript'' or ''messages'' with the `{{}}`
+            syntax to access the conversation history.
+
+            Between the system or user messages, you must reference a variation of the structured output with the `{{}}` syntax
+            to access the structured output definition.
+
+            i.e.:
+
+            `{{structuredOutput}}`
+
+            `{{structuredOutput.name}}`
+
+            `{{structuredOutput.description}}`
+
+            `{{structuredOutput.schema}}`
+
+
+            If model is not specified, GPT-4.1 will be used by default for extraction, utilizing default system and user prompts.
+
+            If messages or required fields are not specified, the default system and user prompts will be used.'
+          oneOf:
+          - $ref: '#/components/schemas/WorkflowOpenAIModel'
+            title: WorkflowOpenAIModel
+          - $ref: '#/components/schemas/WorkflowAnthropicModel'
+            title: WorkflowAnthropicModel
+          - $ref: '#/components/schemas/WorkflowAnthropicBedrockModel'
+            title: WorkflowAnthropicBedrockModel
+          - $ref: '#/components/schemas/WorkflowGoogleModel'
+            title: WorkflowGoogleModel
+          - $ref: '#/components/schemas/WorkflowCustomModel'
+            title: WorkflowCustomModel
+        compliancePlan:
+          description: Compliance configuration for this output. Only enable overrides if no sensitive data will be stored.
+          example:
+            forceStoreOnHipaaEnabled: false
+          allOf:
+          - $ref: '#/components/schemas/ComplianceOverride'
+        name:
+          type: string
+          description: This is the name of the structured output.
+          minLength: 1
+          maxLength: 40
+        description:
+          type: string
+          description: 'This is the description of what the structured output extracts.
+
+
+            Use this to provide context about what data will be extracted and how it will be used.'
+        assistantIds:
+          description: 'These are the assistant IDs that this structured output is linked to.
+
+
+            When linked to assistants, this structured output will be available for extraction during those assistant''s calls.'
+          type: array
+          items:
+            type: string
+        workflowIds:
+          description: 'These are the workflow IDs that this structured output is linked to.
+
+
+            When linked to workflows, this structured output will be available for extraction during those workflow''s execution.'
+          type: array
+          items:
+            type: string
+        schema:
+          description: 'This is the JSON Schema definition for the structured output.
+
+
+            Defines the structure and validation rules for the data that will be extracted. Supports all JSON Schema features
+            including:
+
+            - Objects and nested properties
+
+            - Arrays and array validation
+
+            - String, number, boolean, and null types
+
+            - Enums and const values
+
+            - Validation constraints (min/max, patterns, etc.)
+
+            - Composition with allOf, anyOf, oneOf'
+          allOf:
+          - $ref: '#/components/schemas/JsonSchema'
+    WorkflowAnthropicBedrockModel:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: This is the provider of the model (`anthropic-bedrock`).
+          enum:
+          - anthropic-bedrock
+        model:
+          type: string
+          description: This is the specific model that will be used.
+          maxLength: 100
+          enum:
+          - claude-3-opus-20240229
+          - claude-3-sonnet-20240229
+          - claude-3-haiku-20240307
+          - claude-3-5-sonnet-20240620
+          - claude-3-5-sonnet-20241022
+          - claude-3-5-haiku-20241022
+          - claude-3-7-sonnet-20250219
+          - claude-opus-4-20250514
+          - claude-opus-4-5-20251101
+          - claude-opus-4-6
+          - claude-sonnet-4-20250514
+          - claude-sonnet-4-5-20250929
+          - claude-sonnet-4-6
+          - claude-haiku-4-5-20251001
+        thinking:
+          description: 'This is the optional configuration for Anthropic''s thinking feature.
+
+
+            - If provided, `maxTokens` must be greater than `thinking.budgetTokens`.'
+          allOf:
+          - $ref: '#/components/schemas/AnthropicThinkingConfig'
+        temperature:
+          type: number
+          description: This is the temperature of the model.
+          minimum: 0
+          maximum: 2
+        maxTokens:
+          type: number
+          description: This is the max tokens of the model.
+          minimum: 50
+          maximum: 10000
+      required:
+      - provider
+      - model
+    WorkflowAnthropicModel:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: This is the provider of the model (`anthropic`).
+          enum:
+          - anthropic
+        model:
+          type: string
+          description: This is the specific model that will be used.
+          maxLength: 100
+          enum:
+          - claude-3-opus-20240229
+          - claude-3-sonnet-20240229
+          - claude-3-haiku-20240307
+          - claude-3-5-sonnet-20240620
+          - claude-3-5-sonnet-20241022
+          - claude-3-5-haiku-20241022
+          - claude-3-7-sonnet-20250219
+          - claude-opus-4-20250514
+          - claude-opus-4-5-20251101
+          - claude-opus-4-6
+          - claude-sonnet-4-20250514
+          - claude-sonnet-4-5-20250929
+          - claude-sonnet-4-6
+          - claude-haiku-4-5-20251001
+        thinking:
+          description: 'This is the optional configuration for Anthropic''s thinking feature.
+
+
+            - If provided, `maxTokens` must be greater than `thinking.budgetTokens`.'
+          allOf:
+          - $ref: '#/components/schemas/AnthropicThinkingConfig'
+        temperature:
+          type: number
+          description: This is the temperature of the model.
+          minimum: 0
+          maximum: 2
+        maxTokens:
+          type: number
+          description: This is the max tokens of the model.
+          minimum: 50
+          maximum: 10000
+      required:
+      - provider
+      - model
+    WorkflowCustomModel:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: This is the provider of the model (`custom-llm`).
+          enum:
+          - custom-llm
+        metadataSendMode:
+          type: string
+          description: 'This determines whether metadata is sent in requests to the custom provider.
+
+
+            - `off` will not send any metadata. payload will look like `{ messages }`
+
+            - `variable` will send `assistant.metadata` as a variable on the payload. payload will look like `{ messages,
+            metadata }`
+
+            - `destructured` will send `assistant.metadata` fields directly on the payload. payload will look like `{ messages,
+            ...metadata }`
+
+
+            Further, `variable` and `destructured` will send `call`, `phoneNumber`, and `customer` objects in the payload.
+
+
+            Default is `variable`.'
+          enum:
+          - 'off'
+          - variable
+          - destructured
+        url:
+          type: string
+          description: These is the URL we'll use for the OpenAI client's `baseURL`. Ex. https://openrouter.ai/api/v1
+        headers:
+          type: object
+          description: These are the headers we'll use for the OpenAI client's `headers`.
+        timeoutSeconds:
+          type: number
+          description: This sets the timeout for the connection to the custom provider without needing to stream any tokens
+            back. Default is 20 seconds.
+          minimum: 20
+          maximum: 600
+        model:
+          type: string
+          description: This is the name of the model. Ex. cognitivecomputations/dolphin-mixtral-8x7b
+          maxLength: 100
+        temperature:
+          type: number
+          description: This is the temperature of the model.
+          minimum: 0
+          maximum: 2
+        maxTokens:
+          type: number
+          description: This is the max tokens of the model.
+          minimum: 50
+          maximum: 10000
+      required:
+      - provider
+      - url
+      - model
+    WorkflowGoogleModel:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: This is the provider of the model (`google`).
+          enum:
+          - google
+        model:
+          type: string
+          description: This is the name of the model. Ex. cognitivecomputations/dolphin-mixtral-8x7b
+          maxLength: 100
+          enum:
+          - gemini-3-flash-preview
+          - gemini-2.5-pro
+          - gemini-2.5-flash
+          - gemini-2.5-flash-lite
+          - gemini-2.0-flash-thinking-exp
+          - gemini-2.0-pro-exp-02-05
+          - gemini-2.0-flash
+          - gemini-2.0-flash-lite
+          - gemini-2.0-flash-exp
+          - gemini-2.0-flash-realtime-exp
+          - gemini-1.5-flash
+          - gemini-1.5-flash-002
+          - gemini-1.5-pro
+          - gemini-1.5-pro-002
+          - gemini-1.0-pro
+        temperature:
+          type: number
+          description: This is the temperature of the model.
+          minimum: 0
+          maximum: 2
+        maxTokens:
+          type: number
+          description: This is the max tokens of the model.
+          minimum: 50
+          maximum: 10000
+      required:
+      - provider
+      - model
+    WorkflowOpenAIModel:
+      type: object
+      properties:
+        provider:
+          type: string
+          description: This is the provider of the model (`openai`).
+          enum:
+          - openai
+        model:
+          type: string
+          description: 'This is the OpenAI model that will be used.
+
+
+            When using Vapi OpenAI or your own Azure Credentials, you have the option to specify the region for the selected
+            model. This shouldn''t be specified unless you have a specific reason to do so. Vapi will automatically find the
+            fastest region that make sense.
+
+            This is helpful when you are required to comply with Data Residency rules. Learn more about Azure regions here
+            https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/.'
+          maxLength: 100
+          enum:
+          - gpt-5.4
+          - gpt-5.4-mini
+          - gpt-5.4-nano
+          - gpt-5.2
+          - gpt-5.2-chat-latest
+          - gpt-5.1
+          - gpt-5.1-chat-latest
+          - gpt-5
+          - gpt-5-chat-latest
+          - gpt-5-mini
+          - gpt-5-nano
+          - gpt-4.1-2025-04-14
+          - gpt-4.1-mini-2025-04-14
+          - gpt-4.1-nano-2025-04-14
+          - gpt-4.1
+          - gpt-4.1-mini
+          - gpt-4.1-nano
+          - chatgpt-4o-latest
+          - o3
+          - o3-mini
+          - o4-mini
+          - o1-mini
+          - o1-mini-2024-09-12
+          - gpt-4o-mini-2024-07-18
+          - gpt-4o-mini
+          - gpt-4o
+          - gpt-4o-2024-05-13
+          - gpt-4o-2024-08-06
+          - gpt-4o-2024-11-20
+          - gpt-4-turbo
+          - gpt-4-turbo-2024-04-09
+          - gpt-4-turbo-preview
+          - gpt-4-0125-preview
+          - gpt-4-1106-preview
+          - gpt-4
+          - gpt-4-0613
+          - gpt-3.5-turbo
+          - gpt-3.5-turbo-0125
+          - gpt-3.5-turbo-1106
+          - gpt-3.5-turbo-16k
+          - gpt-3.5-turbo-0613
+          - gpt-4.1-2025-04-14:westus
+          - gpt-4.1-2025-04-14:eastus2
+          - gpt-4.1-2025-04-14:eastus
+          - gpt-4.1-2025-04-14:westus3
+          - gpt-4.1-2025-04-14:northcentralus
+          - gpt-4.1-2025-04-14:southcentralus
+          - gpt-4.1-2025-04-14:westeurope
+          - gpt-4.1-2025-04-14:germanywestcentral
+          - gpt-4.1-2025-04-14:polandcentral
+          - gpt-4.1-2025-04-14:spaincentral
+          - gpt-4.1-mini-2025-04-14:westus
+          - gpt-4.1-mini-2025-04-14:eastus2
+          - gpt-4.1-mini-2025-04-14:eastus
+          - gpt-4.1-mini-2025-04-14:westus3
+          - gpt-4.1-mini-2025-04-14:northcentralus
+          - gpt-4.1-mini-2025-04-14:southcentralus
+          - gpt-4.1-mini-2025-04-14:westeurope
+          - gpt-4.1-mini-2025-04-14:germanywestcentral
+          - gpt-4.1-mini-2025-04-14:polandcentral
+          - gpt-4.1-mini-2025-04-14:spaincentral
+          - gpt-4.1-nano-2025-04-14:westus
+          - gpt-4.1-nano-2025-04-14:eastus2
+          - gpt-4.1-nano-2025-04-14:westus3
+          - gpt-4.1-nano-2025-04-14:northcentralus
+          - gpt-4.1-nano-2025-04-14:southcentralus
+          - gpt-4o-2024-11-20:swedencentral
+          - gpt-4o-2024-11-20:westus
+          - gpt-4o-2024-11-20:eastus2
+          - gpt-4o-2024-11-20:eastus
+          - gpt-4o-2024-11-20:westus3
+          - gpt-4o-2024-11-20:southcentralus
+          - gpt-4o-2024-11-20:westeurope
+          - gpt-4o-2024-11-20:germanywestcentral
+          - gpt-4o-2024-11-20:polandcentral
+          - gpt-4o-2024-11-20:spaincentral
+          - gpt-4o-2024-08-06:westus
+          - gpt-4o-2024-08-06:westus3
+          - gpt-4o-2024-08-06:eastus
+          - gpt-4o-2024-08-06:eastus2
+          - gpt-4o-2024-08-06:northcentralus
+          - gpt-4o-2024-08-06:southcentralus
+          - gpt-4o-mini-2024-07-18:westus
+          - gpt-4o-mini-2024-07-18:westus3
+          - gpt-4o-mini-2024-07-18:eastus
+          - gpt-4o-mini-2024-07-18:eastus2
+          - gpt-4o-mini-2024-07-18:northcentralus
+          - gpt-4o-mini-2024-07-18:southcentralus
+          - gpt-4o-2024-05-13:eastus2
+          - gpt-4o-2024-05-13:eastus
+          - gpt-4o-2024-05-13:northcentralus
+          - gpt-4o-2024-05-13:southcentralus
+          - gpt-4o-2024-05-13:westus3
+          - gpt-4o-2024-05-13:westus
+          - gpt-4-turbo-2024-04-09:eastus2
+          - gpt-4-0125-preview:eastus
+          - gpt-4-0125-preview:northcentralus
+          - gpt-4-0125-preview:southcentralus
+          - gpt-4-1106-preview:australiaeast
+          - gpt-4-1106-preview:canadaeast
+          - gpt-4-1106-preview:france
+          - gpt-4-1106-preview:india
+          - gpt-4-1106-preview:norway
+          - gpt-4-1106-preview:swedencentral
+          - gpt-4-1106-preview:uk
+          - gpt-4-1106-preview:westus
+          - gpt-4-1106-preview:westus3
+          - gpt-4-0613:canadaeast
+          - gpt-3.5-turbo-0125:canadaeast
+          - gpt-3.5-turbo-0125:northcentralus
+          - gpt-3.5-turbo-0125:southcentralus
+          - gpt-3.5-turbo-1106:canadaeast
+          - gpt-3.5-turbo-1106:westus
+        temperature:
+          type: number
+          description: This is the temperature of the model.
+          minimum: 0
+          maximum: 2
+        maxTokens:
+          type: number
+          description: This is the max tokens of the model.
+          minimum: 50
+          maximum: 10000
+      required:
+      - provider
+      - model

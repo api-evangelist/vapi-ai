@@ -1,0 +1,387 @@
+openapi: 3.0.0
+info:
+  title: Vapi Observability/Scorecard API
+  description: Vapi API — Observability/Scorecard resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Observability/Scorecard
+  description: Observability/Scorecard endpoints.
+paths:
+  /observability/scorecard/{id}:
+    get:
+      operationId: ScorecardController_get
+      summary: Get Scorecard
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scorecard'
+      tags:
+      - Observability/Scorecard
+      security:
+      - bearer: []
+    patch:
+      operationId: ScorecardController_update
+      summary: Update Scorecard
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateScorecardDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scorecard'
+      tags:
+      - Observability/Scorecard
+      security:
+      - bearer: []
+    delete:
+      operationId: ScorecardController_remove
+      summary: Delete Scorecard
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scorecard'
+      tags:
+      - Observability/Scorecard
+      security:
+      - bearer: []
+  /observability/scorecard:
+    get:
+      operationId: ScorecardController_getPaginated
+      summary: List Scorecards
+      parameters:
+      - name: id
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: This is the page number to return. Defaults to 1.
+        schema:
+          minimum: 1
+          type: number
+      - name: sortOrder
+        required: false
+        in: query
+        description: This is the sort order for pagination. Defaults to 'DESC'.
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+      - name: sortBy
+        required: false
+        in: query
+        description: This is the column to sort by. Defaults to 'createdAt'.
+        schema:
+          enum:
+          - createdAt
+          - duration
+          - cost
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: This is the maximum number of items to return. Defaults to 100.
+        schema:
+          minimum: 0
+          maximum: 1000
+          type: number
+      - name: createdAtGt
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLt
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtGe
+        required: false
+        in: query
+        description: This will return items where the createdAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtLe
+        required: false
+        in: query
+        description: This will return items where the createdAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLt
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtGe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is greater than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtLe
+        required: false
+        in: query
+        description: This will return items where the updatedAt is less than or equal to the specified value.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScorecardPaginatedResponse'
+      tags:
+      - Observability/Scorecard
+      security:
+      - bearer: []
+    post:
+      operationId: ScorecardController_create
+      summary: Create Scorecard
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateScorecardDTO'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scorecard'
+      tags:
+      - Observability/Scorecard
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    CreateScorecardDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the scorecard. It is only for user reference and will not be used for any evaluation.
+          maxLength: 80
+        description:
+          type: string
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any
+            evaluation.
+          maxLength: 500
+        metrics:
+          description: 'These are the metrics that will be used to evaluate the scorecard.
+
+            Each metric will have a set of conditions and points that will be used to generate the score.'
+          type: array
+          items:
+            $ref: '#/components/schemas/ScorecardMetric'
+        assistantIds:
+          description: 'These are the assistant IDs that this scorecard is linked to.
+
+            When linked to assistants, this scorecard will be available for evaluation during those assistants'' calls.'
+          type: array
+          items:
+            type: string
+      required:
+      - metrics
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+    Scorecard:
+      type: object
+      properties:
+        id:
+          type: string
+          description: This is the unique identifier for the scorecard.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this scorecard belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the scorecard was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the scorecard was last updated.
+        name:
+          type: string
+          description: This is the name of the scorecard. It is only for user reference and will not be used for any evaluation.
+          maxLength: 80
+        description:
+          type: string
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any
+            evaluation.
+          maxLength: 500
+        metrics:
+          description: 'These are the metrics that will be used to evaluate the scorecard.
+
+            Each metric will have a set of conditions and points that will be used to generate the score.'
+          type: array
+          items:
+            $ref: '#/components/schemas/ScorecardMetric'
+        assistantIds:
+          description: 'These are the assistant IDs that this scorecard is linked to.
+
+            When linked to assistants, this scorecard will be available for evaluation during those assistants'' calls.'
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+      - metrics
+    ScorecardMetric:
+      type: object
+      properties:
+        structuredOutputId:
+          type: string
+          description: 'This is the unique identifier for the structured output that will be used to evaluate the scorecard.
+
+            The structured output must be of type number or boolean only for now.'
+        conditions:
+          description: 'These are the conditions that will be used to evaluate the scorecard.
+
+            Each condition will have a comparator, value, and points that will be used to calculate the final score.
+
+            The points will be added to the overall score if the condition is met.
+
+            The overall score will be normalized to a 100 point scale to ensure uniformity across different scorecards.'
+          type: array
+          items:
+            type: object
+      required:
+      - structuredOutputId
+      - conditions
+    ScorecardPaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scorecard'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata
+    UpdateScorecardDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the scorecard. It is only for user reference and will not be used for any evaluation.
+          maxLength: 80
+        description:
+          type: string
+          description: This is the description of the scorecard. It is only for user reference and will not be used for any
+            evaluation.
+          maxLength: 500
+        metrics:
+          description: 'These are the metrics that will be used to evaluate the scorecard.
+
+            Each metric will have a set of conditions and points that will be used to generate the score.'
+          type: array
+          items:
+            $ref: '#/components/schemas/ScorecardMetric'
+        assistantIds:
+          description: 'These are the assistant IDs that this scorecard is linked to.
+
+            When linked to assistants, this scorecard will be available for evaluation during those assistants'' calls.'
+          type: array
+          items:
+            type: string

@@ -1,0 +1,42 @@
+{
+  "provider": "vapi-ai",
+  "sources": [
+    "vapi-ai-analytics-api-openapi.yml",
+    "vapi-ai-assistants-api-openapi.yml",
+    "vapi-ai-calls-api-openapi.yml",
+    "vapi-ai-campaigns-api-openapi.yml",
+    "vapi-ai-chats-api-openapi.yml",
+    "vapi-ai-eval-api-openapi.yml",
+    "vapi-ai-files-api-openapi.yml",
+    "vapi-ai-insight-api-openapi.yml",
+    "vapi-ai-observability-scorecard-api-openapi.yml",
+    "vapi-ai-phone-numbers-api-openapi.yml",
+    "vapi-ai-provider-resources-api-openapi.yml",
+    "vapi-ai-sessions-api-openapi.yml",
+    "vapi-ai-squads-api-openapi.yml",
+    "vapi-ai-structured-outputs-api-openapi.yml",
+    "vapi-ai-tools-api-openapi.yml"
+  ],
+  "outputs": [
+    "vapi-ai-analytics-api-openapi.yml",
+    "vapi-ai-assistants-api-openapi.yml",
+    "vapi-ai-calls-api-openapi.yml",
+    "vapi-ai-campaigns-api-openapi.yml",
+    "vapi-ai-chats-api-openapi.yml",
+    "vapi-ai-eval-api-openapi.yml",
+    "vapi-ai-files-api-openapi.yml",
+    "vapi-ai-insight-api-openapi.yml",
+    "vapi-ai-observability-scorecard-api-openapi.yml",
+    "vapi-ai-phone-numbers-api-openapi.yml",
+    "vapi-ai-provider-resources-api-openapi.yml",
+    "vapi-ai-sessions-api-openapi.yml",
+    "vapi-ai-squads-api-openapi.yml",
+    "vapi-ai-structured-outputs-api-openapi.yml",
+    "vapi-ai-tools-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

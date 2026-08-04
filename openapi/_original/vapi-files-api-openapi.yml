@@ -1,0 +1,218 @@
+openapi: 3.0.0
+info:
+  title: Vapi Files API
+  description: Vapi API — Files resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Files
+  description: Files endpoints.
+paths:
+  /file:
+    post:
+      operationId: FileController_create
+      summary: Upload File
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateFileDTO'
+      responses:
+        '201':
+          description: File uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '400':
+          description: Invalid file
+      tags:
+      - Files
+      security:
+      - bearer: []
+    get:
+      operationId: FileController_findAll
+      summary: List Files
+      parameters:
+      - name: purpose
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/File'
+      tags:
+      - Files
+      security:
+      - bearer: []
+  /file/{id}:
+    get:
+      operationId: FileController_findOne
+      summary: Get File
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+      tags:
+      - Files
+      security:
+      - bearer: []
+    patch:
+      operationId: FileController_update
+      summary: Update File
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFileDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+      tags:
+      - Files
+      security:
+      - bearer: []
+    delete:
+      operationId: FileController_remove
+      summary: Delete File
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The unique identifier for the resource.
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+      tags:
+      - Files
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    CreateFileDTO:
+      type: object
+      properties:
+        file:
+          type: string
+          description: This is the File you want to upload for use with the Knowledge Base.
+          format: binary
+      required:
+      - file
+    File:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - file
+        status:
+          enum:
+          - processing
+          - done
+          - failed
+          type: string
+        name:
+          type: string
+          description: This is the name of the file. This is just for your own reference.
+          maxLength: 40
+        originalName:
+          type: string
+        bytes:
+          type: number
+        purpose:
+          type: string
+        mimetype:
+          type: string
+        key:
+          type: string
+        path:
+          type: string
+        bucket:
+          type: string
+        url:
+          type: string
+        parsedTextUrl:
+          type: string
+        parsedTextBytes:
+          type: number
+        metadata:
+          type: object
+        id:
+          type: string
+          description: This is the unique identifier for the file.
+        orgId:
+          type: string
+          description: This is the unique identifier for the org that this file belongs to.
+        createdAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the file was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: This is the ISO 8601 date-time string of when the file was last updated.
+      required:
+      - id
+      - orgId
+      - createdAt
+      - updatedAt
+    UpdateFileDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the name of the file. This is just for your own reference.
+          minLength: 1
+          maxLength: 40

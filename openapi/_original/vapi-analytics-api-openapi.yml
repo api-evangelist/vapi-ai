@@ -1,0 +1,221 @@
+openapi: 3.0.0
+info:
+  title: Vapi Analytics API
+  description: Vapi API — Analytics resource. Voice AI for developers.
+  version: '1.0'
+  contact:
+    name: Vapi
+    url: https://vapi.ai
+servers:
+- url: https://api.vapi.ai
+security:
+- bearer: []
+tags:
+- name: Analytics
+  description: Analytics endpoints.
+paths:
+  /analytics:
+    post:
+      operationId: AnalyticsController_query
+      summary: Create Analytics Queries
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsQueryDTO'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnalyticsQueryResult'
+        '201':
+          description: ''
+      tags:
+      - Analytics
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: Bearer
+      type: http
+      description: Retrieve your API Key from [Dashboard](dashboard.vapi.ai).
+  schemas:
+    AnalyticsOperation:
+      type: object
+      properties:
+        operation:
+          type: string
+          description: This is the aggregation operation you want to perform.
+          enum:
+          - sum
+          - avg
+          - count
+          - min
+          - max
+          - history
+        column:
+          type: string
+          description: This is the columns you want to perform the aggregation operation on.
+          enum:
+          - id
+          - cost
+          - costBreakdown.llm
+          - costBreakdown.stt
+          - costBreakdown.tts
+          - costBreakdown.vapi
+          - costBreakdown.transport
+          - costBreakdown.analysisBreakdown.summary
+          - costBreakdown.transcriber
+          - costBreakdown.ttsCharacters
+          - costBreakdown.llmPromptTokens
+          - costBreakdown.llmCompletionTokens
+          - costBreakdown.llmCachedPromptTokens
+          - duration
+          - concurrency
+          - minutesUsed
+        alias:
+          type: string
+          description: This is the alias for column name returned. Defaults to `${operation}${column}`.
+          maxLength: 40
+      required:
+      - operation
+      - column
+    AnalyticsQuery:
+      type: object
+      properties:
+        table:
+          type: string
+          description: This is the table you want to query.
+          enum:
+          - call
+          - subscription
+        groupBy:
+          type: array
+          description: This is the list of columns you want to group by.
+          enum:
+          - type
+          - assistantId
+          - endedReason
+          - analysis.successEvaluation
+          - status
+          items:
+            type: string
+            enum:
+            - type
+            - assistantId
+            - endedReason
+            - analysis.successEvaluation
+            - status
+        groupByVariableValue:
+          description: This is the list of variable value keys you want to group by.
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableValueGroupBy'
+        name:
+          type: string
+          description: This is the name of the query. This will be used to identify the query in the response.
+          maxLength: 40
+        timeRange:
+          description: This is the time range for the query.
+          allOf:
+          - $ref: '#/components/schemas/TimeRange'
+        operations:
+          description: This is the list of operations you want to perform.
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsOperation'
+      required:
+      - table
+      - name
+      - operations
+    AnalyticsQueryDTO:
+      type: object
+      properties:
+        queries:
+          description: This is the list of metric queries you want to perform.
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsQuery'
+      required:
+      - queries
+    AnalyticsQueryResult:
+      type: object
+      properties:
+        name:
+          type: string
+          description: This is the unique key for the query.
+        timeRange:
+          description: This is the time range for the query.
+          allOf:
+          - $ref: '#/components/schemas/TimeRange'
+        result:
+          description: "This is the result of the query, a list of unique groups with result of their aggregations.\n\nExample:\n\
+            \"result\": [\n  { \"date\": \"2023-01-01\", \"assistantId\": \"123\", \"endedReason\": \"customer-ended-call\"\
+            , \"sumDuration\": 120, \"avgCost\": 10.5 },\n  { \"date\": \"2023-01-02\", \"assistantId\": \"123\", \"endedReason\"\
+            : \"customer-did-not-give-microphone-permission\", \"sumDuration\": 0, \"avgCost\": 0 },\n  // Additional results\n\
+            ]"
+          type: array
+          items:
+            type: object
+      required:
+      - name
+      - timeRange
+      - result
+    TimeRange:
+      type: object
+      properties:
+        step:
+          type: string
+          description: 'This is the time step for aggregations.
+
+
+            If not provided, defaults to returning for the entire time range.'
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+          - decade
+          - century
+          - millennium
+        start:
+          format: date-time
+          type: string
+          description: 'This is the start date for the time range.
+
+
+            If not provided, defaults to the 7 days ago.'
+        end:
+          format: date-time
+          type: string
+          description: 'This is the end date for the time range.
+
+
+            If not provided, defaults to now.'
+        timezone:
+          type: string
+          description: 'This is the timezone you want to set for the query.
+
+
+            If not provided, defaults to UTC.'
+    VariableValueGroupBy:
+      type: object
+      properties:
+        key:
+          type: string
+          description: This is the key of the variable value to group by.
+          maxLength: 100
+      required:
+      - key
