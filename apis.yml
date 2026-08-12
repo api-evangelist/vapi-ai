@@ -916,6 +916,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vapi-ai.png
 access: 3rd-Party
 common:
+  - type: Overlay
+    url: overlays/vapi-ai-analytics-api-overlay.yaml
   - type: AgenticAccess
     url: agentic-access/vapi-ai-agentic-access.yml
   - type: Packages
