@@ -1,0 +1,639 @@
+{
+  "item": [
+    {
+      "id": "9212d348-2e04-495d-a74d-29e8b2b1941a",
+      "name": "Tools",
+      "description": {
+        "content": "Tools endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ac4d7d5-2cd4-4c98-85f0-70ae63904b45",
+          "name": "Create Tool",
+          "request": {
+            "name": "Create Tool",
+            "description": {},
+            "url": {
+              "path": [
+                "tool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80e92b25-8cdb-431d-a823-f8425931e290",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"id\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"orgId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"createdAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"updatedAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df1aaed3-28d9-4e49-8ecd-c3655dd1eb16",
+          "name": "List Tools",
+          "request": {
+            "name": "List Tools",
+            "description": {},
+            "url": {
+              "path": [
+                "tool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "This is the maximum number of items to return. Defaults to 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the createdAt is less than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLt",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtGe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is greater than or equal to the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtLe",
+                  "value": "<dateTime>",
+                  "description": "This will return items where the updatedAt is less than or equal to the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c0626d5-8bf9-4027-b345-2d5b7f7b98dc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtLe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtGe",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtLe",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "087e640d-6045-4a1b-8cc7-0ee375143ab7",
+          "name": "Get Tool",
+          "request": {
+            "name": "Get Tool",
+            "description": {},
+            "url": {
+              "path": [
+                "tool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a87a1353-9ad2-4c56-aefa-b594c4fb47d8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"id\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"orgId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"createdAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"updatedAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "661bf05f-a3c1-4377-a10b-b2de9d302fe0",
+          "name": "Update Tool",
+          "request": {
+            "name": "Update Tool",
+            "description": {},
+            "url": {
+              "path": [
+                "tool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "389d0699-4e21-43e3-895d-1e0eaa415706",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"id\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"orgId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"createdAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"updatedAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3c61788-b1a5-477f-9e3b-4fc8ae1270b2",
+          "name": "Delete Tool",
+          "request": {
+            "name": "Delete Tool",
+            "description": {},
+            "url": {
+              "path": [
+                "tool",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97142f79-86d4-4e1b-b6f9-f4f7a651cf81",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tool",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"method\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"id\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"orgId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"createdAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"updatedAt\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"url\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"messages\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"timeoutSeconds\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"credentialId\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"encryptedPaths\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"parameters\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"rejectionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"name\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"description\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"body\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"headers\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"backoffPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"variableExtractionPlan\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "900c42a8-8850-4495-9e4d-0788286fedad",
+    "name": "Vapi Analytics Tools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Analytics resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}

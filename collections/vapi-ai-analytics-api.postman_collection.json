@@ -1,0 +1,190 @@
+{
+  "item": [
+    {
+      "id": "2137d63c-d077-4ab2-bbfd-241a3af247e1",
+      "name": "Analytics",
+      "description": {
+        "content": "Analytics endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddf24176-4ae2-4c15-8fea-4782bb31bfad",
+          "name": "Create Analytics Queries",
+          "request": {
+            "name": "Create Analytics Queries",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"type\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"assistantId\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "380a5c73-238d-4977-a3e5-15ddc6d2937e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"status\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"assistantId\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"timeRange\": {\n      \"step\": \"<string>\",\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"timezone\": \"<string>\"\n    },\n    \"result\": []\n  },\n  {\n    \"name\": \"string\",\n    \"timeRange\": {\n      \"step\": \"<string>\",\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"timezone\": \"<string>\"\n    },\n    \"result\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0f5f3c3-7050-472e-b7e8-3639d779d5a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"queries\": [\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"status\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    },\n    {\n      \"table\": \"<string>\",\n      \"name\": \"<string>\",\n      \"operations\": [\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        {\n          \"operation\": \"<string>\",\n          \"column\": \"<string>\",\n          \"alias\": \"<string>\"\n        }\n      ],\n      \"groupBy\": \"assistantId\",\n      \"groupByVariableValue\": [\n        {\n          \"key\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\"\n        }\n      ],\n      \"timeRange\": {\n        \"step\": \"<string>\",\n        \"start\": \"<dateTime>\",\n        \"end\": \"<dateTime>\",\n        \"timezone\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.vapi.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a3aca847-27ac-4f66-8ca6-51a39ac2b820",
+    "name": "Vapi Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vapi API — Analytics resource. Voice AI for developers.\n\nContact Support:\n Name: Vapi",
+      "type": "text/plain"
+    }
+  }
+}
