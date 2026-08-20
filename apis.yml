@@ -360,6 +360,8 @@ apis:
   description: Files endpoints.
   humanURL: https://docs.vapi.ai/api-reference/assistants/list
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -888,6 +890,18 @@ apis:
     url: https://docs.vapi.ai/api-reference/provider-resources/list
 name: Vapi
 tags:
+  - Artificial Intelligence
+  - Voice AI
+  - Voice Agents
+  - Conversational AI
+  - Telephony
+  - Real-Time
+  - Transcription
+  - Text-to-Speech
+  - LLM
+  - Agents
+  - MCP
+tags_raw:
   - AI
   - Voice AI
   - Voice Agents
