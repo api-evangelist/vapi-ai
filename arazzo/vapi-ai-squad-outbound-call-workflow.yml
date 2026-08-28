@@ -11,16 +11,16 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: assistantsApi
-  url: ../openapi/vapi-assistants-api-openapi.yml
-  type: openapi
-- name: squadsApi
-  url: ../openapi/vapi-squads-api-openapi.yml
-  type: openapi
-- name: phoneNumbersApi
-  url: ../openapi/vapi-phone-numbers-api-openapi.yml
+  url: ../openapi/vapi-ai-assistants-api-openapi.yml
   type: openapi
 - name: callsApi
-  url: ../openapi/vapi-calls-api-openapi.yml
+  url: ../openapi/vapi-ai-calls-api-openapi.yml
+  type: openapi
+- name: phoneNumbersApi
+  url: ../openapi/vapi-ai-phone-numbers-api-openapi.yml
+  type: openapi
+- name: squadsApi
+  url: ../openapi/vapi-ai-squads-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: squad-outbound-call

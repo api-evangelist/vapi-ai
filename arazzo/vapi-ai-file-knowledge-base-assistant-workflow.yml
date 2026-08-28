@@ -11,14 +11,14 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
+- name: assistantsApi
+  url: ../openapi/vapi-ai-assistants-api-openapi.yml
+  type: openapi
 - name: filesApi
-  url: ../openapi/vapi-files-api-openapi.yml
+  url: ../openapi/vapi-ai-files-api-openapi.yml
   type: openapi
 - name: toolsApi
-  url: ../openapi/vapi-tools-api-openapi.yml
-  type: openapi
-- name: assistantsApi
-  url: ../openapi/vapi-assistants-api-openapi.yml
+  url: ../openapi/vapi-ai-tools-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: file-knowledge-base-assistant

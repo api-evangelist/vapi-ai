@@ -10,11 +10,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: toolsApi
-  url: ../openapi/vapi-tools-api-openapi.yml
-  type: openapi
 - name: assistantsApi
-  url: ../openapi/vapi-assistants-api-openapi.yml
+  url: ../openapi/vapi-ai-assistants-api-openapi.yml
+  type: openapi
+- name: toolsApi
+  url: ../openapi/vapi-ai-tools-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-tool-attach-assistant

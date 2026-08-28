@@ -12,10 +12,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: assistantsApi
-  url: ../openapi/vapi-assistants-api-openapi.yml
+  url: ../openapi/vapi-ai-assistants-api-openapi.yml
   type: openapi
 - name: squadsApi
-  url: ../openapi/vapi-squads-api-openapi.yml
+  url: ../openapi/vapi-ai-squads-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: build-squad

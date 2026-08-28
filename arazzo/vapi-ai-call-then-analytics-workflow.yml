@@ -10,11 +10,11 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: callsApi
-  url: ../openapi/vapi-calls-api-openapi.yml
-  type: openapi
 - name: analyticsApi
-  url: ../openapi/vapi-analytics-api-openapi.yml
+  url: ../openapi/vapi-ai-analytics-api-openapi.yml
+  type: openapi
+- name: callsApi
+  url: ../openapi/vapi-ai-calls-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: call-then-analytics
