@@ -943,6 +943,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vapi-ai.png
 access: 3rd-Party
 common:
+  - type: Website
+    url: https://www.vapi.ai/
   - type: Overlay
     url: overlays/vapi-ai-analytics-api-overlay.yaml
   - type: AgenticAccess
