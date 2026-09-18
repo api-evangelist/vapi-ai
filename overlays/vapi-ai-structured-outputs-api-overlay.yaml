@@ -2,9 +2,9 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Vapi Structured Outputs API
   version: 1.0.0
-generated: '2026-06-20'
-method: generated
-source: openapi/vapi-structured-outputs-api-openapi.yml
+x-generated: '2026-06-20'
+x-method: generated
+x-source: openapi/vapi-structured-outputs-api-openapi.yml
 extends: openapi/vapi-structured-outputs-api-openapi.yml
 actions:
   - target: $.info

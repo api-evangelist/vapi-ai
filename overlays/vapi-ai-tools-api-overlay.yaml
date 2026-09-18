@@ -2,9 +2,9 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Vapi Tools API
   version: 1.0.0
-generated: '2026-06-20'
-method: generated
-source: openapi/vapi-tools-api-openapi.yml
+x-generated: '2026-06-20'
+x-method: generated
+x-source: openapi/vapi-tools-api-openapi.yml
 extends: openapi/vapi-tools-api-openapi.yml
 actions:
   - target: $.info

@@ -65,6 +65,8 @@ apis:
   description: Assistants endpoints.
   humanURL: https://docs.vapi.ai/api-reference/assistants/list
   tags:
+  - Assistant
+  tags_raw:
   - Assistants
   properties:
   - type: OpenAPI

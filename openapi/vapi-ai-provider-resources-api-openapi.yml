@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Vapi Analytics Provider Resources API
-  description: Vapi API — Analytics resource. Voice AI for developers.
+  title: Vapi Provider Resources API
+  description: Vapi API — Provider Resources resource. Voice AI for developers.
   version: '1.0'
   contact:
     name: Vapi
@@ -307,6 +307,48 @@ paths:
       - bearer: []
 components:
   schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        itemsPerPage:
+          type: number
+        totalItems:
+          type: number
+        currentPage:
+          type: number
+        totalPages:
+          type: number
+        hasNextPage:
+          type: boolean
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        itemsBeyondRetention:
+          type: boolean
+        createdAtLe:
+          format: date-time
+          type: string
+        createdAtGe:
+          format: date-time
+          type: string
+      required:
+      - itemsPerPage
+      - totalItems
+      - currentPage
+    ProviderResourcePaginatedResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderResource'
+        metadata:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - results
+      - metadata
     ProviderResource:
       type: object
       properties:
@@ -350,48 +392,6 @@ components:
       - resourceName
       - resourceId
       - resource
-    ProviderResourcePaginatedResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProviderResource'
-        metadata:
-          $ref: '#/components/schemas/PaginationMeta'
-      required:
-      - results
-      - metadata
-    PaginationMeta:
-      type: object
-      properties:
-        itemsPerPage:
-          type: number
-        totalItems:
-          type: number
-        currentPage:
-          type: number
-        totalPages:
-          type: number
-        hasNextPage:
-          type: boolean
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        itemsBeyondRetention:
-          type: boolean
-        createdAtLe:
-          format: date-time
-          type: string
-        createdAtGe:
-          format: date-time
-          type: string
-      required:
-      - itemsPerPage
-      - totalItems
-      - currentPage
   securitySchemes:
     bearer:
       scheme: bearer
